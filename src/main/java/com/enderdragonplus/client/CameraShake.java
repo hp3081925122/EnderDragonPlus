@@ -6,7 +6,7 @@ import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.client.event.ViewportEvent;
+import net.minecraftforge.client.event.ViewportEvent;
 
 public final class CameraShake {
     private static final List<float[]> SHAKES = new ArrayList<>();

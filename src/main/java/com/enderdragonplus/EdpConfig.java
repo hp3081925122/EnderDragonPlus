@@ -1,68 +1,71 @@
 package com.enderdragonplus;
 
-import net.neoforged.neoforge.common.ModConfigSpec;
+import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class EdpConfig {
-    public static final ModConfigSpec COMMON_SPEC;
-    public static final ModConfigSpec CLIENT_SPEC;
+    public static final ForgeConfigSpec COMMON_SPEC;
+    public static final ForgeConfigSpec CLIENT_SPEC;
 
-    public static final ModConfigSpec.BooleanValue REQUIRE_SPECIAL_SUMMON;
-    public static final ModConfigSpec.DoubleValue MAX_HEALTH;
-    public static final ModConfigSpec.DoubleValue ATTACK_DAMAGE;
-    public static final ModConfigSpec.DoubleValue HEAD_CONTACT_MULTIPLIER;
-    public static final ModConfigSpec.DoubleValue WING_CONTACT_MULTIPLIER;
-    public static final ModConfigSpec.DoubleValue KNOCKBACK_MULTIPLIER;
-    public static final ModConfigSpec.DoubleValue STAGE_TWO_HEALTH;
-    public static final ModConfigSpec.DoubleValue STAGE_THREE_HEALTH;
-    public static final ModConfigSpec.IntValue ACTION_INTERVAL;
-    public static final ModConfigSpec.DoubleValue RAGE_COOLDOWN_MULTIPLIER;
-    public static final ModConfigSpec.DoubleValue COMBAT_RANGE;
-    public static final ModConfigSpec.BooleanValue DEBUG_LOGGING;
+    public static final ForgeConfigSpec.BooleanValue REQUIRE_SPECIAL_SUMMON;
+    public static final ForgeConfigSpec.DoubleValue MAX_HEALTH;
+    public static final ForgeConfigSpec.DoubleValue ATTACK_DAMAGE;
+    public static final ForgeConfigSpec.DoubleValue HEAD_CONTACT_MULTIPLIER;
+    public static final ForgeConfigSpec.DoubleValue WING_CONTACT_MULTIPLIER;
+    public static final ForgeConfigSpec.DoubleValue KNOCKBACK_MULTIPLIER;
+    public static final ForgeConfigSpec.DoubleValue STAGE_TWO_HEALTH;
+    public static final ForgeConfigSpec.DoubleValue STAGE_THREE_HEALTH;
+    public static final ForgeConfigSpec.IntValue ACTION_INTERVAL;
+    public static final ForgeConfigSpec.DoubleValue RAGE_COOLDOWN_MULTIPLIER;
+    public static final ForgeConfigSpec.DoubleValue COMBAT_RANGE;
+    public static final ForgeConfigSpec.BooleanValue DEBUG_LOGGING;
 
     public static final Skill VOID_BREATH;
-    public static final ModConfigSpec.DoubleValue BREATH_SCORCH_MULTIPLIER;
-    public static final ModConfigSpec.DoubleValue BREATH_TRACK_SPEED;
+    public static final ForgeConfigSpec.DoubleValue BREATH_SCORCH_MULTIPLIER;
+    public static final ForgeConfigSpec.DoubleValue BREATH_TRACK_SPEED;
 
     public static final Skill METEOR;
-    public static final ModConfigSpec.IntValue METEOR_COUNT;
-    public static final ModConfigSpec.DoubleValue METEOR_RADIUS;
-    public static final ModConfigSpec.BooleanValue METEOR_BREAK_BLOCKS;
+    public static final ForgeConfigSpec.IntValue METEOR_COUNT;
+    public static final ForgeConfigSpec.DoubleValue METEOR_RADIUS;
+    public static final ForgeConfigSpec.BooleanValue METEOR_BREAK_BLOCKS;
 
     public static final Skill RIFT_DASH;
 
-    public static final ModConfigSpec.IntValue SHIELD_DURATION;
-    public static final ModConfigSpec.DoubleValue SHIELD_BURST_MULTIPLIER;
+    public static final ForgeConfigSpec.IntValue SHIELD_DURATION;
+    public static final ForgeConfigSpec.DoubleValue SHIELD_BURST_MULTIPLIER;
+    public static final ForgeConfigSpec.BooleanValue SHIELD_REVIVE_CRYSTALS;
+    public static final ForgeConfigSpec.DoubleValue SHIELD_CRYSTAL_EXPLODE_RATIO;
+    public static final ForgeConfigSpec.BooleanValue STAGE_HEAL_CAP;
 
     public static final Skill BLACK_HOLE;
-    public static final ModConfigSpec.DoubleValue BLACK_HOLE_RADIUS;
-    public static final ModConfigSpec.DoubleValue BLACK_HOLE_PULL;
+    public static final ForgeConfigSpec.DoubleValue BLACK_HOLE_RADIUS;
+    public static final ForgeConfigSpec.DoubleValue BLACK_HOLE_PULL;
 
     public static final Skill SCALE_BARRAGE;
-    public static final ModConfigSpec.IntValue BARRAGE_WAVES;
-    public static final ModConfigSpec.IntValue BARRAGE_PER_WAVE;
+    public static final ForgeConfigSpec.IntValue BARRAGE_WAVES;
+    public static final ForgeConfigSpec.IntValue BARRAGE_PER_WAVE;
 
     public static final Skill FINAL_NOVA;
-    public static final ModConfigSpec.IntValue NOVA_CHARGE_TICKS;
-    public static final ModConfigSpec.IntValue NOVA_SAFE_ZONES;
-    public static final ModConfigSpec.DoubleValue NOVA_SAFE_RADIUS;
+    public static final ForgeConfigSpec.IntValue NOVA_CHARGE_TICKS;
+    public static final ForgeConfigSpec.IntValue NOVA_SAFE_ZONES;
+    public static final ForgeConfigSpec.DoubleValue NOVA_SAFE_RADIUS;
 
     public static final Skill VOID_RUPTURE;
     public static final Skill WING_BLADES;
-    public static final ModConfigSpec.IntValue WING_BLADES_PER_VOLLEY;
+    public static final ForgeConfigSpec.IntValue WING_BLADES_PER_VOLLEY;
     public static final Skill ENDER_STORM;
-    public static final ModConfigSpec.IntValue STORM_STRIKES;
+    public static final ForgeConfigSpec.IntValue STORM_STRIKES;
     public static final Skill RING_WAVES;
     public static final Skill VOID_LANCES;
-    public static final ModConfigSpec.IntValue LANCE_COUNT;
+    public static final ForgeConfigSpec.IntValue LANCE_COUNT;
     public static final Skill CATACLYSM_DIVE;
-    public static final ModConfigSpec.DoubleValue DIVE_RADIUS;
+    public static final ForgeConfigSpec.DoubleValue DIVE_RADIUS;
 
-    public static final ModConfigSpec.BooleanValue ENABLE_DISTORTION;
-    public static final ModConfigSpec.BooleanValue ENABLE_SCREEN_EFFECTS;
-    public static final ModConfigSpec.DoubleValue CAMERA_SHAKE;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_DISTORTION;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_SCREEN_EFFECTS;
+    public static final ForgeConfigSpec.DoubleValue CAMERA_SHAKE;
 
     static {
-        ModConfigSpec.Builder b = new ModConfigSpec.Builder();
+        ForgeConfigSpec.Builder b = new ForgeConfigSpec.Builder();
         b.comment("末影龙基础属性").push("dragon");
         REQUIRE_SPECIAL_SUMMON = b.comment("是否需要用终焉水晶特殊召唤才会出现加强版末影龙；false 时所有末影龙都是加强版").define("requireSpecialSummon", false);
         MAX_HEALTH = b.comment("末影龙最大生命值").defineInRange("maxHealth", 400.0, 1.0, 1000000.0);
@@ -92,6 +95,9 @@ public final class EdpConfig {
 
         SHIELD_DURATION = b.comment("转阶段护盾持续时间（tick）").defineInRange("shield_duration", 120, 20, 2400);
         SHIELD_BURST_MULTIPLIER = b.comment("护盾破碎冲击伤害倍率").defineInRange("shield_burstMultiplier", 0.8, 0.0, 100.0);
+        SHIELD_REVIVE_CRYSTALS = b.comment("护盾升华时是否复活所有黑曜石柱上的末影水晶").define("shield_reviveCrystals", true);
+        SHIELD_CRYSTAL_EXPLODE_RATIO = b.comment("护盾升华结束后随机引爆的水晶比例").defineInRange("shield_crystalExplodeRatio", 0.5, 0.0, 1.0);
+        STAGE_HEAL_CAP = b.comment("进入第二阶段后，末影水晶回血不会超过第二阶段血量阈值").define("stageHealCap", true);
 
         BLACK_HOLE = new Skill(b, "blackHole", "黑洞", 600, 0.4, 7);
         BLACK_HOLE_RADIUS = b.comment("黑洞牵引半径").defineInRange("blackHole_radius", 22.0, 2.0, 128.0);
@@ -124,7 +130,7 @@ public final class EdpConfig {
         b.pop();
         COMMON_SPEC = b.build();
 
-        ModConfigSpec.Builder c = new ModConfigSpec.Builder();
+        ForgeConfigSpec.Builder c = new ForgeConfigSpec.Builder();
         c.comment("客户端特效").push("vfx");
         ENABLE_DISTORTION = c.comment("启用空间扭曲特效（需要拷贝画面，光影包下可能失效）").define("enableDistortion", true);
         ENABLE_SCREEN_EFFECTS = c.comment("启用全屏色差、白闪与暗角").define("enableScreenEffects", true);
@@ -137,12 +143,12 @@ public final class EdpConfig {
     }
 
     public static final class Skill {
-        public final ModConfigSpec.BooleanValue enabled;
-        public final ModConfigSpec.IntValue cooldown;
-        public final ModConfigSpec.DoubleValue damage;
-        public final ModConfigSpec.IntValue weight;
+        public final ForgeConfigSpec.BooleanValue enabled;
+        public final ForgeConfigSpec.IntValue cooldown;
+        public final ForgeConfigSpec.DoubleValue damage;
+        public final ForgeConfigSpec.IntValue weight;
 
-        Skill(ModConfigSpec.Builder b, String key, String name, int cooldown, double damage, int weight) {
+        Skill(ForgeConfigSpec.Builder b, String key, String name, int cooldown, double damage, int weight) {
             this.enabled = b.comment("启用" + name).define(key + "_enabled", true);
             this.cooldown = b.comment(name + "冷却（tick）").defineInRange(key + "_cooldown", cooldown, 0, 100000);
             this.damage = b.comment(name + "伤害倍率").defineInRange(key + "_damageMultiplier", damage, 0.0, 1000.0);

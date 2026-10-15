@@ -7,7 +7,7 @@ import com.mojang.blaze3d.vertex.BufferUploader;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import net.minecraft.client.DeltaTracker;
+
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.ShaderInstance;
 import org.joml.Matrix4f;
@@ -55,7 +55,7 @@ public final class ScreenFx {
         holdVignette = 0.0F;
     }
 
-    public static void render(GuiGraphics graphics, DeltaTracker deltaTracker) {
+    public static void render(GuiGraphics graphics, float partialTick) {
         if (!EdpConfig.ENABLE_SCREEN_EFFECTS.get()) {
             return;
         }
@@ -80,12 +80,13 @@ public final class ScreenFx {
         Matrix4f matrix = graphics.pose().last().pose();
         float w = graphics.guiWidth();
         float h = graphics.guiHeight();
-        BufferBuilder buffer = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-        buffer.addVertex(matrix, 0.0F, 0.0F, 0.0F).setUv(0.0F, 1.0F);
-        buffer.addVertex(matrix, 0.0F, h, 0.0F).setUv(0.0F, 0.0F);
-        buffer.addVertex(matrix, w, h, 0.0F).setUv(1.0F, 0.0F);
-        buffer.addVertex(matrix, w, 0.0F, 0.0F).setUv(1.0F, 1.0F);
-        BufferUploader.drawWithShader(buffer.buildOrThrow());
+        BufferBuilder buffer = Tesselator.getInstance().getBuilder();
+        buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        buffer.vertex(matrix, 0.0F, 0.0F, 0.0F).uv(0.0F, 1.0F).endVertex();
+        buffer.vertex(matrix, 0.0F, h, 0.0F).uv(0.0F, 0.0F).endVertex();
+        buffer.vertex(matrix, w, h, 0.0F).uv(1.0F, 0.0F).endVertex();
+        buffer.vertex(matrix, w, 0.0F, 0.0F).uv(1.0F, 1.0F).endVertex();
+        BufferUploader.drawWithShader(buffer.end());
         RenderSystem.enableCull();
         RenderSystem.enableDepthTest();
         SceneCopy.invalidate();

@@ -24,7 +24,7 @@
     }
   },
   "result": {
-    "id": "enderdragonplus:ending_crystal",
-    "count": 1
+    "count": 1,
+    "item": "enderdragonplus:ending_crystal"
   }
 }

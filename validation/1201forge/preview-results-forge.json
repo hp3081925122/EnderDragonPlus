@@ -1,0 +1,1010 @@
+[
+  {
+    "name": "vfx_0-t20",
+    "key": "custom/enderdragonplus/vfx_0",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_0-t20.png",
+    "pixels": {
+      "meanRed": 23.043327546296297,
+      "meanGreen": 38.48178047839506,
+      "meanBlue": 54.34133101851852,
+      "blackRatio": 0.000314429012345679,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 26713,
+      "minX": 325,
+      "minY": 151,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_0-t70",
+    "key": "custom/enderdragonplus/vfx_0",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_0-t70.png",
+    "pixels": {
+      "meanRed": 23.187137345679012,
+      "meanGreen": 38.511755401234566,
+      "meanBlue": 54.39696566358025,
+      "blackRatio": 0.000314429012345679,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27657,
+      "minX": 325,
+      "minY": 138,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_0-t120",
+    "key": "custom/enderdragonplus/vfx_0",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_0-t120.png",
+    "pixels": {
+      "meanRed": 23.071832561728396,
+      "meanGreen": 38.482256944444444,
+      "meanBlue": 54.34842785493827,
+      "blackRatio": 0.000314429012345679,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 25550,
+      "minX": 325,
+      "minY": 143,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_1-t20",
+    "key": "custom/enderdragonplus/vfx_1",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_1-t20.png",
+    "pixels": {
+      "meanRed": 23.960063657407407,
+      "meanGreen": 38.757085262345676,
+      "meanBlue": 54.7614525462963,
+      "blackRatio": 0.000314429012345679,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 30174,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 641,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_1-t70",
+    "key": "custom/enderdragonplus/vfx_1",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_1-t70.png",
+    "pixels": {
+      "meanRed": 24.08313078703704,
+      "meanGreen": 38.79560570987654,
+      "meanBlue": 54.83132523148148,
+      "blackRatio": 0.000314429012345679,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 31195,
+      "minX": 325,
+      "minY": 147,
+      "maxX": 641,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_1-t120",
+    "key": "custom/enderdragonplus/vfx_1",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_1-t120.png",
+    "pixels": {
+      "meanRed": 23.99155864197531,
+      "meanGreen": 38.78206018518519,
+      "meanBlue": 54.80381944444444,
+      "blackRatio": 0.000314429012345679,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 29257,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 641,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_2-t20",
+    "key": "custom/enderdragonplus/vfx_2",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_2-t20.png",
+    "pixels": {
+      "meanRed": 26.242908950617284,
+      "meanGreen": 39.201336805555556,
+      "meanBlue": 55.70226273148148,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 44807,
+      "minX": 250,
+      "minY": 152,
+      "maxX": 717,
+      "maxY": 419
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_2-t70",
+    "key": "custom/enderdragonplus/vfx_2",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_2-t70.png",
+    "pixels": {
+      "meanRed": 34.881778549382716,
+      "meanGreen": 40.041795910493825,
+      "meanBlue": 57.65530671296296,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 90153,
+      "minX": 250,
+      "minY": 0,
+      "maxX": 854,
+      "maxY": 462
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_2-t120",
+    "key": "custom/enderdragonplus/vfx_2",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_2-t120.png",
+    "pixels": {
+      "meanRed": 37.10664351851852,
+      "meanGreen": 38.671020447530864,
+      "meanBlue": 56.266292438271606,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 89629,
+      "minX": 203,
+      "minY": 154,
+      "maxX": 779,
+      "maxY": 473
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_3-t20",
+    "key": "custom/enderdragonplus/vfx_3",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_3-t20.png",
+    "pixels": {
+      "meanRed": 23.388871527777777,
+      "meanGreen": 38.56665895061728,
+      "meanBlue": 54.476408179012346,
+      "blackRatio": 0.000314429012345679,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 29169,
+      "minX": 325,
+      "minY": 125,
+      "maxX": 646,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_3-t70",
+    "key": "custom/enderdragonplus/vfx_3",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_3-t70.png",
+    "pixels": {
+      "meanRed": 23.632692901234567,
+      "meanGreen": 38.60754243827161,
+      "meanBlue": 54.5584124228395,
+      "blackRatio": 0.000314429012345679,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 30795,
+      "minX": 325,
+      "minY": 125,
+      "maxX": 658,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_3-t120",
+    "key": "custom/enderdragonplus/vfx_3",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_3-t120.png",
+    "pixels": {
+      "meanRed": 23.01375,
+      "meanGreen": 38.47184220679012,
+      "meanBlue": 54.33050154320988,
+      "blackRatio": 0.000314429012345679,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 25329,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_4-t20",
+    "key": "custom/enderdragonplus/vfx_4",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_4-t20.png",
+    "pixels": {
+      "meanRed": 28.149980709876544,
+      "meanGreen": 39.506836419753085,
+      "meanBlue": 56.23231288580247,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 43927,
+      "minX": 325,
+      "minY": 95,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_4-t70",
+    "key": "custom/enderdragonplus/vfx_4",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_4-t70.png",
+    "pixels": {
+      "meanRed": 28.22741898148148,
+      "meanGreen": 39.50155478395062,
+      "meanBlue": 56.24737075617284,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 43927,
+      "minX": 325,
+      "minY": 95,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_4-t120",
+    "key": "custom/enderdragonplus/vfx_4",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_4-t120.png",
+    "pixels": {
+      "meanRed": 28.16934799382716,
+      "meanGreen": 39.50996334876543,
+      "meanBlue": 56.241026234567904,
+      "blackRatio": 3.858024691358025e-06,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 43927,
+      "minX": 325,
+      "minY": 95,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_5-t20",
+    "key": "custom/enderdragonplus/vfx_5",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_5-t20.png",
+    "pixels": {
+      "meanRed": 23.24332947530864,
+      "meanGreen": 38.68188271604938,
+      "meanBlue": 54.66084683641975,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 26036,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_5-t70",
+    "key": "custom/enderdragonplus/vfx_5",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_5-t70.png",
+    "pixels": {
+      "meanRed": 23.760636574074073,
+      "meanGreen": 38.79664737654321,
+      "meanBlue": 54.85377700617284,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 28442,
+      "minX": 325,
+      "minY": 147,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_5-t120",
+    "key": "custom/enderdragonplus/vfx_5",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_5-t120.png",
+    "pixels": {
+      "meanRed": 23.331770833333334,
+      "meanGreen": 38.68377893518519,
+      "meanBlue": 54.67522569444444,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27895,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_6-t20",
+    "key": "custom/enderdragonplus/vfx_6",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_6-t20.png",
+    "pixels": {
+      "meanRed": 25.216498842592593,
+      "meanGreen": 39.085472608024695,
+      "meanBlue": 55.36998263888889,
+      "blackRatio": 0.0005574845679012345,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27602,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_6-t70",
+    "key": "custom/enderdragonplus/vfx_6",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_6-t70.png",
+    "pixels": {
+      "meanRed": 26.198069058641977,
+      "meanGreen": 39.24513888888889,
+      "meanBlue": 55.70534336419753,
+      "blackRatio": 0.0008121141975308642,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 29776,
+      "minX": 325,
+      "minY": 147,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_6-t120",
+    "key": "custom/enderdragonplus/vfx_6",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_6-t120.png",
+    "pixels": {
+      "meanRed": 25.995163966049383,
+      "meanGreen": 39.19631944444444,
+      "meanBlue": 55.6274537037037,
+      "blackRatio": 0.000767746913580247,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 28696,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_7-t20",
+    "key": "custom/enderdragonplus/vfx_7",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_7-t20.png",
+    "pixels": {
+      "meanRed": 23.29728587962963,
+      "meanGreen": 38.72479938271605,
+      "meanBlue": 54.70178819444445,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27956,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_7-t70",
+    "key": "custom/enderdragonplus/vfx_7",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_7-t70.png",
+    "pixels": {
+      "meanRed": 23.76385416666667,
+      "meanGreen": 38.89727237654321,
+      "meanBlue": 54.935520833333335,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 32003,
+      "minX": 85,
+      "minY": 147,
+      "maxX": 874,
+      "maxY": 452
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_7-t120",
+    "key": "custom/enderdragonplus/vfx_7",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_7-t120.png",
+    "pixels": {
+      "meanRed": 22.920966435185186,
+      "meanGreen": 38.60385609567901,
+      "meanBlue": 54.52601466049383,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 25395,
+      "minX": 39,
+      "minY": 153,
+      "maxX": 939,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_8-t20",
+    "key": "custom/enderdragonplus/vfx_8",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_8-t20.png",
+    "pixels": {
+      "meanRed": 23.26865547839506,
+      "meanGreen": 38.71565200617284,
+      "meanBlue": 54.68831983024691,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27956,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_8-t70",
+    "key": "custom/enderdragonplus/vfx_8",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_8-t70.png",
+    "pixels": {
+      "meanRed": 23.64188464506173,
+      "meanGreen": 38.85267361111111,
+      "meanBlue": 54.87437692901234,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 31201,
+      "minX": 85,
+      "minY": 147,
+      "maxX": 874,
+      "maxY": 452
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_8-t120",
+    "key": "custom/enderdragonplus/vfx_8",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_8-t120.png",
+    "pixels": {
+      "meanRed": 22.920966435185186,
+      "meanGreen": 38.60385609567901,
+      "meanBlue": 54.52601466049383,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 25395,
+      "minX": 39,
+      "minY": 153,
+      "maxX": 939,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_9-t20",
+    "key": "custom/enderdragonplus/vfx_9",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_9-t20.png",
+    "pixels": {
+      "meanRed": 27.215208333333333,
+      "meanGreen": 43.44380787037037,
+      "meanBlue": 59.81702160493827,
+      "blackRatio": 2.507716049382716e-05,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 62292,
+      "minX": 304,
+      "minY": 25,
+      "maxX": 658,
+      "maxY": 369
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_9-t70",
+    "key": "custom/enderdragonplus/vfx_9",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_9-t70.png",
+    "pixels": {
+      "meanRed": 28.229675925925925,
+      "meanGreen": 43.08309992283951,
+      "meanBlue": 59.679600694444446,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 64350,
+      "minX": 306,
+      "minY": 54,
+      "maxX": 668,
+      "maxY": 376
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_9-t120",
+    "key": "custom/enderdragonplus/vfx_9",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_9-t120.png",
+    "pixels": {
+      "meanRed": 50.733024691358025,
+      "meanGreen": 48.37414737654321,
+      "meanBlue": 68.01809799382715,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 118756,
+      "minX": 285,
+      "minY": 83,
+      "maxX": 674,
+      "maxY": 471
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_10-t20",
+    "key": "custom/enderdragonplus/vfx_10",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_10-t20.png",
+    "pixels": {
+      "meanRed": 24.068105709876544,
+      "meanGreen": 38.96190586419753,
+      "meanBlue": 55.06313078703704,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 30044,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 641,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_10-t70",
+    "key": "custom/enderdragonplus/vfx_10",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_10-t70.png",
+    "pixels": {
+      "meanRed": 24.182783564814816,
+      "meanGreen": 39.00612075617284,
+      "meanBlue": 55.132467206790125,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 31124,
+      "minX": 325,
+      "minY": 147,
+      "maxX": 641,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_10-t120",
+    "key": "custom/enderdragonplus/vfx_10",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_10-t120.png",
+    "pixels": {
+      "meanRed": 24.046396604938273,
+      "meanGreen": 38.973827160493826,
+      "meanBlue": 55.08132908950617,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 29047,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 641,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_11-t20",
+    "key": "custom/enderdragonplus/vfx_11",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_11-t20.png",
+    "pixels": {
+      "meanRed": 22.916452546296295,
+      "meanGreen": 38.59751543209877,
+      "meanBlue": 54.51882716049383,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 26005,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_11-t70",
+    "key": "custom/enderdragonplus/vfx_11",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_11-t70.png",
+    "pixels": {
+      "meanRed": 23.026068672839507,
+      "meanGreen": 38.62323302469136,
+      "meanBlue": 54.562461419753085,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27307,
+      "minX": 325,
+      "minY": 147,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_11-t120",
+    "key": "custom/enderdragonplus/vfx_11",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_11-t120.png",
+    "pixels": {
+      "meanRed": 22.85080825617284,
+      "meanGreen": 38.58115740740741,
+      "meanBlue": 54.49336226851852,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 24897,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_12-t20",
+    "key": "custom/enderdragonplus/vfx_12",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_12-t20.png",
+    "pixels": {
+      "meanRed": 22.916452546296295,
+      "meanGreen": 38.59751543209877,
+      "meanBlue": 54.51882716049383,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 26005,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_12-t70",
+    "key": "custom/enderdragonplus/vfx_12",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_12-t70.png",
+    "pixels": {
+      "meanRed": 25.54423611111111,
+      "meanGreen": 39.24623456790123,
+      "meanBlue": 55.587623456790126,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 46250,
+      "minX": 310,
+      "minY": 147,
+      "maxX": 754,
+      "maxY": 420
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_12-t120",
+    "key": "custom/enderdragonplus/vfx_12",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_12-t120.png",
+    "pixels": {
+      "meanRed": 24.390291280864197,
+      "meanGreen": 39.17673611111111,
+      "meanBlue": 55.29197145061728,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 38172,
+      "minX": 213,
+      "minY": 154,
+      "maxX": 675,
+      "maxY": 457
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_13-t20",
+    "key": "custom/enderdragonplus/vfx_13",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_13-t20.png",
+    "pixels": {
+      "meanRed": 23.394265046296297,
+      "meanGreen": 38.68389467592593,
+      "meanBlue": 54.68806905864197,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27103,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_13-t70",
+    "key": "custom/enderdragonplus/vfx_13",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_13-t70.png",
+    "pixels": {
+      "meanRed": 24.220027006172838,
+      "meanGreen": 38.84453125,
+      "meanBlue": 54.995758101851855,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 30024,
+      "minX": 325,
+      "minY": 0,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_13-t120",
+    "key": "custom/enderdragonplus/vfx_13",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_13-t120.png",
+    "pixels": {
+      "meanRed": 25.485302854938272,
+      "meanGreen": 38.39900655864197,
+      "meanBlue": 54.67718364197531,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 25025,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_14-t20",
+    "key": "custom/enderdragonplus/vfx_14",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_14-t20.png",
+    "pixels": {
+      "meanRed": 23.755190972222223,
+      "meanGreen": 38.86868441358025,
+      "meanBlue": 54.91332561728395,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 26074,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_14-t70",
+    "key": "custom/enderdragonplus/vfx_14",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_14-t70.png",
+    "pixels": {
+      "meanRed": 32.254309413580245,
+      "meanGreen": 41.71371141975309,
+      "meanBlue": 58.985978009259256,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 75462,
+      "minX": 103,
+      "minY": 147,
+      "maxX": 857,
+      "maxY": 539
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_14-t120",
+    "key": "custom/enderdragonplus/vfx_14",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_14-t120.png",
+    "pixels": {
+      "meanRed": 31.894037422839506,
+      "meanGreen": 41.583900462962966,
+      "meanBlue": 58.803034336419756,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 74418,
+      "minX": 103,
+      "minY": 154,
+      "maxX": 857,
+      "maxY": 539
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_15-t20",
+    "key": "custom/enderdragonplus/vfx_15",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_15-t20.png",
+    "pixels": {
+      "meanRed": 22.957166280864197,
+      "meanGreen": 38.6099537037037,
+      "meanBlue": 54.536952160493826,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 26036,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_15-t70",
+    "key": "custom/enderdragonplus/vfx_15",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_15-t70.png",
+    "pixels": {
+      "meanRed": 23.12384259259259,
+      "meanGreen": 38.66584683641975,
+      "meanBlue": 54.616581790123455,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27513,
+      "minX": 325,
+      "minY": 147,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_15-t120",
+    "key": "custom/enderdragonplus/vfx_15",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_15-t120.png",
+    "pixels": {
+      "meanRed": 23.01148726851852,
+      "meanGreen": 38.627916666666664,
+      "meanBlue": 54.5627912808642,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 26335,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 622,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_16-t20",
+    "key": "custom/enderdragonplus/vfx_16",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_16-t20.png",
+    "pixels": {
+      "meanRed": 23.648503086419755,
+      "meanGreen": 38.632276234567904,
+      "meanBlue": 54.59021026234568,
+      "blackRatio": 0.000314429012345679,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 33618,
+      "minX": 325,
+      "minY": 0,
+      "maxX": 653,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_16-t70",
+    "key": "custom/enderdragonplus/vfx_16",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_16-t70.png",
+    "pixels": {
+      "meanRed": 24.75851273148148,
+      "meanGreen": 38.98321952160494,
+      "meanBlue": 55.10218557098766,
+      "blackRatio": 0.000314429012345679,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 38009,
+      "minX": 325,
+      "minY": 0,
+      "maxX": 657,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_16-t120",
+    "key": "custom/enderdragonplus/vfx_16",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_16-t120.png",
+    "pixels": {
+      "meanRed": 24.15430362654321,
+      "meanGreen": 38.47694637345679,
+      "meanBlue": 54.48197337962963,
+      "blackRatio": 0.000314429012345679,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 28862,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 687,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "dragon_stage_1-t60",
+    "key": "custom/enderdragonplus/dragon_stage_1",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\dragon_stage_1-t60.png",
+    "pixels": {
+      "meanRed": 22.6263850308642,
+      "meanGreen": 38.457256944444445,
+      "meanBlue": 54.232197145061726,
+      "blackRatio": 5.787037037037037e-05,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 22388,
+      "minX": 325,
+      "minY": 172,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "dragon_stage_2-t60",
+    "key": "custom/enderdragonplus/dragon_stage_2",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\dragon_stage_2-t60.png",
+    "pixels": {
+      "meanRed": 22.71955825617284,
+      "meanGreen": 38.4671875,
+      "meanBlue": 54.34406442901235,
+      "blackRatio": 9.45216049382716e-05,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 22549,
+      "minX": 325,
+      "minY": 172,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "dragon_stage_3-t60",
+    "key": "custom/enderdragonplus/dragon_stage_3",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\dragon_stage_3-t60.png",
+    "pixels": {
+      "meanRed": 22.954627700617284,
+      "meanGreen": 38.46056712962963,
+      "meanBlue": 54.308815586419755,
+      "blackRatio": 0.0003260030864197531,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 25842,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "screen-t40",
+    "key": "custom/enderdragonplus/screen",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\screen-t40.png",
+    "pixels": {
+      "meanRed": 72.2372762345679,
+      "meanGreen": 72.15897183641975,
+      "meanBlue": 87.30857445987654,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 518400,
+      "minX": 0,
+      "minY": 0,
+      "maxX": 959,
+      "maxY": 539
+    },
+    "passed": true
+  },
+  {
+    "name": "item-t40",
+    "key": "items/enderdragonplus:ending_crystal",
+    "image": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\item-t40.png",
+    "pixels": {
+      "meanRed": 40.472239583333334,
+      "meanGreen": 45.01026234567901,
+      "meanBlue": 61.247696759259256,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 364131,
+      "minX": 0,
+      "minY": 104,
+      "maxX": 959,
+      "maxY": 539
+    },
+    "passed": true
+  }
+]

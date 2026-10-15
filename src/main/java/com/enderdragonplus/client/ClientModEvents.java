@@ -1,15 +1,15 @@
 package com.enderdragonplus.client;
 
 import com.enderdragonplus.EnderDragonPlus;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import com.enderdragonplus.item.EdpItems;
-import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
-import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
-import net.neoforged.neoforge.client.event.RegisterShadersEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
+import net.minecraftforge.client.event.RegisterShadersEvent;
 
-@EventBusSubscriber(modid = EnderDragonPlus.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = EnderDragonPlus.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public final class ClientModEvents {
     private ClientModEvents() {
     }
@@ -25,7 +25,7 @@ public final class ClientModEvents {
     }
 
     @SubscribeEvent
-    public static void onRegisterGuiLayers(RegisterGuiLayersEvent event) {
-        event.registerBelowAll(EnderDragonPlus.id("screen_fx"), ScreenFx::render);
+    public static void onRegisterGuiLayers(RegisterGuiOverlaysEvent event) {
+        event.registerBelowAll("screen_fx", (gui, graphics, partialTick, width, height) -> ScreenFx.render(graphics, partialTick));
     }
 }

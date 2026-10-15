@@ -85,7 +85,7 @@ public final class BarrageVfx extends VfxInstance {
             Vec3 from = this.positions[i];
             Vec3 to = from.add(this.directions[i].scale(this.speed));
             if (this.simAge > 3) {
-                BlockHitResult hit = Minecraft.getInstance().level.clip(new ClipContext(from, to, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, CollisionContext.empty()));
+                BlockHitResult hit = Minecraft.getInstance().level.clip(new ClipContext(from, to, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, (net.minecraft.world.entity.Entity) null));
                 if (hit.getType() != HitResult.Type.MISS) {
                     this.alive[i] = false;
                     VfxManager.add(new ShockwaveVfx(hit.getLocation(), 2.2F, 10, this.color, false));

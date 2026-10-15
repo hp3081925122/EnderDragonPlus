@@ -32,6 +32,11 @@ public class EndingCrystalItem extends Item {
     }
 
     @Override
+    public boolean isFoil(ItemStack stack) {
+        return true;
+    }
+
+    @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
@@ -66,7 +71,7 @@ public class EndingCrystalItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, Level context, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("item.enderdragonplus.ending_crystal.desc").withStyle(ChatFormatting.LIGHT_PURPLE));
         if (!EdpConfig.REQUIRE_SPECIAL_SUMMON.get()) {
             tooltip.add(Component.translatable("item.enderdragonplus.ending_crystal.always").withStyle(ChatFormatting.GRAY));

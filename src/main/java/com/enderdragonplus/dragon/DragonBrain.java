@@ -26,7 +26,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.EndPodiumFeature;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.network.PacketDistributor;
+import com.enderdragonplus.network.EdpNetwork;
 
 public final class DragonBrain {
     public static final int COLOR_STAGE_ONE = 0xB04CFF;
@@ -78,7 +78,7 @@ public final class DragonBrain {
         if (!this.stageTwoReached && ratio <= EdpConfig.STAGE_TWO_HEALTH.get()) {
             this.stageTwoReached = true;
             EnderDragonPlus.LOGGER.info("Dragon {} entered stage two at health ratio {}", this.dragon.getId(), ratio);
-            PacketDistributor.sendToPlayersTrackingEntity(this.dragon, this.stagePayload());
+            EdpNetwork.sendToPlayersTrackingEntity(this.dragon, this.stagePayload());
             this.dragon.getPhaseManager().setPhase(DragonPhases.SHIELD_ASCENSION);
             return;
         }
@@ -86,7 +86,7 @@ public final class DragonBrain {
             this.stageThreeReached = true;
             this.stageTwoReached = true;
             EnderDragonPlus.LOGGER.info("Dragon {} entered stage three at health ratio {}", this.dragon.getId(), ratio);
-            PacketDistributor.sendToPlayersTrackingEntity(this.dragon, this.stagePayload());
+            EdpNetwork.sendToPlayersTrackingEntity(this.dragon, this.stagePayload());
             if (EdpConfig.FINAL_NOVA.enabled.get()) {
                 this.startSkill(SkillType.FINAL_NOVA, this.pickTarget());
                 return;
@@ -198,11 +198,15 @@ public final class DragonBrain {
 
     @Nullable
     public LivingEntity pickTarget() {
-        List<ServerPlayer> players = this.combatPlayers();
-        if (players.isEmpty()) {
+        List<LivingEntity> targets = this.combatTargets();
+        if (targets.isEmpty()) {
             return null;
         }
-        return players.get(this.dragon.getRandom().nextInt(players.size()));
+        return targets.get(this.dragon.getRandom().nextInt(targets.size()));
+    }
+
+    public List<LivingEntity> combatTargets() {
+        return new ArrayList<>(this.combatPlayers());
     }
 
     public List<ServerPlayer> combatPlayers() {
@@ -298,7 +302,7 @@ public final class DragonBrain {
     }
 
     public void sendVfx(int type, CompoundTag data) {
-        PacketDistributor.sendToPlayersNear(this.level(), null, this.dragon.getX(), this.dragon.getY(), this.dragon.getZ(), 320.0, new VfxPayload(type, this.dragon.getId(), data));
+        EdpNetwork.sendToPlayersNear(this.level(), null, this.dragon.getX(), this.dragon.getY(), this.dragon.getZ(), 320.0, new VfxPayload(type, this.dragon.getId(), data));
     }
 
     public void playSound(Vec3 pos, SoundEvent sound, float volume, float pitch) {

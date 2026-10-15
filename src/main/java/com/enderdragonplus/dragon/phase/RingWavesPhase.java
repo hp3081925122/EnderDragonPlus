@@ -8,6 +8,7 @@ import com.enderdragonplus.dragon.hazard.RingWaveHazard;
 import com.enderdragonplus.network.VfxPayload;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
 import net.minecraft.world.phys.Vec3;
@@ -28,7 +29,7 @@ public class RingWavesPhase extends SkillPhase {
     @Override
     protected boolean start() {
         DragonBrain brain = this.brain();
-        if (brain.combatPlayers().isEmpty()) {
+        if (brain.combatTargets().isEmpty()) {
             return false;
         }
         this.center = brain.arenaCenter();
@@ -78,7 +79,7 @@ public class RingWavesPhase extends SkillPhase {
         wave.putFloat("shake", 1.6F);
         wave.putFloat("flash", 0.0F);
         brain.sendVfx(VfxPayload.SHOCKWAVE, wave);
-        brain.playSound(this.center, SoundEvents.GENERIC_EXPLODE.value(), 6.0F, 0.5F);
+        brain.playSound(this.center, SoundEvents.GENERIC_EXPLODE, 6.0F, 0.5F);
         brain.playSound(this.center, SoundEvents.WARDEN_SONIC_BOOM, 6.0F, 0.6F);
         if (EdpConfig.DEBUG_LOGGING.get()) {
             EnderDragonPlus.LOGGER.info("Ring waves slam at {} with {} rings", this.center, this.count);

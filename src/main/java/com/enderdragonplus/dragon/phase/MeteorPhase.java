@@ -8,9 +8,9 @@ import com.enderdragonplus.network.VfxPayload;
 import java.util.List;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
 import net.minecraft.world.phys.Vec3;
@@ -25,7 +25,7 @@ public class MeteorPhase extends SkillPhase {
 
     @Override
     protected boolean start() {
-        if (this.brain().combatPlayers().isEmpty()) {
+        if (this.brain().combatTargets().isEmpty()) {
             return false;
         }
         this.moveTarget = this.dragon.position().add(0.0, 10.0, 0.0);
@@ -46,7 +46,7 @@ public class MeteorPhase extends SkillPhase {
 
     private void summon() {
         DragonBrain brain = this.brain();
-        List<ServerPlayer> players = brain.combatPlayers();
+        List<LivingEntity> players = brain.combatTargets();
         if (players.isEmpty()) {
             return;
         }
@@ -60,7 +60,7 @@ public class MeteorPhase extends SkillPhase {
         boolean breakBlocks = EdpConfig.METEOR_BREAK_BLOCKS.get();
         ListTag list = new ListTag();
         for (int i = 0; i < count; i++) {
-            ServerPlayer player = players.get(i % players.size());
+            LivingEntity player = players.get(i % players.size());
             double x = player.getX();
             double z = player.getZ();
             if (i < players.size()) {

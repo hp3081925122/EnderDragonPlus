@@ -1,0 +1,1010 @@
+[
+  {
+    "name": "vfx_0-t20",
+    "key": "custom/enderdragonplus/vfx_0",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_0-t20.png",
+    "pixels": {
+      "meanRed": 23.00368634259259,
+      "meanGreen": 38.45105709876543,
+      "meanBlue": 54.30814043209877,
+      "blackRatio": 0.0011651234567901234,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 26713,
+      "minX": 325,
+      "minY": 151,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_0-t70",
+    "key": "custom/enderdragonplus/vfx_0",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_0-t70.png",
+    "pixels": {
+      "meanRed": 23.148107638888888,
+      "meanGreen": 38.48096643518519,
+      "meanBlue": 54.363688271604936,
+      "blackRatio": 0.0011593364197530864,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27657,
+      "minX": 325,
+      "minY": 138,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_0-t120",
+    "key": "custom/enderdragonplus/vfx_0",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_0-t120.png",
+    "pixels": {
+      "meanRed": 23.032592592592593,
+      "meanGreen": 38.45134645061729,
+      "meanBlue": 54.31501736111111,
+      "blackRatio": 0.0011593364197530864,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 25550,
+      "minX": 325,
+      "minY": 143,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_1-t20",
+    "key": "custom/enderdragonplus/vfx_1",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_1-t20.png",
+    "pixels": {
+      "meanRed": 23.92033950617284,
+      "meanGreen": 38.72630208333333,
+      "meanBlue": 54.72820601851852,
+      "blackRatio": 0.0011651234567901234,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 30174,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 641,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_1-t70",
+    "key": "custom/enderdragonplus/vfx_1",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_1-t70.png",
+    "pixels": {
+      "meanRed": 24.04416473765432,
+      "meanGreen": 38.76483024691358,
+      "meanBlue": 54.79809220679012,
+      "blackRatio": 0.0011593364197530864,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 31195,
+      "minX": 325,
+      "minY": 147,
+      "maxX": 641,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_1-t120",
+    "key": "custom/enderdragonplus/vfx_1",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_1-t120.png",
+    "pixels": {
+      "meanRed": 23.952575231481482,
+      "meanGreen": 38.751286651234565,
+      "meanBlue": 54.77057677469136,
+      "blackRatio": 0.0011593364197530864,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 29257,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 641,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_2-t20",
+    "key": "custom/enderdragonplus/vfx_2",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_2-t20.png",
+    "pixels": {
+      "meanRed": 26.242989969135802,
+      "meanGreen": 39.20135223765432,
+      "meanBlue": 55.70228780864198,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 44807,
+      "minX": 250,
+      "minY": 152,
+      "maxX": 717,
+      "maxY": 419
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_2-t70",
+    "key": "custom/enderdragonplus/vfx_2",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_2-t70.png",
+    "pixels": {
+      "meanRed": 34.88177662037037,
+      "meanGreen": 40.0417862654321,
+      "meanBlue": 57.65530478395062,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 90154,
+      "minX": 250,
+      "minY": 0,
+      "maxX": 854,
+      "maxY": 462
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_2-t120",
+    "key": "custom/enderdragonplus/vfx_2",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_2-t120.png",
+    "pixels": {
+      "meanRed": 37.1066512345679,
+      "meanGreen": 38.671018518518515,
+      "meanBlue": 56.266298225308645,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 89631,
+      "minX": 203,
+      "minY": 154,
+      "maxX": 779,
+      "maxY": 473
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_3-t20",
+    "key": "custom/enderdragonplus/vfx_3",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_3-t20.png",
+    "pixels": {
+      "meanRed": 23.349234182098765,
+      "meanGreen": 38.5359375,
+      "meanBlue": 54.44322145061729,
+      "blackRatio": 0.0011651234567901234,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 29169,
+      "minX": 325,
+      "minY": 125,
+      "maxX": 646,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_3-t70",
+    "key": "custom/enderdragonplus/vfx_3",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_3-t70.png",
+    "pixels": {
+      "meanRed": 23.59379436728395,
+      "meanGreen": 38.576822916666664,
+      "meanBlue": 54.525225694444444,
+      "blackRatio": 0.0011593364197530864,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 30795,
+      "minX": 325,
+      "minY": 125,
+      "maxX": 658,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_3-t120",
+    "key": "custom/enderdragonplus/vfx_3",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_3-t120.png",
+    "pixels": {
+      "meanRed": 22.97483796296296,
+      "meanGreen": 38.441120756172836,
+      "meanBlue": 54.29731095679012,
+      "blackRatio": 0.0011593364197530864,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 25329,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_4-t20",
+    "key": "custom/enderdragonplus/vfx_4",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_4-t20.png",
+    "pixels": {
+      "meanRed": 28.1203125,
+      "meanGreen": 39.48672260802469,
+      "meanBlue": 56.20905478395062,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 43927,
+      "minX": 325,
+      "minY": 95,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_4-t70",
+    "key": "custom/enderdragonplus/vfx_4",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_4-t70.png",
+    "pixels": {
+      "meanRed": 28.19892939814815,
+      "meanGreen": 39.481458333333336,
+      "meanBlue": 56.22405092592592,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 43927,
+      "minX": 325,
+      "minY": 95,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_4-t120",
+    "key": "custom/enderdragonplus/vfx_4",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_4-t120.png",
+    "pixels": {
+      "meanRed": 28.13996913580247,
+      "meanGreen": 39.48987268518518,
+      "meanBlue": 56.2177237654321,
+      "blackRatio": 5.015432098765432e-05,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 43927,
+      "minX": 325,
+      "minY": 95,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_5-t20",
+    "key": "custom/enderdragonplus/vfx_5",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_5-t20.png",
+    "pixels": {
+      "meanRed": 23.24332947530864,
+      "meanGreen": 38.68188078703704,
+      "meanBlue": 54.66084297839506,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 26036,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_5-t70",
+    "key": "custom/enderdragonplus/vfx_5",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_5-t70.png",
+    "pixels": {
+      "meanRed": 23.76061921296296,
+      "meanGreen": 38.79664351851852,
+      "meanBlue": 54.8537712191358,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 28442,
+      "minX": 325,
+      "minY": 147,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_5-t120",
+    "key": "custom/enderdragonplus/vfx_5",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_5-t120.png",
+    "pixels": {
+      "meanRed": 23.331770833333334,
+      "meanGreen": 38.68377893518519,
+      "meanBlue": 54.67522762345679,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27895,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_6-t20",
+    "key": "custom/enderdragonplus/vfx_6",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_6-t20.png",
+    "pixels": {
+      "meanRed": 25.21650462962963,
+      "meanGreen": 39.085476466049386,
+      "meanBlue": 55.36998649691358,
+      "blackRatio": 0.0005574845679012345,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27602,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_6-t70",
+    "key": "custom/enderdragonplus/vfx_6",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_6-t70.png",
+    "pixels": {
+      "meanRed": 26.197976466049383,
+      "meanGreen": 39.24507330246914,
+      "meanBlue": 55.70526234567901,
+      "blackRatio": 0.0008121141975308642,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 29776,
+      "minX": 325,
+      "minY": 147,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_6-t120",
+    "key": "custom/enderdragonplus/vfx_6",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_6-t120.png",
+    "pixels": {
+      "meanRed": 25.995167824074073,
+      "meanGreen": 39.196284722222224,
+      "meanBlue": 55.627424768518516,
+      "blackRatio": 0.000767746913580247,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 28696,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_7-t20",
+    "key": "custom/enderdragonplus/vfx_7",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_7-t20.png",
+    "pixels": {
+      "meanRed": 23.29728587962963,
+      "meanGreen": 38.72479938271605,
+      "meanBlue": 54.70178819444445,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27956,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_7-t70",
+    "key": "custom/enderdragonplus/vfx_7",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_7-t70.png",
+    "pixels": {
+      "meanRed": 23.76385416666667,
+      "meanGreen": 38.897270447530865,
+      "meanBlue": 54.935516975308644,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 32003,
+      "minX": 85,
+      "minY": 147,
+      "maxX": 874,
+      "maxY": 452
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_7-t120",
+    "key": "custom/enderdragonplus/vfx_7",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_7-t120.png",
+    "pixels": {
+      "meanRed": 22.920966435185186,
+      "meanGreen": 38.60385609567901,
+      "meanBlue": 54.52601273148148,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 25395,
+      "minX": 39,
+      "minY": 153,
+      "maxX": 939,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_8-t20",
+    "key": "custom/enderdragonplus/vfx_8",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_8-t20.png",
+    "pixels": {
+      "meanRed": 23.26865547839506,
+      "meanGreen": 38.71565200617284,
+      "meanBlue": 54.68831983024691,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27956,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_8-t70",
+    "key": "custom/enderdragonplus/vfx_8",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_8-t70.png",
+    "pixels": {
+      "meanRed": 23.64188464506173,
+      "meanGreen": 38.852671682098766,
+      "meanBlue": 54.87437307098765,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 31201,
+      "minX": 85,
+      "minY": 147,
+      "maxX": 874,
+      "maxY": 452
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_8-t120",
+    "key": "custom/enderdragonplus/vfx_8",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_8-t120.png",
+    "pixels": {
+      "meanRed": 22.920966435185186,
+      "meanGreen": 38.60385609567901,
+      "meanBlue": 54.52601273148148,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 25395,
+      "minX": 39,
+      "minY": 153,
+      "maxX": 939,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_9-t20",
+    "key": "custom/enderdragonplus/vfx_9",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_9-t20.png",
+    "pixels": {
+      "meanRed": 27.203078703703703,
+      "meanGreen": 43.43521797839506,
+      "meanBlue": 59.80739583333333,
+      "blackRatio": 0.00015046296296296297,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 62292,
+      "minX": 304,
+      "minY": 25,
+      "maxX": 658,
+      "maxY": 369
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_9-t70",
+    "key": "custom/enderdragonplus/vfx_9",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_9-t70.png",
+    "pixels": {
+      "meanRed": 28.227652391975308,
+      "meanGreen": 43.08049575617284,
+      "meanBlue": 59.67735725308642,
+      "blackRatio": 1.3503086419753087e-05,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 64350,
+      "minX": 306,
+      "minY": 54,
+      "maxX": 668,
+      "maxY": 376
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_9-t120",
+    "key": "custom/enderdragonplus/vfx_9",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_9-t120.png",
+    "pixels": {
+      "meanRed": 50.721672453703704,
+      "meanGreen": 48.366907793209876,
+      "meanBlue": 68.00978587962963,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 118756,
+      "minX": 285,
+      "minY": 83,
+      "maxX": 674,
+      "maxY": 471
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_10-t20",
+    "key": "custom/enderdragonplus/vfx_10",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_10-t20.png",
+    "pixels": {
+      "meanRed": 24.068096064814814,
+      "meanGreen": 38.961903935185184,
+      "meanBlue": 55.06312885802469,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 30044,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 641,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_10-t70",
+    "key": "custom/enderdragonplus/vfx_10",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_10-t70.png",
+    "pixels": {
+      "meanRed": 24.182787422839507,
+      "meanGreen": 39.0061149691358,
+      "meanBlue": 55.13247299382716,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 31124,
+      "minX": 325,
+      "minY": 147,
+      "maxX": 641,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_10-t120",
+    "key": "custom/enderdragonplus/vfx_10",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_10-t120.png",
+    "pixels": {
+      "meanRed": 24.046394675925924,
+      "meanGreen": 38.973823302469135,
+      "meanBlue": 55.08132908950617,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 29047,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 641,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_11-t20",
+    "key": "custom/enderdragonplus/vfx_11",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_11-t20.png",
+    "pixels": {
+      "meanRed": 22.916452546296295,
+      "meanGreen": 38.59751543209877,
+      "meanBlue": 54.51882716049383,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 26005,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_11-t70",
+    "key": "custom/enderdragonplus/vfx_11",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_11-t70.png",
+    "pixels": {
+      "meanRed": 23.026068672839507,
+      "meanGreen": 38.62323302469136,
+      "meanBlue": 54.562461419753085,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27307,
+      "minX": 325,
+      "minY": 147,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_11-t120",
+    "key": "custom/enderdragonplus/vfx_11",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_11-t120.png",
+    "pixels": {
+      "meanRed": 22.85080825617284,
+      "meanGreen": 38.58115740740741,
+      "meanBlue": 54.49336226851852,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 24897,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_12-t20",
+    "key": "custom/enderdragonplus/vfx_12",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_12-t20.png",
+    "pixels": {
+      "meanRed": 22.916452546296295,
+      "meanGreen": 38.59751543209877,
+      "meanBlue": 54.51882716049383,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 26005,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_12-t70",
+    "key": "custom/enderdragonplus/vfx_12",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_12-t70.png",
+    "pixels": {
+      "meanRed": 25.54422453703704,
+      "meanGreen": 39.24622492283951,
+      "meanBlue": 55.58761766975309,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 46250,
+      "minX": 310,
+      "minY": 147,
+      "maxX": 754,
+      "maxY": 420
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_12-t120",
+    "key": "custom/enderdragonplus/vfx_12",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_12-t120.png",
+    "pixels": {
+      "meanRed": 24.390275848765434,
+      "meanGreen": 39.17673804012345,
+      "meanBlue": 55.2919637345679,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 38172,
+      "minX": 213,
+      "minY": 154,
+      "maxX": 675,
+      "maxY": 457
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_13-t20",
+    "key": "custom/enderdragonplus/vfx_13",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_13-t20.png",
+    "pixels": {
+      "meanRed": 23.394265046296297,
+      "meanGreen": 38.68389467592593,
+      "meanBlue": 54.68806905864197,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27103,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_13-t70",
+    "key": "custom/enderdragonplus/vfx_13",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_13-t70.png",
+    "pixels": {
+      "meanRed": 24.220027006172838,
+      "meanGreen": 38.84453125,
+      "meanBlue": 54.995758101851855,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 30024,
+      "minX": 325,
+      "minY": 0,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_13-t120",
+    "key": "custom/enderdragonplus/vfx_13",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_13-t120.png",
+    "pixels": {
+      "meanRed": 25.48530864197531,
+      "meanGreen": 38.39900270061728,
+      "meanBlue": 54.67717978395062,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 25025,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_14-t20",
+    "key": "custom/enderdragonplus/vfx_14",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_14-t20.png",
+    "pixels": {
+      "meanRed": 23.755185185185184,
+      "meanGreen": 38.86868441358025,
+      "meanBlue": 54.91334490740741,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 26074,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_14-t70",
+    "key": "custom/enderdragonplus/vfx_14",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_14-t70.png",
+    "pixels": {
+      "meanRed": 32.254257330246915,
+      "meanGreen": 41.71371334876543,
+      "meanBlue": 58.985978009259256,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 75463,
+      "minX": 103,
+      "minY": 147,
+      "maxX": 857,
+      "maxY": 539
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_14-t120",
+    "key": "custom/enderdragonplus/vfx_14",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_14-t120.png",
+    "pixels": {
+      "meanRed": 31.894020061728394,
+      "meanGreen": 41.58392361111111,
+      "meanBlue": 58.80304205246914,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 74417,
+      "minX": 103,
+      "minY": 154,
+      "maxX": 857,
+      "maxY": 539
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_15-t20",
+    "key": "custom/enderdragonplus/vfx_15",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_15-t20.png",
+    "pixels": {
+      "meanRed": 22.957166280864197,
+      "meanGreen": 38.6099537037037,
+      "meanBlue": 54.536952160493826,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 26036,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_15-t70",
+    "key": "custom/enderdragonplus/vfx_15",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_15-t70.png",
+    "pixels": {
+      "meanRed": 23.12384259259259,
+      "meanGreen": 38.66584683641975,
+      "meanBlue": 54.616581790123455,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 27513,
+      "minX": 325,
+      "minY": 147,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_15-t120",
+    "key": "custom/enderdragonplus/vfx_15",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_15-t120.png",
+    "pixels": {
+      "meanRed": 23.011475694444446,
+      "meanGreen": 38.62791473765432,
+      "meanBlue": 54.5627912808642,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 26335,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 622,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_16-t20",
+    "key": "custom/enderdragonplus/vfx_16",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_16-t20.png",
+    "pixels": {
+      "meanRed": 23.608867669753085,
+      "meanGreen": 38.60155478395062,
+      "meanBlue": 54.55702160493827,
+      "blackRatio": 0.0011651234567901234,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 33618,
+      "minX": 325,
+      "minY": 0,
+      "maxX": 653,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_16-t70",
+    "key": "custom/enderdragonplus/vfx_16",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_16-t70.png",
+    "pixels": {
+      "meanRed": 24.719614197530863,
+      "meanGreen": 38.95250385802469,
+      "meanBlue": 55.06900077160494,
+      "blackRatio": 0.0011593364197530864,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 38009,
+      "minX": 325,
+      "minY": 0,
+      "maxX": 657,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "vfx_16-t120",
+    "key": "custom/enderdragonplus/vfx_16",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_16-t120.png",
+    "pixels": {
+      "meanRed": 24.115395447530865,
+      "meanGreen": 38.446221064814814,
+      "meanBlue": 54.44878858024691,
+      "blackRatio": 0.0011593364197530864,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 28862,
+      "minX": 325,
+      "minY": 154,
+      "maxX": 687,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "dragon_stage_1-t60",
+    "key": "custom/enderdragonplus/dragon_stage_1",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\dragon_stage_1-t60.png",
+    "pixels": {
+      "meanRed": 22.574511959876542,
+      "meanGreen": 38.40538387345679,
+      "meanBlue": 54.18032407407407,
+      "blackRatio": 0.0015933641975308642,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 22388,
+      "minX": 325,
+      "minY": 172,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "dragon_stage_2-t60",
+    "key": "custom/enderdragonplus/dragon_stage_2",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\dragon_stage_2-t60.png",
+    "pixels": {
+      "meanRed": 22.67392361111111,
+      "meanGreen": 38.424998070987655,
+      "meanBlue": 54.295092592592596,
+      "blackRatio": 0.0012962962962962963,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 22549,
+      "minX": 325,
+      "minY": 172,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "dragon_stage_3-t60",
+    "key": "custom/enderdragonplus/dragon_stage_3",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\dragon_stage_3-t60.png",
+    "pixels": {
+      "meanRed": 22.915082947530863,
+      "meanGreen": 38.429849537037036,
+      "meanBlue": 54.27563078703704,
+      "blackRatio": 0.0012172067901234569,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 25842,
+      "minX": 325,
+      "minY": 152,
+      "maxX": 620,
+      "maxY": 361
+    },
+    "passed": true
+  },
+  {
+    "name": "screen-t40",
+    "key": "custom/enderdragonplus/screen",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\screen-t40.png",
+    "pixels": {
+      "meanRed": 72.20390817901234,
+      "meanGreen": 72.1331712962963,
+      "meanBlue": 87.28043788580247,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 518400,
+      "minX": 0,
+      "minY": 0,
+      "maxX": 959,
+      "maxY": 539
+    },
+    "passed": true
+  },
+  {
+    "name": "item-t40",
+    "key": "items/enderdragonplus:ending_crystal",
+    "image": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\item-t40.png",
+    "pixels": {
+      "meanRed": 39.926876929012344,
+      "meanGreen": 44.77942515432099,
+      "meanBlue": 60.80281635802469,
+      "blackRatio": 0.0,
+      "magentaRatio": 0.0,
+      "foregroundPixels": 364390,
+      "minX": 0,
+      "minY": 104,
+      "maxX": 959,
+      "maxY": 539
+    },
+    "passed": true
+  }
+]

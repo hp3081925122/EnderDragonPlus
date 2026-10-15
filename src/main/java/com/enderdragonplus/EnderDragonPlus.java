@@ -12,17 +12,18 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
-import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.network.PacketDistributor;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+import com.enderdragonplus.network.EdpNetwork;
 import net.minecraft.server.level.ServerPlayer;
-import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+
 import org.slf4j.Logger;
 
 @Mod(EnderDragonPlus.MODID)
@@ -30,25 +31,23 @@ public final class EnderDragonPlus {
     public static final String MODID = "enderdragonplus";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EnderDragonPlus(IEventBus modBus, ModContainer container) {
+    public EnderDragonPlus() {
+        IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         DragonPhases.init();
         EdpItems.ITEMS.register(modBus);
         modBus.addListener(EdpItems::addToTabs);
-        container.registerConfig(ModConfig.Type.COMMON, EdpConfig.COMMON_SPEC);
-        container.registerConfig(ModConfig.Type.CLIENT, EdpConfig.CLIENT_SPEC);
-        modBus.addListener(this::registerPayloads);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, EdpConfig.COMMON_SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, EdpConfig.CLIENT_SPEC);
+        EdpNetwork.register();
         modBus.addListener(this::modifyAttributes);
-        NeoForge.EVENT_BUS.addListener(this::onEntityJoin);
-        NeoForge.EVENT_BUS.addListener(this::onStartTracking);
+        MinecraftForge.EVENT_BUS.addListener(this::onEntityJoin);
+        MinecraftForge.EVENT_BUS.addListener(this::onStartTracking);
     }
 
     public static ResourceLocation id(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MODID, path);
+        return new ResourceLocation(MODID, path);
     }
 
-    private void registerPayloads(RegisterPayloadHandlersEvent event) {
-        event.registrar("1").playToClient(VfxPayload.TYPE, VfxPayload.STREAM_CODEC, (payload, context) -> ClientVfxHandler.handle(payload));
-    }
 
     private void modifyAttributes(EntityAttributeModificationEvent event) {
         if (!event.has(EntityType.ENDER_DRAGON, Attributes.ATTACK_DAMAGE)) {
@@ -62,7 +61,7 @@ public final class EnderDragonPlus {
         }
         DragonBrain brain = ((DragonBrainHolder) dragon).edp$getBrain();
         if (brain.active()) {
-            PacketDistributor.sendToPlayer(player, brain.stagePayload());
+            EdpNetwork.sendToPlayer(player, brain.stagePayload());
         }
     }
 

@@ -37,6 +37,15 @@ public abstract class EnderDragonMixin extends Mob implements DragonBrainHolder 
         return this.edp$brain;
     }
 
+    @ModifyArg(method = "checkCrystals", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;setHealth(F)V"))
+    private float edp$capCrystalHeal(float health) {
+        if (this.level().isClientSide || !EdpConfig.STAGE_HEAL_CAP.get() || !this.edp$getBrain().active() || this.edp$getBrain().stage() < 2) {
+            return health;
+        }
+        float cap = (float) (this.getMaxHealth() * EdpConfig.STAGE_TWO_HEALTH.get());
+        return Math.min(health, Math.max(cap, this.getHealth()));
+    }
+
     @Inject(method = "aiStep", at = @At("HEAD"))
     private void edp$tickBrain(CallbackInfo ci) {
         if (!this.level().isClientSide && !this.isDeadOrDying() && !this.isNoAi() && this.edp$getBrain().active()) {

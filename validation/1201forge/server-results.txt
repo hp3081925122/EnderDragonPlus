@@ -1,0 +1,82 @@
+PASS real server player target list
+PASS all 13 custom dragon phases registered
+PASS configured dragon health on entity join
+PASS configured dragon attack on entity join
+PASS ending crystal recipe loaded by server
+PASS showcase command excluded
+PASS ordinary and specially summoned dragon eligibility
+PASS network NBT roundtrip kind=0
+PASS network NBT roundtrip kind=1
+PASS network NBT roundtrip kind=2
+PASS network NBT roundtrip kind=3
+PASS network NBT roundtrip kind=4
+PASS network NBT roundtrip kind=5
+PASS network NBT roundtrip kind=6
+PASS network NBT roundtrip kind=7
+PASS network NBT roundtrip kind=8
+PASS network NBT roundtrip kind=9
+PASS network NBT roundtrip kind=10
+PASS network NBT roundtrip kind=11
+PASS network NBT roundtrip kind=12
+PASS network NBT roundtrip kind=13
+PASS network NBT roundtrip kind=14
+PASS network NBT roundtrip kind=15
+PASS network NBT roundtrip kind=16
+PASS clientbound network encode dispatch on dedicated server without client classloading
+PASS skill damage equals configured attack times multiplier
+PASS full knockback resistance prevents push and pull
+PASS partial knockback resistance scales push
+PASS head contact mixin damage multiplier
+PASS wing contact mixin damage multiplier
+PASS wing contact mixin respects knockback resistance
+PASS skill enters VOID_BREATH
+PASS VOID_BREATH completed full phase ticks=110
+PASS skill enters METEOR
+PASS METEOR completed full phase ticks=50
+PASS skill enters RIFT_DASH
+PASS RIFT_DASH completed full phase ticks=38
+PASS skill enters BLACK_HOLE
+PASS BLACK_HOLE completed full phase ticks=230
+PASS skill enters SCALE_BARRAGE
+PASS SCALE_BARRAGE completed full phase ticks=72
+PASS skill enters FINAL_NOVA
+PASS FINAL_NOVA completed full phase ticks=195
+PASS skill enters VOID_RUPTURE
+PASS VOID_RUPTURE completed full phase ticks=58
+PASS skill enters WING_BLADES
+PASS WING_BLADES completed full phase ticks=62
+PASS skill enters ENDER_STORM
+PASS ENDER_STORM completed full phase ticks=98
+PASS skill enters RING_WAVES
+PASS RING_WAVES completed full phase ticks=47
+PASS skill enters VOID_LANCES
+PASS VOID_LANCES completed full phase ticks=97
+PASS skill enters CATACLYSM_DIVE
+PASS CATACLYSM_DIVE completed full phase ticks=80
+PASS 49 percent health triggers second stage shield
+PASS stage two shield completed full phase ticks=193
+PASS 24 percent health triggers third stage nova
+PASS saving an active skill uses safe vanilla phase
+PASS enhanced marker and both stages survive NBT reload
+PASS stage two crystal healing cap mixin
+PASS crystal healing below stage cap retained
+PASS healing cap config disable restores vanilla healing
+PASS hazard damage and lifecycle BarrageHazard
+PASS hazard damage and lifecycle BlastHazard
+PASS hazard damage and lifecycle LanceHazard
+PASS hazard damage and lifecycle MeteorHazard
+PASS hazard damage and lifecycle RingWaveHazard
+PASS hazard damage and lifecycle ScorchHazard
+PASS special crystal placement NBT marker and stack consumption
+PASS ending crystal permanent enchantment glint
+PASS shield revives and protects ten spike crystals
+PASS end shield crystal explosion completed full phase ticks=124
+PASS surviving shield crystal protection released
+PASS surviving shield crystal protection released
+PASS surviving shield crystal protection released
+PASS surviving shield crystal protection released
+PASS surviving shield crystal protection released
+PASS shield explodes configured fraction of spike crystals
+PASS special crystal respawn marks enhanced dragon before join
+PASS respawned enhanced dragon receives configured health
+SUCCESS all server validation checks passed

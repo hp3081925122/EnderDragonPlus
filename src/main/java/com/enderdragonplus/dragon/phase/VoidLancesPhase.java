@@ -7,10 +7,10 @@ import com.enderdragonplus.dragon.hazard.LanceHazard;
 import com.enderdragonplus.network.VfxPayload;
 import java.util.List;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
 import net.minecraft.world.level.ClipContext;
@@ -34,7 +34,7 @@ public class VoidLancesPhase extends SkillPhase {
     @Override
     protected boolean start() {
         DragonBrain brain = this.brain();
-        if (brain.combatPlayers().isEmpty()) {
+        if (brain.combatTargets().isEmpty()) {
             return false;
         }
         double minY = brain.groundY(this.dragon.getX(), this.dragon.getZ(), this.dragon.getY()) + 16.0;
@@ -52,7 +52,7 @@ public class VoidLancesPhase extends SkillPhase {
     @Override
     protected void serverTick() {
         if (this.fired < this.lances && this.tick >= FIRST_LANCE && (this.tick - FIRST_LANCE) % INTERVAL == 0) {
-            List<ServerPlayer> players = this.brain().combatPlayers();
+            List<LivingEntity> players = this.brain().combatTargets();
             if (!players.isEmpty()) {
                 this.summon(players.get(this.fired % players.size()));
             }
@@ -63,7 +63,7 @@ public class VoidLancesPhase extends SkillPhase {
         }
     }
 
-    private void summon(ServerPlayer player) {
+    private void summon(LivingEntity player) {
         DragonBrain brain = this.brain();
         RandomSource random = this.dragon.getRandom();
         this.faceDirection = player.position().subtract(this.dragon.position());

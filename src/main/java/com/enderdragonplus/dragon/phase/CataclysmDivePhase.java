@@ -150,7 +150,7 @@ public class CataclysmDivePhase extends SkillPhase {
         wave.putFloat("shake", 2.5F);
         wave.putFloat("flash", 0.5F);
         brain.sendVfx(VfxPayload.SHOCKWAVE, wave);
-        brain.playSound(this.mark, SoundEvents.GENERIC_EXPLODE.value(), 10.0F, 0.5F);
+        brain.playSound(this.mark, SoundEvents.GENERIC_EXPLODE, 10.0F, 0.5F);
         brain.playSound(this.mark, SoundEvents.DRAGON_FIREBALL_EXPLODE, 8.0F, 0.6F);
     }
 

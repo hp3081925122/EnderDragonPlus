@@ -1,14 +1,11 @@
 package com.enderdragonplus.network;
 
 import com.enderdragonplus.EnderDragonPlus;
-import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.phys.Vec3;
 
-public record VfxPayload(int kind, int entityId, CompoundTag data) implements CustomPacketPayload {
+public record VfxPayload(int kind, int entityId, CompoundTag data) {
     public static final int BREATH_CHARGE = 0;
     public static final int BREATH_BEAM = 1;
     public static final int METEOR_SHOWER = 2;
@@ -27,16 +24,17 @@ public record VfxPayload(int kind, int entityId, CompoundTag data) implements Cu
     public static final int LANCE = 15;
     public static final int DIVE = 16;
 
-    public static final CustomPacketPayload.Type<VfxPayload> TYPE = new CustomPacketPayload.Type<>(EnderDragonPlus.id("vfx"));
-    public static final StreamCodec<ByteBuf, VfxPayload> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.VAR_INT, VfxPayload::kind,
-            ByteBufCodecs.VAR_INT, VfxPayload::entityId,
-            ByteBufCodecs.COMPOUND_TAG, VfxPayload::data,
-            VfxPayload::new);
+    public static void encode(VfxPayload payload, FriendlyByteBuf buffer) {
+        buffer.writeVarInt(payload.kind());
+        buffer.writeVarInt(payload.entityId());
+        buffer.writeNbt(payload.data());
+    }
 
-    @Override
-    public CustomPacketPayload.Type<? extends CustomPacketPayload> type() {
-        return TYPE;
+    public static VfxPayload decode(FriendlyByteBuf buffer) {
+        int kind = buffer.readVarInt();
+        int entityId = buffer.readVarInt();
+        CompoundTag data = buffer.readNbt();
+        return new VfxPayload(kind, entityId, data == null ? new CompoundTag() : data);
     }
 
     public static void putVec(CompoundTag tag, String key, Vec3 vec) {

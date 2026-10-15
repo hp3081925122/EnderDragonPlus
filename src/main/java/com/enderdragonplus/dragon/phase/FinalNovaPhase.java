@@ -129,7 +129,7 @@ public class FinalNovaPhase extends SkillPhase {
         if (EdpConfig.DEBUG_LOGGING.get()) {
             EnderDragonPlus.LOGGER.info("Final nova detonated, {} victims outside safe zones", hits);
         }
-        brain.playSound(this.dragon.position(), SoundEvents.GENERIC_EXPLODE.value(), 16.0F, 0.4F);
+        brain.playSound(this.dragon.position(), SoundEvents.GENERIC_EXPLODE, 16.0F, 0.4F);
         brain.playSound(this.dragon.position(), SoundEvents.WARDEN_SONIC_BOOM, 16.0F, 0.5F);
     }
 

@@ -84,7 +84,7 @@ public final class BreathBeamVfx extends VfxInstance {
 
     private BlockHitResult clip(Vec3 from, Vec3 dir) {
         Vec3 to = from.add(dir.scale(this.length));
-        return Minecraft.getInstance().level.clip(new ClipContext(from, to, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, CollisionContext.empty()));
+        return Minecraft.getInstance().level.clip(new ClipContext(from, to, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, (net.minecraft.world.entity.Entity) null));
     }
 
     private float width(float partialTick) {

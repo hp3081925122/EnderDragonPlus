@@ -2,6 +2,7 @@ package com.enderdragonplus.mixin.client;
 
 import com.enderdragonplus.EnderDragonPlus;
 import com.enderdragonplus.client.DragonStageClient;
+import com.enderdragonplus.client.TintedVertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.LightTexture;
@@ -31,7 +32,7 @@ public abstract class EnderDragonRendererMixin {
     @Unique
     private static final ResourceLocation EDP_GLOW_VEINS = EnderDragonPlus.id("textures/entity/dragon_glow_veins.png");
     @Unique
-    private static final String EDP_MODEL_RENDER = "Lnet/minecraft/client/renderer/entity/EnderDragonRenderer$DragonModel;renderToBuffer(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;II)V";
+    private static final String EDP_MODEL_RENDER = "Lnet/minecraft/client/renderer/entity/EnderDragonRenderer$DragonModel;renderToBuffer(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;IIFFFF)V";
 
     @Shadow
     @Final
@@ -45,32 +46,32 @@ public abstract class EnderDragonRendererMixin {
         this.edp$stage = DragonStageClient.stage(dragon.getId());
     }
 
-    @Redirect(method = EDP_RENDER, at = @At(value = "INVOKE", target = EDP_MODEL_RENDER, ordinal = 1))
-    private void edp$tintBody(EnderDragonRenderer.DragonModel instance, PoseStack pose, VertexConsumer consumer, int light, int overlay) {
+    @Redirect(method = EDP_RENDER, at = @At(value = "INVOKE", target = EDP_MODEL_RENDER, ordinal = 2))
+    private void edp$tintBody(EnderDragonRenderer.DragonModel instance, PoseStack pose, VertexConsumer consumer, int light, int overlay, float red, float green, float blue, float alpha) {
         int color = -1;
         if (this.edp$stage == 2) {
             color = 0xFFE2D2F2;
         } else if (this.edp$stage >= 3) {
             color = 0xFFC49AA6;
         }
-        instance.renderToBuffer(pose, consumer, light, overlay, color);
+        instance.renderToBuffer(pose, new TintedVertexConsumer(consumer, color), light, overlay, 1.0F, 1.0F, 1.0F, alpha);
     }
 
-    @Redirect(method = EDP_RENDER, at = @At(value = "INVOKE", target = EDP_MODEL_RENDER, ordinal = 2))
-    private void edp$tintEyes(EnderDragonRenderer.DragonModel instance, PoseStack pose, VertexConsumer consumer, int light, int overlay) {
+    @Redirect(method = EDP_RENDER, at = @At(value = "INVOKE", target = EDP_MODEL_RENDER, ordinal = 3))
+    private void edp$tintEyes(EnderDragonRenderer.DragonModel instance, PoseStack pose, VertexConsumer consumer, int light, int overlay, float red, float green, float blue, float alpha) {
         int color = -1;
         if (this.edp$stage == 2) {
             color = 0xFFFFA0FF;
         } else if (this.edp$stage >= 3) {
             color = 0xFFFF3A5A;
         }
-        instance.renderToBuffer(pose, consumer, light, overlay, color);
+        instance.renderToBuffer(pose, new TintedVertexConsumer(consumer, color), light, overlay, 1.0F, 1.0F, 1.0F, alpha);
         if (this.edp$stage >= 3) {
-            instance.renderToBuffer(pose, consumer, light, overlay, color);
+            instance.renderToBuffer(pose, new TintedVertexConsumer(consumer, color), light, overlay, 1.0F, 1.0F, 1.0F, alpha);
         }
     }
 
-    @Inject(method = EDP_RENDER, at = @At(value = "INVOKE", target = EDP_MODEL_RENDER, ordinal = 2, shift = At.Shift.AFTER))
+    @Inject(method = EDP_RENDER, at = @At(value = "INVOKE", target = EDP_MODEL_RENDER, ordinal = 3, shift = At.Shift.AFTER))
     private void edp$glowLayer(EnderDragon dragon, float yaw, float partialTick, PoseStack pose, MultiBufferSource buffers, int light, CallbackInfo ci) {
         float glow = DragonStageClient.glow(dragon.getId());
         if (glow <= 0.01F) {
@@ -83,11 +84,16 @@ public abstract class EnderDragonRendererMixin {
         if (rage > 0.0F) {
             cracks = glow * (0.75F + 0.25F * Mth.sin(t * 0.25F));
         }
-        this.model.renderToBuffer(pose, buffers.getBuffer(RenderType.eyes(EDP_GLOW_CRACKS)), LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, edp$scale(rgb, cracks));
+        edp$renderColor(this.model, pose, buffers.getBuffer(RenderType.eyes(EDP_GLOW_CRACKS)), edp$scale(rgb, cracks));
         if (rage > 0.01F) {
             float veins = rage * (0.55F + 0.45F * Mth.sin(t * 0.25F + Mth.PI));
-            this.model.renderToBuffer(pose, buffers.getBuffer(RenderType.eyes(EDP_GLOW_VEINS)), LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, edp$scale(rgb, veins));
+            edp$renderColor(this.model, pose, buffers.getBuffer(RenderType.eyes(EDP_GLOW_VEINS)), edp$scale(rgb, veins));
         }
+    }
+
+    @Unique
+    private static void edp$renderColor(EnderDragonRenderer.DragonModel model, PoseStack pose, VertexConsumer consumer, int color) {
+        model.renderToBuffer(pose, new TintedVertexConsumer(consumer, color), LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
     }
 
     @Unique

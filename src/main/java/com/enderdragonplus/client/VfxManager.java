@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
-import org.joml.Matrix4fStack;
+import net.minecraftforge.client.event.RenderLevelStageEvent;
+import com.mojang.blaze3d.vertex.PoseStack;
 
 public final class VfxManager {
     private static final List<VfxInstance> INSTANCES = new ArrayList<>();
@@ -55,11 +55,11 @@ public final class VfxManager {
         if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_LEVEL || INSTANCES.isEmpty()) {
             return;
         }
-        float partialTick = event.getPartialTick().getGameTimeDeltaPartialTick(false);
+        float partialTick = event.getPartialTick();
         Draw.setup(event.getCamera());
-        Matrix4fStack stack = RenderSystem.getModelViewStack();
-        stack.pushMatrix();
-        stack.mul(event.getModelViewMatrix());
+        PoseStack stack = RenderSystem.getModelViewStack();
+        stack.pushPose();
+        stack.mulPoseMatrix(event.getPoseStack().last().pose());
         RenderSystem.applyModelViewMatrix();
         RenderSystem.enableBlend();
         RenderSystem.enableDepthTest();
@@ -90,7 +90,7 @@ public final class VfxManager {
         RenderSystem.depthMask(true);
         RenderSystem.defaultBlendFunc();
         RenderSystem.disableBlend();
-        stack.popMatrix();
+        stack.popPose();
         RenderSystem.applyModelViewMatrix();
     }
 }

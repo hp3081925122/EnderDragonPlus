@@ -5,7 +5,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.BufferUploader;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.MeshData;
+
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
@@ -109,12 +109,13 @@ public final class Draw {
         if (hasNormal) {
             format = DefaultVertexFormat.POSITION_TEX_COLOR_NORMAL;
         }
-        buffer = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, format);
+        buffer = Tesselator.getInstance().getBuilder();
+        buffer.begin(VertexFormat.Mode.QUADS, format);
         return true;
     }
 
     public static void end(float a, float b, float c, float d) {
-        MeshData mesh = buffer.build();
+        BufferBuilder.RenderedBuffer mesh = buffer.endOrDiscardIfEmpty();
         buffer = null;
         if (mesh == null) {
             return;
@@ -133,6 +134,7 @@ public final class Draw {
         } else {
             RenderSystem.defaultBlendFunc();
         }
+        EdpShaders.setAdditive(current.additive);
         BufferUploader.drawWithShader(mesh);
     }
 
@@ -146,10 +148,11 @@ public final class Draw {
         float r = ((rgb >> 16) & 255) / 255.0F;
         float g = ((rgb >> 8) & 255) / 255.0F;
         float b = (rgb & 255) / 255.0F;
-        VertexConsumer c = buffer.addVertex((float) (x - cx), (float) (y - cy), (float) (z - cz)).setUv(u, v).setColor(r, g, b, Mth.clamp(alpha, 0.0F, 1.0F));
+        VertexConsumer c = buffer.vertex((float) (x - cx), (float) (y - cy), (float) (z - cz)).uv(u, v).color(r, g, b, Mth.clamp(alpha, 0.0F, 1.0F));
         if (hasNormal) {
-            c.setNormal(nx, ny, nz);
+            c.normal(nx, ny, nz);
         }
+        c.endVertex();
     }
 
     public static void vertex(Vec3 p, float u, float v, int rgb, float alpha) {

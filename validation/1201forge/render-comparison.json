@@ -1,0 +1,450 @@
+[
+  {
+    "name": "vfx_0-t20",
+    "mae": 0.04389210390946502,
+    "changedOver8": 0.002025462962962963,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_0-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_0-t20.png"
+  },
+  {
+    "name": "vfx_0-t70",
+    "mae": 0.04371977880658436,
+    "changedOver8": 0.002027391975308642,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_0-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_0-t70.png"
+  },
+  {
+    "name": "vfx_0-t120",
+    "mae": 0.04387602880658436,
+    "changedOver8": 0.002035108024691358,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_0-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_0-t120.png"
+  },
+  {
+    "name": "vfx_1-t20",
+    "mae": 0.0439673353909465,
+    "changedOver8": 0.002025462962962963,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_1-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_1-t20.png"
+  },
+  {
+    "name": "vfx_1-t70",
+    "mae": 0.04369212962962963,
+    "changedOver8": 0.0020235339506172838,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_1-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_1-t70.png"
+  },
+  {
+    "name": "vfx_1-t120",
+    "mae": 0.04369277263374485,
+    "changedOver8": 0.0020235339506172838,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_1-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_1-t120.png"
+  },
+  {
+    "name": "vfx_2-t20",
+    "mae": 6.36574074074074e-05,
+    "changedOver8": 1.9290123456790124e-06,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_2-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_2-t20.png"
+  },
+  {
+    "name": "vfx_2-t70",
+    "mae": 8.680555555555556e-05,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_2-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_2-t70.png"
+  },
+  {
+    "name": "vfx_2-t120",
+    "mae": 9.387860082304527e-05,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_2-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_2-t120.png"
+  },
+  {
+    "name": "vfx_3-t20",
+    "mae": 0.04388888888888889,
+    "changedOver8": 0.002025462962962963,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_3-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_3-t20.png"
+  },
+  {
+    "name": "vfx_3-t70",
+    "mae": 0.043621399176954734,
+    "changedOver8": 0.0020235339506172838,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_3-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_3-t70.png"
+  },
+  {
+    "name": "vfx_3-t120",
+    "mae": 0.04362911522633745,
+    "changedOver8": 0.0020235339506172838,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_3-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_3-t120.png"
+  },
+  {
+    "name": "vfx_4-t20",
+    "mae": 0.029184670781893005,
+    "changedOver8": 0.001547067901234568,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_4-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_4-t20.png"
+  },
+  {
+    "name": "vfx_4-t70",
+    "mae": 0.028666409465020574,
+    "changedOver8": 0.0015277777777777779,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_4-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_4-t70.png"
+  },
+  {
+    "name": "vfx_4-t120",
+    "mae": 0.0291235853909465,
+    "changedOver8": 0.0015181327160493827,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_4-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_4-t120.png"
+  },
+  {
+    "name": "vfx_5-t20",
+    "mae": 1.9290123456790124e-06,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_5-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_5-t20.png"
+  },
+  {
+    "name": "vfx_5-t70",
+    "mae": 1.02880658436214e-05,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_5-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_5-t70.png"
+  },
+  {
+    "name": "vfx_5-t120",
+    "mae": 1.9290123456790124e-06,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_5-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_5-t120.png"
+  },
+  {
+    "name": "vfx_6-t20",
+    "mae": 5.787037037037037e-06,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_6-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_6-t20.png"
+  },
+  {
+    "name": "vfx_6-t70",
+    "mae": 9.387860082304527e-05,
+    "changedOver8": 3.858024691358025e-06,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_6-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_6-t70.png"
+  },
+  {
+    "name": "vfx_6-t120",
+    "mae": 4.1795267489711935e-05,
+    "changedOver8": 1.9290123456790124e-06,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_6-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_6-t120.png"
+  },
+  {
+    "name": "vfx_7-t20",
+    "mae": 5.1440329218107e-06,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_7-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_7-t20.png"
+  },
+  {
+    "name": "vfx_7-t70",
+    "mae": 1.0931069958847737e-05,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_7-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_7-t70.png"
+  },
+  {
+    "name": "vfx_7-t120",
+    "mae": 6.430041152263375e-07,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_7-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_7-t120.png"
+  },
+  {
+    "name": "vfx_8-t20",
+    "mae": 5.1440329218107e-06,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_8-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_8-t20.png"
+  },
+  {
+    "name": "vfx_8-t70",
+    "mae": 1.0931069958847737e-05,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_8-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_8-t70.png"
+  },
+  {
+    "name": "vfx_8-t120",
+    "mae": 6.430041152263375e-07,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_8-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_8-t120.png"
+  },
+  {
+    "name": "vfx_9-t20",
+    "mae": 0.0115502829218107,
+    "changedOver8": 0.0005652006172839506,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_9-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_9-t20.png"
+  },
+  {
+    "name": "vfx_9-t70",
+    "mae": 0.002559156378600823,
+    "changedOver8": 0.0001408179012345679,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_9-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_9-t70.png"
+  },
+  {
+    "name": "vfx_9-t120",
+    "mae": 0.00962255658436214,
+    "changedOver8": 0.0004899691358024691,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_9-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_9-t120.png"
+  },
+  {
+    "name": "vfx_10-t20",
+    "mae": 1.3503086419753087e-05,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_10-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_10-t20.png"
+  },
+  {
+    "name": "vfx_10-t70",
+    "mae": 1.4146090534979424e-05,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_10-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_10-t70.png"
+  },
+  {
+    "name": "vfx_10-t120",
+    "mae": 7.073045267489712e-06,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_10-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_10-t120.png"
+  },
+  {
+    "name": "vfx_11-t20",
+    "mae": 0.0,
+    "changedOver8": 0.0,
+    "exact": true,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_11-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_11-t20.png"
+  },
+  {
+    "name": "vfx_11-t70",
+    "mae": 0.0,
+    "changedOver8": 0.0,
+    "exact": true,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_11-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_11-t70.png"
+  },
+  {
+    "name": "vfx_11-t120",
+    "mae": 0.0,
+    "changedOver8": 0.0,
+    "exact": true,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_11-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_11-t120.png"
+  },
+  {
+    "name": "vfx_12-t20",
+    "mae": 0.0,
+    "changedOver8": 0.0,
+    "exact": true,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_12-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_12-t20.png"
+  },
+  {
+    "name": "vfx_12-t70",
+    "mae": 1.54320987654321e-05,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_12-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_12-t70.png"
+  },
+  {
+    "name": "vfx_12-t120",
+    "mae": 3.6651234567901234e-05,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_12-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_12-t120.png"
+  },
+  {
+    "name": "vfx_13-t20",
+    "mae": 0.0,
+    "changedOver8": 0.0,
+    "exact": true,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_13-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_13-t20.png"
+  },
+  {
+    "name": "vfx_13-t70",
+    "mae": 0.0,
+    "changedOver8": 0.0,
+    "exact": true,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_13-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_13-t70.png"
+  },
+  {
+    "name": "vfx_13-t120",
+    "mae": 1.6075102880658438e-05,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_13-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_13-t120.png"
+  },
+  {
+    "name": "vfx_14-t20",
+    "mae": 3.793724279835391e-05,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_14-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_14-t20.png"
+  },
+  {
+    "name": "vfx_14-t70",
+    "mae": 0.0006931584362139917,
+    "changedOver8": 7.71604938271605e-06,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_14-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_14-t70.png"
+  },
+  {
+    "name": "vfx_14-t120",
+    "mae": 0.00048289609053497944,
+    "changedOver8": 3.858024691358025e-06,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_14-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_14-t120.png"
+  },
+  {
+    "name": "vfx_15-t20",
+    "mae": 0.0,
+    "changedOver8": 0.0,
+    "exact": true,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_15-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_15-t20.png"
+  },
+  {
+    "name": "vfx_15-t70",
+    "mae": 0.0,
+    "changedOver8": 0.0,
+    "exact": true,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_15-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_15-t70.png"
+  },
+  {
+    "name": "vfx_15-t120",
+    "mae": 7.073045267489712e-06,
+    "changedOver8": 0.0,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_15-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_15-t120.png"
+  },
+  {
+    "name": "vfx_16-t20",
+    "mae": 0.0438940329218107,
+    "changedOver8": 0.002025462962962963,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_16-t20.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_16-t20.png"
+  },
+  {
+    "name": "vfx_16-t70",
+    "mae": 0.043629758230452675,
+    "changedOver8": 0.0020235339506172838,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_16-t70.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_16-t70.png"
+  },
+  {
+    "name": "vfx_16-t120",
+    "mae": 0.04364133230452675,
+    "changedOver8": 0.0020235339506172838,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\vfx_16-t120.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\vfx_16-t120.png"
+  },
+  {
+    "name": "dragon_stage_1-t60",
+    "mae": 0.06590470679012346,
+    "changedOver8": 0.002395833333333333,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\dragon_stage_1-t60.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\dragon_stage_1-t60.png"
+  },
+  {
+    "name": "dragon_stage_2-t60",
+    "mae": 0.05788644547325103,
+    "changedOver8": 0.0021508487654320987,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\dragon_stage_2-t60.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\dragon_stage_2-t60.png"
+  },
+  {
+    "name": "dragon_stage_3-t60",
+    "mae": 0.043856095679012344,
+    "changedOver8": 0.002021604938271605,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\dragon_stage_3-t60.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\dragon_stage_3-t60.png"
+  },
+  {
+    "name": "screen-t40",
+    "mae": 0.03580182613168724,
+    "changedOver8": 0.0015181327160493827,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\screen-t40.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\screen-t40.png"
+  },
+  {
+    "name": "item-t40",
+    "mae": 0.47918467078189303,
+    "changedOver8": 0.008636188271604938,
+    "exact": false,
+    "forge": "D:\\AI临时文件\\edp1201\\render-forge\\20261016-000004-227880\\item-t40.png",
+    "neoforge": "D:\\AI临时文件\\edp1201\\render-neoforge\\20261015-235732-204352\\item-t40.png"
+  }
+]
