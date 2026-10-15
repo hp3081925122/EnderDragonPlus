@@ -1,0 +1,123 @@
+package com.enderdragonplus;
+
+import net.neoforged.neoforge.common.ModConfigSpec;
+
+public final class EdpConfig {
+    public static final ModConfigSpec COMMON_SPEC;
+    public static final ModConfigSpec CLIENT_SPEC;
+
+    public static final ModConfigSpec.DoubleValue MAX_HEALTH;
+    public static final ModConfigSpec.DoubleValue ATTACK_DAMAGE;
+    public static final ModConfigSpec.DoubleValue HEAD_CONTACT_MULTIPLIER;
+    public static final ModConfigSpec.DoubleValue WING_CONTACT_MULTIPLIER;
+    public static final ModConfigSpec.DoubleValue KNOCKBACK_MULTIPLIER;
+    public static final ModConfigSpec.DoubleValue STAGE_TWO_HEALTH;
+    public static final ModConfigSpec.DoubleValue STAGE_THREE_HEALTH;
+    public static final ModConfigSpec.IntValue ACTION_INTERVAL;
+    public static final ModConfigSpec.DoubleValue RAGE_COOLDOWN_MULTIPLIER;
+    public static final ModConfigSpec.DoubleValue COMBAT_RANGE;
+    public static final ModConfigSpec.BooleanValue DEBUG_LOGGING;
+
+    public static final Skill VOID_BREATH;
+    public static final ModConfigSpec.DoubleValue BREATH_SCORCH_MULTIPLIER;
+    public static final ModConfigSpec.DoubleValue BREATH_TRACK_SPEED;
+
+    public static final Skill METEOR;
+    public static final ModConfigSpec.IntValue METEOR_COUNT;
+    public static final ModConfigSpec.DoubleValue METEOR_RADIUS;
+    public static final ModConfigSpec.BooleanValue METEOR_BREAK_BLOCKS;
+
+    public static final Skill RIFT_DASH;
+
+    public static final ModConfigSpec.IntValue SHIELD_DURATION;
+    public static final ModConfigSpec.DoubleValue SHIELD_BURST_MULTIPLIER;
+
+    public static final Skill BLACK_HOLE;
+    public static final ModConfigSpec.DoubleValue BLACK_HOLE_RADIUS;
+    public static final ModConfigSpec.DoubleValue BLACK_HOLE_PULL;
+
+    public static final Skill SCALE_BARRAGE;
+    public static final ModConfigSpec.IntValue BARRAGE_WAVES;
+    public static final ModConfigSpec.IntValue BARRAGE_PER_WAVE;
+
+    public static final Skill FINAL_NOVA;
+    public static final ModConfigSpec.IntValue NOVA_CHARGE_TICKS;
+    public static final ModConfigSpec.IntValue NOVA_SAFE_ZONES;
+    public static final ModConfigSpec.DoubleValue NOVA_SAFE_RADIUS;
+
+    public static final ModConfigSpec.BooleanValue ENABLE_DISTORTION;
+    public static final ModConfigSpec.BooleanValue ENABLE_SCREEN_EFFECTS;
+    public static final ModConfigSpec.DoubleValue CAMERA_SHAKE;
+
+    static {
+        ModConfigSpec.Builder b = new ModConfigSpec.Builder();
+        b.comment("末影龙基础属性").push("dragon");
+        MAX_HEALTH = b.comment("末影龙最大生命值").defineInRange("maxHealth", 400.0, 1.0, 1000000.0);
+        ATTACK_DAMAGE = b.comment("末影龙基础攻击力，所有技能伤害 = 基础攻击力 × 技能倍率").defineInRange("attackDamage", 10.0, 0.0, 10000.0);
+        HEAD_CONTACT_MULTIPLIER = b.comment("头部撞击伤害倍率").defineInRange("headContactMultiplier", 1.0, 0.0, 100.0);
+        WING_CONTACT_MULTIPLIER = b.comment("翅膀拍击伤害倍率").defineInRange("wingContactMultiplier", 0.5, 0.0, 100.0);
+        KNOCKBACK_MULTIPLIER = b.comment("击退整体倍率，实际击退还会乘以 (1 - 击退抗性)").defineInRange("knockbackMultiplier", 0.5, 0.0, 10.0);
+        STAGE_TWO_HEALTH = b.comment("进入第二阶段的血量百分比").defineInRange("stageTwoHealth", 0.5, 0.0, 1.0);
+        STAGE_THREE_HEALTH = b.comment("进入第三阶段（狂暴）的血量百分比").defineInRange("stageThreeHealth", 0.25, 0.0, 1.0);
+        ACTION_INTERVAL = b.comment("两次技能之间的最短间隔（tick）").defineInRange("actionInterval", 120, 0, 10000);
+        RAGE_COOLDOWN_MULTIPLIER = b.comment("狂暴阶段的冷却倍率").defineInRange("rageCooldownMultiplier", 0.6, 0.05, 10.0);
+        COMBAT_RANGE = b.comment("索敌范围").defineInRange("combatRange", 150.0, 16.0, 1024.0);
+        DEBUG_LOGGING = b.comment("输出技能调试日志").define("debugLogging", false);
+        b.pop();
+
+        b.comment("技能配置").push("skills");
+        VOID_BREATH = new Skill(b, "voidBreath", "虚空吐息", 300, 0.35, 10);
+        BREATH_SCORCH_MULTIPLIER = b.comment("虚空灼痕每次伤害倍率").defineInRange("voidBreath_scorchMultiplier", 0.15, 0.0, 100.0);
+        BREATH_TRACK_SPEED = b.comment("吐息落点追踪玩家的速度（格/tick），玩家疾跑约为 0.28").defineInRange("voidBreath_trackSpeed", 0.27, 0.0, 5.0);
+
+        METEOR = new Skill(b, "meteor", "末影陨星", 360, 1.2, 10);
+        METEOR_COUNT = b.comment("陨星数量").defineInRange("meteor_count", 6, 1, 64);
+        METEOR_RADIUS = b.comment("陨星爆炸半径").defineInRange("meteor_radius", 4.5, 0.5, 32.0);
+        METEOR_BREAK_BLOCKS = b.comment("陨星是否破坏方块").define("meteor_breakBlocks", false);
+
+        RIFT_DASH = new Skill(b, "riftDash", "空间裂隙冲刺", 260, 1.5, 8);
+
+        SHIELD_DURATION = b.comment("转阶段护盾持续时间（tick）").defineInRange("shield_duration", 120, 20, 2400);
+        SHIELD_BURST_MULTIPLIER = b.comment("护盾破碎冲击伤害倍率").defineInRange("shield_burstMultiplier", 0.8, 0.0, 100.0);
+
+        BLACK_HOLE = new Skill(b, "blackHole", "黑洞", 600, 0.4, 7);
+        BLACK_HOLE_RADIUS = b.comment("黑洞牵引半径").defineInRange("blackHole_radius", 22.0, 2.0, 128.0);
+        BLACK_HOLE_PULL = b.comment("黑洞牵引强度").defineInRange("blackHole_pull", 0.09, 0.0, 2.0);
+
+        SCALE_BARRAGE = new Skill(b, "scaleBarrage", "龙鳞弹幕", 320, 0.5, 9);
+        BARRAGE_WAVES = b.comment("弹幕波数").defineInRange("scaleBarrage_waves", 3, 1, 20);
+        BARRAGE_PER_WAVE = b.comment("每波弹体数量").defineInRange("scaleBarrage_perWave", 18, 1, 128);
+
+        FINAL_NOVA = new Skill(b, "finalNova", "终焉新星", 900, 3.0, 4);
+        NOVA_CHARGE_TICKS = b.comment("终焉新星蓄力时间（tick）").defineInRange("finalNova_chargeTicks", 100, 20, 2400);
+        NOVA_SAFE_ZONES = b.comment("安全区数量").defineInRange("finalNova_safeZones", 3, 1, 16);
+        NOVA_SAFE_RADIUS = b.comment("安全区半径").defineInRange("finalNova_safeRadius", 4.0, 1.0, 32.0);
+        b.pop();
+        COMMON_SPEC = b.build();
+
+        ModConfigSpec.Builder c = new ModConfigSpec.Builder();
+        c.comment("客户端特效").push("vfx");
+        ENABLE_DISTORTION = c.comment("启用空间扭曲特效（需要拷贝画面，光影包下可能失效）").define("enableDistortion", true);
+        ENABLE_SCREEN_EFFECTS = c.comment("启用全屏色差、白闪与暗角").define("enableScreenEffects", true);
+        CAMERA_SHAKE = c.comment("镜头震动强度倍率").defineInRange("cameraShake", 1.0, 0.0, 5.0);
+        c.pop();
+        CLIENT_SPEC = c.build();
+    }
+
+    private EdpConfig() {
+    }
+
+    public static final class Skill {
+        public final ModConfigSpec.BooleanValue enabled;
+        public final ModConfigSpec.IntValue cooldown;
+        public final ModConfigSpec.DoubleValue damage;
+        public final ModConfigSpec.IntValue weight;
+
+        Skill(ModConfigSpec.Builder b, String key, String name, int cooldown, double damage, int weight) {
+            this.enabled = b.comment("启用" + name).define(key + "_enabled", true);
+            this.cooldown = b.comment(name + "冷却（tick）").defineInRange(key + "_cooldown", cooldown, 0, 100000);
+            this.damage = b.comment(name + "伤害倍率").defineInRange(key + "_damageMultiplier", damage, 0.0, 1000.0);
+            this.weight = b.comment(name + "选择权重").defineInRange(key + "_weight", weight, 0, 1000);
+        }
+    }
+}
