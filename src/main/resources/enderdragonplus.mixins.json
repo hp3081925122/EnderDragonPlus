@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "com.enderdragonplus.mixin",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "JAVA_25",
   "mixins": [
     "EnderDragonPhaseInvoker",
     "EnderDragonMixin",
@@ -10,7 +10,8 @@
     "DragonHoldingPatternPhaseMixin"
   ],
   "client": [
-    "client.EnderDragonRendererMixin"
+    "client.EnderDragonRendererMixin",
+    "client.GameRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

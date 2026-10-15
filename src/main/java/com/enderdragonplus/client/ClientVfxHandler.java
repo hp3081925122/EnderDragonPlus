@@ -20,7 +20,6 @@ import com.enderdragonplus.dragon.EdpMath;
 import com.enderdragonplus.network.VfxPayload;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.world.phys.Vec3;
 
 public final class ClientVfxHandler {
@@ -34,49 +33,49 @@ public final class ClientVfxHandler {
             EnderDragonPlus.LOGGER.info("Received vfx packet type {} for entity {}", payload.kind(), id);
         }
         switch (payload.kind()) {
-            case VfxPayload.BREATH_CHARGE -> VfxManager.add(new BreathChargeVfx(id, d.getInt("duration"), d.getInt("color")));
-            case VfxPayload.BREATH_BEAM -> VfxManager.add(new BreathBeamVfx(id, VfxPayload.getVec(d, "aim"), d.getInt("duration"), d.getDouble("length"), d.getInt("color")));
-            case VfxPayload.STAGE -> DragonStageClient.set(id, d.getInt("stage"));
+            case VfxPayload.BREATH_CHARGE -> VfxManager.add(new BreathChargeVfx(id, d.getIntOr("duration", 0), d.getIntOr("color", 0)));
+            case VfxPayload.BREATH_BEAM -> VfxManager.add(new BreathBeamVfx(id, VfxPayload.getVec(d, "aim"), d.getIntOr("duration", 0), d.getDoubleOr("length", 0.0), d.getIntOr("color", 0)));
+            case VfxPayload.STAGE -> DragonStageClient.set(id, d.getIntOr("stage", 0));
             case VfxPayload.BREATH_AIM -> BreathBeamVfx.updateAim(id, VfxPayload.getVec(d, "aim"));
             case VfxPayload.METEOR_SHOWER -> VfxManager.add(new MeteorShowerVfx(d));
-            case VfxPayload.RIFT_DASH -> VfxManager.add(new RiftDashVfx(id, VfxPayload.getVec(d, "from"), VfxPayload.getVec(d, "to"), d.getInt("telegraph"), d.getInt("dash"), d.getInt("color")));
-            case VfxPayload.SHIELD -> VfxManager.add(new ShieldVfx(id, d.getInt("duration"), d.getFloat("radius"), d.getInt("color")));
+            case VfxPayload.RIFT_DASH -> VfxManager.add(new RiftDashVfx(id, VfxPayload.getVec(d, "from"), VfxPayload.getVec(d, "to"), d.getIntOr("telegraph", 0), d.getIntOr("dash", 0), d.getIntOr("color", 0)));
+            case VfxPayload.SHIELD -> VfxManager.add(new ShieldVfx(id, d.getIntOr("duration", 0), d.getFloatOr("radius", 0.0F), d.getIntOr("color", 0)));
             case VfxPayload.SHOCKWAVE -> {
                 Vec3 pos = VfxPayload.getVec(d, "pos");
-                float radius = d.getFloat("radius");
-                VfxManager.add(new ShockwaveVfx(pos, radius, d.getInt("duration"), d.getInt("color"), d.getBoolean("sphere")));
-                CameraShake.addAt(pos, d.getFloat("shake"), radius * 3.0F, 20);
+                float radius = d.getFloatOr("radius", 0.0F);
+                VfxManager.add(new ShockwaveVfx(pos, radius, d.getIntOr("duration", 0), d.getIntOr("color", 0), d.getBooleanOr("sphere", false)));
+                CameraShake.addAt(pos, d.getFloatOr("shake", 0.0F), radius * 3.0F, 20);
                 if (VfxInstance.distanceToPlayer(pos) < radius * 2.0F) {
-                    ScreenFx.flash(d.getFloat("flash"));
-                    ScreenFx.chromatic(d.getFloat("flash"));
+                    ScreenFx.flash(d.getFloatOr("flash", 0.0F));
+                    ScreenFx.chromatic(d.getFloatOr("flash", 0.0F));
                 }
             }
-            case VfxPayload.BLACK_HOLE -> VfxManager.add(new BlackHoleVfx(VfxPayload.getVec(d, "pos"), d.getInt("form"), d.getInt("active"), d.getInt("collapse"), d.getFloat("radius"), d.getInt("color")));
-            case VfxPayload.BARRAGE -> VfxManager.add(new BarrageVfx(d.getInt("id"), VfxPayload.getVec(d, "origin"), EdpMath.unpackDirections(d.getIntArray("dirs")), d.getDouble("speed"), d.getInt("life"), d.getInt("color"), d.getInt("style")));
-            case VfxPayload.BARRAGE_HIT -> BarrageVfx.hit(d.getInt("id"), d.getInt("index"));
+            case VfxPayload.BLACK_HOLE -> VfxManager.add(new BlackHoleVfx(VfxPayload.getVec(d, "pos"), d.getIntOr("form", 0), d.getIntOr("active", 0), d.getIntOr("collapse", 0), d.getFloatOr("radius", 0.0F), d.getIntOr("color", 0)));
+            case VfxPayload.BARRAGE -> VfxManager.add(new BarrageVfx(d.getIntOr("id", 0), VfxPayload.getVec(d, "origin"), EdpMath.unpackDirections(d.getIntArray("dirs").orElseGet(() -> new int[0])), d.getDoubleOr("speed", 0.0), d.getIntOr("life", 0), d.getIntOr("color", 0), d.getIntOr("style", 0)));
+            case VfxPayload.BARRAGE_HIT -> BarrageVfx.hit(d.getIntOr("id", 0), d.getIntOr("index", 0));
             case VfxPayload.NOVA -> {
-                ListTag list = d.getList("zones", Tag.TAG_COMPOUND);
+                ListTag list = d.getListOrEmpty("zones");
                 Vec3[] zones = new Vec3[list.size()];
                 for (int i = 0; i < zones.length; i++) {
-                    zones[i] = VfxPayload.getVec(list.getCompound(i), "p");
+                    zones[i] = VfxPayload.getVec(list.getCompoundOrEmpty(i), "p");
                 }
-                VfxManager.add(new NovaVfx(id, VfxPayload.getVec(d, "center"), zones, d.getFloat("safeRadius"), d.getInt("charge"), d.getFloat("blast"), d.getInt("color")));
+                VfxManager.add(new NovaVfx(id, VfxPayload.getVec(d, "center"), zones, d.getFloatOr("safeRadius", 0.0F), d.getIntOr("charge", 0), d.getFloatOr("blast", 0.0F), d.getIntOr("color", 0)));
             }
             case VfxPayload.RUPTURE -> {
-                ListTag list = d.getList("points", Tag.TAG_COMPOUND);
+                ListTag list = d.getListOrEmpty("points");
                 Vec3[] points = new Vec3[list.size()];
                 int[] delays = new int[list.size()];
                 for (int i = 0; i < points.length; i++) {
-                    CompoundTag point = list.getCompound(i);
+                    CompoundTag point = list.getCompoundOrEmpty(i);
                     points[i] = VfxPayload.getVec(point, "p");
-                    delays[i] = point.getInt("delay");
+                    delays[i] = point.getIntOr("delay", 0);
                 }
-                VfxManager.add(new RuptureVfx(points, delays, d.getFloat("radius"), d.getInt("color")));
+                VfxManager.add(new RuptureVfx(points, delays, d.getFloatOr("radius", 0.0F), d.getIntOr("color", 0)));
             }
-            case VfxPayload.STORM_STRIKE -> VfxManager.add(new StormStrikeVfx(VfxPayload.getVec(d, "pos"), d.getInt("delay"), d.getFloat("radius"), d.getInt("color")));
-            case VfxPayload.RING_WAVES -> VfxManager.add(new RingWavesVfx(VfxPayload.getVec(d, "center"), d.getInt("count"), d.getInt("interval"), d.getFloat("speed"), d.getFloat("maxRadius"), d.getInt("color")));
-            case VfxPayload.LANCE -> VfxManager.add(new LanceVfx(VfxPayload.getVec(d, "origin"), VfxPayload.getVec(d, "end"), d.getInt("charge"), d.getInt("color")));
-            case VfxPayload.DIVE -> VfxManager.add(new DiveVfx(id, VfxPayload.getVec(d, "mark"), d.getInt("warn"), d.getInt("dive"), d.getFloat("radius"), d.getInt("color")));
+            case VfxPayload.STORM_STRIKE -> VfxManager.add(new StormStrikeVfx(VfxPayload.getVec(d, "pos"), d.getIntOr("delay", 0), d.getFloatOr("radius", 0.0F), d.getIntOr("color", 0)));
+            case VfxPayload.RING_WAVES -> VfxManager.add(new RingWavesVfx(VfxPayload.getVec(d, "center"), d.getIntOr("count", 0), d.getIntOr("interval", 0), d.getFloatOr("speed", 0.0F), d.getFloatOr("maxRadius", 0.0F), d.getIntOr("color", 0)));
+            case VfxPayload.LANCE -> VfxManager.add(new LanceVfx(VfxPayload.getVec(d, "origin"), VfxPayload.getVec(d, "end"), d.getIntOr("charge", 0), d.getIntOr("color", 0)));
+            case VfxPayload.DIVE -> VfxManager.add(new DiveVfx(id, VfxPayload.getVec(d, "mark"), d.getIntOr("warn", 0), d.getIntOr("dive", 0), d.getFloatOr("radius", 0.0F), d.getIntOr("color", 0)));
             default -> {
             }
         }

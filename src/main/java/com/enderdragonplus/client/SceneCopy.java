@@ -1,44 +1,24 @@
 package com.enderdragonplus.client;
 
-import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.pipeline.TextureTarget;
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.textures.GpuTextureView;
 import net.minecraft.client.Minecraft;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL30;
 
 public final class SceneCopy {
     private static TextureTarget target;
     private static boolean ready;
-
-    private SceneCopy() {
-    }
-
+    private SceneCopy() {}
     public static void capture() {
-        RenderTarget main = Minecraft.getInstance().getMainRenderTarget();
-        if (target == null) {
-            target = new TextureTarget(main.width, main.height, false, Minecraft.ON_OSX);
-            target.setFilterMode(GL11.GL_LINEAR);
-        } else if (target.width != main.width || target.height != main.height) {
-            target.resize(main.width, main.height, Minecraft.ON_OSX);
-            target.setFilterMode(GL11.GL_LINEAR);
-        }
-        GlStateManager._glBindFramebuffer(GL30.GL_READ_FRAMEBUFFER, main.frameBufferId);
-        GlStateManager._glBindFramebuffer(GL30.GL_DRAW_FRAMEBUFFER, target.frameBufferId);
-        GlStateManager._glBlitFrameBuffer(0, 0, main.width, main.height, 0, 0, target.width, target.height, GL11.GL_COLOR_BUFFER_BIT, GL11.GL_NEAREST);
-        main.bindWrite(false);
+        var main = Minecraft.getInstance().getMainRenderTarget();
+        var source = RenderSystem.outputColorTextureOverride != null ? RenderSystem.outputColorTextureOverride.texture() : main.getColorTexture();
+        int width = source.getWidth(0), height = source.getHeight(0);
+        if (target == null) target = new TextureTarget("EDP scene copy", width, height, false);
+        else if (target.width != width || target.height != height) target.resize(width, height);
+        RenderSystem.getDevice().createCommandEncoder().copyTextureToTexture(source, target.getColorTexture(), 0, 0, 0, 0, 0, width, height);
         ready = true;
     }
-
-    public static boolean ready() {
-        return ready && target != null;
-    }
-
-    public static void invalidate() {
-        ready = false;
-    }
-
-    public static int textureId() {
-        return target.getColorTextureId();
-    }
+    public static boolean ready() { return ready && target != null; }
+    public static void invalidate() { ready = false; }
+    public static GpuTextureView texture() { return target.getColorTextureView(); }
 }

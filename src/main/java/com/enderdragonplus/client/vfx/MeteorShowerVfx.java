@@ -9,7 +9,6 @@ import com.enderdragonplus.dragon.EdpMath;
 import com.enderdragonplus.network.VfxPayload;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.world.phys.Vec3;
 
 public final class MeteorShowerVfx extends VfxInstance {
@@ -23,7 +22,7 @@ public final class MeteorShowerVfx extends VfxInstance {
 
     public MeteorShowerVfx(CompoundTag data) {
         super(1);
-        ListTag list = data.getList("meteors", Tag.TAG_COMPOUND);
+        ListTag list = data.getListOrEmpty("meteors");
         int n = list.size();
         this.starts = new Vec3[n];
         this.impacts = new Vec3[n];
@@ -31,16 +30,16 @@ public final class MeteorShowerVfx extends VfxInstance {
         this.falls = new int[n];
         int last = 0;
         for (int i = 0; i < n; i++) {
-            CompoundTag meteor = list.getCompound(i);
+            CompoundTag meteor = list.getCompoundOrEmpty(i);
             this.starts[i] = VfxPayload.getVec(meteor, "s");
             this.impacts[i] = VfxPayload.getVec(meteor, "e");
-            this.delays[i] = meteor.getInt("delay");
-            this.falls[i] = Math.max(1, meteor.getInt("fall"));
+            this.delays[i] = meteor.getIntOr("delay", 0);
+            this.falls[i] = Math.max(1, meteor.getIntOr("fall", 0));
             last = Math.max(last, this.delays[i] + this.falls[i]);
         }
         this.lifetime = last + 5;
-        this.radius = (float) data.getDouble("radius");
-        this.color = data.getInt("color");
+        this.radius = (float) data.getDoubleOr("radius", 0.0);
+        this.color = data.getIntOr("color", 0);
     }
 
     private Vec3 position(int i, float t) {

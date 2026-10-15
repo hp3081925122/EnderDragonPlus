@@ -198,11 +198,15 @@ public final class DragonBrain {
 
     @Nullable
     public LivingEntity pickTarget() {
-        List<ServerPlayer> players = this.combatPlayers();
-        if (players.isEmpty()) {
+        List<LivingEntity> targets = this.combatTargets();
+        if (targets.isEmpty()) {
             return null;
         }
-        return players.get(this.dragon.getRandom().nextInt(players.size()));
+        return targets.get(this.dragon.getRandom().nextInt(targets.size()));
+    }
+
+    public List<LivingEntity> combatTargets() {
+        return new ArrayList<>(this.combatPlayers());
     }
 
     public List<ServerPlayer> combatPlayers() {
@@ -220,7 +224,7 @@ public final class DragonBrain {
     }
 
     public boolean damage(LivingEntity victim, double multiplier) {
-        return victim.hurt(this.dragon.damageSources().mobAttack(this.dragon), (float) (this.attack() * multiplier));
+        return victim.hurtServer(this.level(), this.dragon.damageSources().mobAttack(this.dragon), (float) (this.attack() * multiplier));
     }
 
     public static void push(Entity entity, double x, double y, double z) {
@@ -266,7 +270,7 @@ public final class DragonBrain {
         for (int i = 0; i < 8; i++) {
             float angle = i * Mth.TWO_PI / 8.0F;
             int y = this.level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, podium.getX() + Mth.floor(Mth.cos(angle) * 10.0F), podium.getZ() + Mth.floor(Mth.sin(angle) * 10.0F));
-            if (y > this.level().getMinBuildHeight() + 1) {
+            if (y > this.level().getMinY() + 1) {
                 sum += y;
                 count++;
             }
@@ -282,7 +286,7 @@ public final class DragonBrain {
 
     public double groundY(double x, double z, double fallback) {
         int y = this.level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mth.floor(x), Mth.floor(z));
-        if (y <= this.level().getMinBuildHeight() + 1) {
+        if (y <= this.level().getMinY() + 1) {
             return fallback;
         }
         return y;
@@ -309,15 +313,15 @@ public final class DragonBrain {
         this.hazards.add(hazard);
     }
 
-    public void save(CompoundTag tag) {
+    public void save(net.minecraft.world.level.storage.ValueOutput tag) {
         tag.putBoolean("EdpStageTwo", this.stageTwoReached);
         tag.putBoolean("EdpStageThree", this.stageThreeReached);
         tag.putBoolean("EdpEnhanced", this.enhanced);
     }
 
-    public void load(CompoundTag tag) {
-        this.stageTwoReached = tag.getBoolean("EdpStageTwo");
-        this.stageThreeReached = tag.getBoolean("EdpStageThree");
-        this.enhanced = tag.getBoolean("EdpEnhanced");
+    public void load(net.minecraft.world.level.storage.ValueInput tag) {
+        this.stageTwoReached = tag.getBooleanOr("EdpStageTwo", false);
+        this.stageThreeReached = tag.getBooleanOr("EdpStageThree", false);
+        this.enhanced = tag.getBooleanOr("EdpEnhanced", false);
     }
 }

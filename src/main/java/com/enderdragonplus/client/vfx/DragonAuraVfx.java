@@ -7,7 +7,7 @@ import java.util.ArrayDeque;
 import java.util.Iterator;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.entity.boss.EnderDragonPart;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragonPart;
 import net.minecraft.world.phys.Vec3;
 
 public final class DragonAuraVfx extends VfxInstance {

@@ -3,13 +3,11 @@ package com.enderdragonplus.client;
 import com.enderdragonplus.EdpConfig;
 import com.enderdragonplus.client.vfx.BarrageVfx;
 import com.enderdragonplus.client.vfx.BreathBeamVfx;
-import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
-import org.joml.Matrix4fStack;
 
 public final class VfxManager {
     private static final List<VfxInstance> INSTANCES = new ArrayList<>();
@@ -51,20 +49,13 @@ public final class VfxManager {
         ScreenFx.tick();
     }
 
-    public static void render(RenderLevelStageEvent event) {
-        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_LEVEL || INSTANCES.isEmpty()) {
+    public static void render(RenderLevelStageEvent.AfterLevel event) {
+        if (INSTANCES.isEmpty()) {
             return;
         }
-        float partialTick = event.getPartialTick().getGameTimeDeltaPartialTick(false);
-        Draw.setup(event.getCamera());
-        Matrix4fStack stack = RenderSystem.getModelViewStack();
-        stack.pushMatrix();
-        stack.mul(event.getModelViewMatrix());
-        RenderSystem.applyModelViewMatrix();
-        RenderSystem.enableBlend();
-        RenderSystem.enableDepthTest();
-        RenderSystem.depthMask(false);
-        RenderSystem.disableCull();
+        float partialTick = Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false);
+        Draw.setup(event.getLevelRenderState().cameraRenderState);
+        EdpGpu.MODEL_VIEW.set(event.getModelViewMatrix());
         SceneCopy.invalidate();
         if (EdpConfig.ENABLE_DISTORTION.get()) {
             boolean any = false;
@@ -86,11 +77,6 @@ public final class VfxManager {
         for (VfxInstance instance : INSTANCES) {
             instance.render(partialTick);
         }
-        RenderSystem.enableCull();
-        RenderSystem.depthMask(true);
-        RenderSystem.defaultBlendFunc();
-        RenderSystem.disableBlend();
-        stack.popMatrix();
-        RenderSystem.applyModelViewMatrix();
+
     }
 }

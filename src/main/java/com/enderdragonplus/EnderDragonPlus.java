@@ -7,7 +7,7 @@ import com.enderdragonplus.dragon.DragonPhases;
 import com.enderdragonplus.item.EdpItems;
 import com.enderdragonplus.network.VfxPayload;
 import com.mojang.logging.LogUtils;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -42,8 +42,8 @@ public final class EnderDragonPlus {
         NeoForge.EVENT_BUS.addListener(this::onStartTracking);
     }
 
-    public static ResourceLocation id(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MODID, path);
+    public static Identifier id(String path) {
+        return Identifier.fromNamespaceAndPath(MODID, path);
     }
 
     private void registerPayloads(RegisterPayloadHandlersEvent event) {

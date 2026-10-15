@@ -1,18 +1,16 @@
 package com.enderdragonplus.client;
 
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
+
 import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.BufferUploader;
+
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.MeshData;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.ShaderInstance;
+
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -72,13 +70,13 @@ public final class Draw {
     private Draw() {
     }
 
-    public static void setup(Camera camera) {
-        camPos = camera.getPosition();
+    public static void setup(net.minecraft.client.renderer.state.level.CameraRenderState camera) {
+        camPos = camera.pos;
         cx = camPos.x;
         cy = camPos.y;
         cz = camPos.z;
-        Vector3f left = camera.getLeftVector();
-        Vector3f up = camera.getUpVector();
+        Vector3f left = new Vector3f(-1, 0, 0).rotate(camera.orientation);
+        Vector3f up = new Vector3f(0, 1, 0).rotate(camera.orientation);
         camRight = new Vec3(-left.x(), -left.y(), -left.z());
         camUp = new Vec3(up.x(), up.y(), up.z());
     }
@@ -87,19 +85,7 @@ public final class Draw {
         return camPos;
     }
 
-    private static ShaderInstance shaderOf(Material material) {
-        return switch (material) {
-            case ENERGY -> EdpShaders.energy;
-            case GROUND, GROUND_ALPHA -> EdpShaders.ground;
-            case SPHERE, SPHERE_ALPHA -> EdpShaders.sphere;
-            case DISTORT -> EdpShaders.distort;
-        };
-    }
-
     public static boolean begin(Material material) {
-        if (shaderOf(material) == null) {
-            return false;
-        }
         if (material == Material.DISTORT && !SceneCopy.ready()) {
             return false;
         }
@@ -119,21 +105,7 @@ public final class Draw {
         if (mesh == null) {
             return;
         }
-        ShaderInstance shader = shaderOf(current);
-        shader.safeGetUniform("EdpParams").set(a, b, c, d);
-        RenderSystem.setShader(() -> shader);
-        if (current == Material.DISTORT) {
-            RenderSystem.setShaderTexture(0, SceneCopy.textureId());
-            RenderSystem.setShaderTexture(1, NoiseTexture.id());
-        } else {
-            RenderSystem.setShaderTexture(0, NoiseTexture.id());
-        }
-        if (current.additive) {
-            RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
-        } else {
-            RenderSystem.defaultBlendFunc();
-        }
-        BufferUploader.drawWithShader(mesh);
+        EdpGpu.draw(mesh, current.ordinal(), new org.joml.Vector4f(a, b, c, d), new org.joml.Vector4f(1));
     }
 
     public static void normal(double x, double y, double z) {

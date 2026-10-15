@@ -50,7 +50,7 @@ public final class BlastHazard extends Hazard {
             }
         }
         if (this.sound != null) {
-            level.playSound(null, this.pos.x, this.pos.y, this.pos.z, this.sound, SoundSource.HOSTILE, this.volume, this.pitch + level.random.nextFloat() * 0.15F);
+            level.playSound(null, this.pos.x, this.pos.y, this.pos.z, this.sound, SoundSource.HOSTILE, this.volume, this.pitch + level.getRandom().nextFloat() * 0.15F);
         }
         return false;
     }

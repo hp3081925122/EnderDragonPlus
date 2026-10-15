@@ -28,7 +28,7 @@ public class RingWavesPhase extends SkillPhase {
     @Override
     protected boolean start() {
         DragonBrain brain = this.brain();
-        if (brain.combatPlayers().isEmpty()) {
+        if (brain.combatTargets().isEmpty()) {
             return false;
         }
         this.center = brain.arenaCenter();

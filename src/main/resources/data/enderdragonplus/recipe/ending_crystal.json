@@ -7,21 +7,11 @@
     "PNP"
   ],
   "key": {
-    "P": {
-      "item": "minecraft:popped_chorus_fruit"
-    },
-    "B": {
-      "item": "minecraft:dragon_breath"
-    },
-    "S": {
-      "item": "minecraft:shulker_shell"
-    },
-    "C": {
-      "item": "minecraft:end_crystal"
-    },
-    "N": {
-      "item": "minecraft:nether_star"
-    }
+    "P": "minecraft:popped_chorus_fruit",
+    "B": "minecraft:dragon_breath",
+    "S": "minecraft:shulker_shell",
+    "C": "minecraft:end_crystal",
+    "N": "minecraft:nether_star"
   },
   "result": {
     "id": "enderdragonplus:ending_crystal",

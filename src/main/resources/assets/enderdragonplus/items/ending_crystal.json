@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "enderdragonplus:item/ending_crystal",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": 16734874
+      }
+    ]
+  }
+}

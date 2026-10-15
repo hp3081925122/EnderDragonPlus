@@ -32,6 +32,9 @@ public final class EdpConfig {
 
     public static final ModConfigSpec.IntValue SHIELD_DURATION;
     public static final ModConfigSpec.DoubleValue SHIELD_BURST_MULTIPLIER;
+    public static final ModConfigSpec.BooleanValue SHIELD_REVIVE_CRYSTALS;
+    public static final ModConfigSpec.DoubleValue SHIELD_CRYSTAL_EXPLODE_RATIO;
+    public static final ModConfigSpec.BooleanValue STAGE_HEAL_CAP;
 
     public static final Skill BLACK_HOLE;
     public static final ModConfigSpec.DoubleValue BLACK_HOLE_RADIUS;
@@ -92,6 +95,9 @@ public final class EdpConfig {
 
         SHIELD_DURATION = b.comment("转阶段护盾持续时间（tick）").defineInRange("shield_duration", 120, 20, 2400);
         SHIELD_BURST_MULTIPLIER = b.comment("护盾破碎冲击伤害倍率").defineInRange("shield_burstMultiplier", 0.8, 0.0, 100.0);
+        SHIELD_REVIVE_CRYSTALS = b.comment("护盾升华时是否复活所有黑曜石柱上的末影水晶").define("shield_reviveCrystals", true);
+        SHIELD_CRYSTAL_EXPLODE_RATIO = b.comment("护盾升华结束后随机引爆的水晶比例").defineInRange("shield_crystalExplodeRatio", 0.5, 0.0, 1.0);
+        STAGE_HEAL_CAP = b.comment("进入第二阶段后，末影水晶回血不会超过第二阶段血量阈值").define("stageHealCap", true);
 
         BLACK_HOLE = new Skill(b, "blackHole", "黑洞", 600, 0.4, 7);
         BLACK_HOLE_RADIUS = b.comment("黑洞牵引半径").defineInRange("blackHole_radius", 22.0, 2.0, 128.0);

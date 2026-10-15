@@ -39,7 +39,7 @@ public final class MeteorHazard extends Hazard {
                 brain.knockFrom(victim, this.impact, 1.2 * falloff, 0.5);
             }
         }
-        level.playSound(null, this.impact.x, this.impact.y, this.impact.z, SoundEvents.GENERIC_EXPLODE, SoundSource.HOSTILE, 3.0F, 0.7F + level.random.nextFloat() * 0.2F);
+        level.playSound(null, this.impact.x, this.impact.y, this.impact.z, SoundEvents.GENERIC_EXPLODE, SoundSource.HOSTILE, 3.0F, 0.7F + level.getRandom().nextFloat() * 0.2F);
         if (this.breakBlocks) {
             level.explode(brain.dragon(), this.impact.x, this.impact.y, this.impact.z, 2.0F, Level.ExplosionInteraction.MOB);
         }

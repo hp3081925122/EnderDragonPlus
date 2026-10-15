@@ -14,11 +14,11 @@ public final class NoiseTexture {
     private NoiseTexture() {
     }
 
-    public static int id() {
+    public static DynamicTexture texture() {
         if (texture == null) {
             create();
         }
-        return texture.getId();
+        return texture;
     }
 
     private static void create() {
@@ -32,11 +32,10 @@ public final class NoiseTexture {
                 int r = Mth.clamp((int) (fbmA[i] * 255.0F), 0, 255);
                 int g = Mth.clamp((int) (fbmB[i] * 255.0F), 0, 255);
                 int b = Mth.clamp((int) (cells[i] * 255.0F), 0, 255);
-                image.setPixelRGBA(x, y, 0xFF000000 | (b << 16) | (g << 8) | r);
+                image.setPixelABGR(x, y, 0xFF000000 | (b << 16) | (g << 8) | r);
             }
         }
-        texture = new DynamicTexture(image);
-        texture.setFilter(true, false);
+        texture = new DynamicTexture(() -> "EDP noise", image);
         Minecraft.getInstance().getTextureManager().register(EnderDragonPlus.id("noise"), texture);
         EnderDragonPlus.LOGGER.debug("Generated Ender Dragon Plus noise texture");
     }

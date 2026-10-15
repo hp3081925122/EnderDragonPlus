@@ -46,6 +46,6 @@ public record VfxPayload(int kind, int entityId, CompoundTag data) implements Cu
     }
 
     public static Vec3 getVec(CompoundTag tag, String key) {
-        return new Vec3(tag.getDouble(key + "X"), tag.getDouble(key + "Y"), tag.getDouble(key + "Z"));
+        return new Vec3(tag.getDoubleOr(key + "X", 0.0), tag.getDoubleOr(key + "Y", 0.0), tag.getDoubleOr(key + "Z", 0.0));
     }
 }

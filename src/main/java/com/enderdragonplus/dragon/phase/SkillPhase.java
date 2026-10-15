@@ -35,13 +35,13 @@ public abstract class SkillPhase extends AbstractDragonPhaseInstance {
         this.moveSpeed = 1.0;
         this.turnRate = 6.0F;
         this.aborted = false;
-        if (!this.dragon.level().isClientSide) {
+        if (!this.dragon.level().isClientSide()) {
             this.aborted = !this.start();
         }
     }
 
     @Override
-    public final void doServerTick() {
+    public final void doServerTick(net.minecraft.server.level.ServerLevel level) {
         if (this.aborted) {
             this.finish();
             return;

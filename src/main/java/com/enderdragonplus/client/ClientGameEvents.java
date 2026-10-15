@@ -19,7 +19,7 @@ public final class ClientGameEvents {
     }
 
     @SubscribeEvent
-    public static void onRenderLevel(RenderLevelStageEvent event) {
+    public static void onRenderLevel(RenderLevelStageEvent.AfterLevel event) {
         VfxManager.render(event);
     }
 

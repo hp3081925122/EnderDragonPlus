@@ -7,9 +7,9 @@ import com.enderdragonplus.dragon.hazard.BlastHazard;
 import com.enderdragonplus.network.VfxPayload;
 import java.util.List;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
 import net.minecraft.world.phys.Vec3;
@@ -29,7 +29,7 @@ public class EnderStormPhase extends SkillPhase {
     @Override
     protected boolean start() {
         DragonBrain brain = this.brain();
-        if (brain.combatPlayers().isEmpty()) {
+        if (brain.combatTargets().isEmpty()) {
             return false;
         }
         this.moveTarget = this.dragon.position().add(0.0, 12.0, 0.0);
@@ -47,7 +47,7 @@ public class EnderStormPhase extends SkillPhase {
     @Override
     protected void serverTick() {
         if (this.fired < this.strikes && this.tick >= FIRST_STRIKE && (this.tick - FIRST_STRIKE) % INTERVAL == 0) {
-            List<ServerPlayer> players = this.brain().combatPlayers();
+            List<LivingEntity> players = this.brain().combatTargets();
             if (!players.isEmpty()) {
                 this.strike(players.get(this.fired % players.size()));
             }
@@ -58,7 +58,7 @@ public class EnderStormPhase extends SkillPhase {
         }
     }
 
-    private void strike(ServerPlayer player) {
+    private void strike(LivingEntity player) {
         DragonBrain brain = this.brain();
         RandomSource random = this.dragon.getRandom();
         this.faceDirection = player.position().subtract(this.dragon.position());

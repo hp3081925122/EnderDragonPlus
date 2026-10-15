@@ -1,8 +1,16 @@
-#version 150
+#version 330
+
+#moj_import <minecraft:dynamictransforms.glsl>
+#moj_import <minecraft:projection.glsl>
+layout(std140) uniform EdpUniforms {
+    vec4 EdpParams;
+    vec4 EdpTint;
+    vec2 ScreenSize;
+    float GameTime;
+};
+
 
 uniform sampler2D Sampler0;
-uniform vec4 EdpParams;
-uniform vec4 EdpTint;
 
 in vec2 texCoord0;
 

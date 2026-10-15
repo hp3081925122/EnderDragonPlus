@@ -42,7 +42,7 @@ public final class LanceHazard extends Hazard {
                 DragonBrain.push(victim, side.x * 0.5, 0.35, side.z * 0.5);
             }
         }
-        level.playSound(null, this.end.x, this.end.y, this.end.z, SoundEvents.WARDEN_SONIC_BOOM, SoundSource.HOSTILE, 3.0F, 1.3F + level.random.nextFloat() * 0.2F);
+        level.playSound(null, this.end.x, this.end.y, this.end.z, SoundEvents.WARDEN_SONIC_BOOM, SoundSource.HOSTILE, 3.0F, 1.3F + level.getRandom().nextFloat() * 0.2F);
         return false;
     }
 }

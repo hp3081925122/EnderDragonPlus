@@ -16,7 +16,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.dimension.end.EndDragonFight;
+import net.minecraft.world.level.dimension.end.EnderDragonFight;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 
@@ -28,7 +28,7 @@ public class EndingCrystalItem extends Item {
     }
 
     public static boolean isEndingCrystal(Entity entity) {
-        return entity.getPersistentData().getBoolean(TAG);
+        return entity.getPersistentData().getBooleanOr(TAG, false);
     }
 
     @Override
@@ -56,20 +56,20 @@ public class EndingCrystalItem extends Item {
             crystal.getPersistentData().putBoolean(TAG, true);
             level.addFreshEntity(crystal);
             level.gameEvent(context.getPlayer(), GameEvent.ENTITY_PLACE, above);
-            EndDragonFight fight = serverLevel.getDragonFight();
+            EnderDragonFight fight = serverLevel.getDragonFight();
             if (fight != null) {
                 fight.tryRespawn();
             }
         }
         context.getItemInHand().shrink(1);
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.SUCCESS;
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("item.enderdragonplus.ending_crystal.desc").withStyle(ChatFormatting.LIGHT_PURPLE));
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, net.minecraft.world.item.component.TooltipDisplay display, java.util.function.Consumer<Component> tooltip, TooltipFlag flag) {
+        tooltip.accept(Component.translatable("item.enderdragonplus.ending_crystal.desc").withStyle(ChatFormatting.LIGHT_PURPLE));
         if (!EdpConfig.REQUIRE_SPECIAL_SUMMON.get()) {
-            tooltip.add(Component.translatable("item.enderdragonplus.ending_crystal.always").withStyle(ChatFormatting.GRAY));
+            tooltip.accept(Component.translatable("item.enderdragonplus.ending_crystal.always").withStyle(ChatFormatting.GRAY));
         }
     }
 }

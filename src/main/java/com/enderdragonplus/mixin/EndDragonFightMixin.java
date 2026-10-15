@@ -5,9 +5,11 @@ import com.enderdragonplus.dragon.DragonBrainHolder;
 import com.enderdragonplus.item.EndingCrystalItem;
 import java.util.List;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityReference;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
-import net.minecraft.world.level.dimension.end.DragonRespawnAnimation;
-import net.minecraft.world.level.dimension.end.EndDragonFight;
+import net.minecraft.world.level.dimension.end.DragonRespawnStage;
+import net.minecraft.world.level.dimension.end.EnderDragonFight;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -16,21 +18,25 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(EndDragonFight.class)
+@Mixin(EnderDragonFight.class)
 public abstract class EndDragonFightMixin {
     @Shadow
-    private List<EndCrystal> respawnCrystals;
+    private List<EntityReference<EndCrystal>> respawnCrystals;
+
+    @Shadow
+    private ServerLevel level;
 
     @Unique
     private boolean edp$pendingEnhanced;
 
     @Inject(method = "setRespawnStage", at = @At("HEAD"))
-    private void edp$checkCrystals(DragonRespawnAnimation stage, CallbackInfo ci) {
-        if (stage != DragonRespawnAnimation.END || this.respawnCrystals == null) {
+    private void edp$checkCrystals(DragonRespawnStage stage, CallbackInfo ci) {
+        if (stage != DragonRespawnStage.END || this.respawnCrystals == null) {
             return;
         }
-        for (EndCrystal crystal : this.respawnCrystals) {
-            if (EndingCrystalItem.isEndingCrystal(crystal)) {
+        for (EntityReference<EndCrystal> reference : this.respawnCrystals) {
+            EndCrystal crystal = reference.getEntity(this.level, EndCrystal.class);
+            if (crystal != null && EndingCrystalItem.isEndingCrystal(crystal)) {
                 this.edp$pendingEnhanced = true;
                 break;
             }
@@ -39,7 +45,7 @@ public abstract class EndDragonFightMixin {
     }
 
     @Inject(method = "setRespawnStage", at = @At("RETURN"))
-    private void edp$clearPending(DragonRespawnAnimation stage, CallbackInfo ci) {
+    private void edp$clearPending(DragonRespawnStage stage, CallbackInfo ci) {
         this.edp$pendingEnhanced = false;
     }
 
