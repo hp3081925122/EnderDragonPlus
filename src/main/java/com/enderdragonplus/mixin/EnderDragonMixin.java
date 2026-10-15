@@ -39,23 +39,33 @@ public abstract class EnderDragonMixin extends Mob implements DragonBrainHolder 
 
     @Inject(method = "aiStep", at = @At("HEAD"))
     private void edp$tickBrain(CallbackInfo ci) {
-        if (!this.level().isClientSide && !this.isDeadOrDying() && !this.isNoAi()) {
+        if (!this.level().isClientSide && !this.isDeadOrDying() && !this.isNoAi() && this.edp$getBrain().active()) {
             this.edp$getBrain().tick();
         }
     }
 
     @ModifyArg(method = "hurt(Ljava/util/List;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z"), index = 1)
     private float edp$headDamage(float original) {
+        if (!this.edp$getBrain().active()) {
+            return original;
+        }
         return (float) (this.getAttributeValue(Attributes.ATTACK_DAMAGE) * EdpConfig.HEAD_CONTACT_MULTIPLIER.get());
     }
 
     @ModifyArg(method = "knockBack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z"), index = 1)
     private float edp$wingDamage(float original) {
+        if (!this.edp$getBrain().active()) {
+            return original;
+        }
         return (float) (this.getAttributeValue(Attributes.ATTACK_DAMAGE) * EdpConfig.WING_CONTACT_MULTIPLIER.get());
     }
 
     @Redirect(method = "knockBack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;push(DDD)V"))
     private void edp$scaledPush(Entity entity, double x, double y, double z) {
+        if (!this.edp$getBrain().active()) {
+            entity.push(x, y, z);
+            return;
+        }
         DragonBrain.push(entity, x, y, z);
     }
 

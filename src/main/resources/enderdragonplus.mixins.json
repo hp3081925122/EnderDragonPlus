@@ -6,7 +6,11 @@
   "mixins": [
     "EnderDragonPhaseInvoker",
     "EnderDragonMixin",
+    "EndDragonFightMixin",
     "DragonHoldingPatternPhaseMixin"
+  ],
+  "client": [
+    "client.EnderDragonRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

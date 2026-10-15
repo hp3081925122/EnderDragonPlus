@@ -1,7 +1,10 @@
 package com.enderdragonplus;
 
 import com.enderdragonplus.client.ClientVfxHandler;
+import com.enderdragonplus.dragon.DragonBrain;
+import com.enderdragonplus.dragon.DragonBrainHolder;
 import com.enderdragonplus.dragon.DragonPhases;
+import com.enderdragonplus.item.EdpItems;
 import com.enderdragonplus.network.VfxPayload;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
@@ -16,6 +19,9 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
+import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import org.slf4j.Logger;
 
@@ -26,11 +32,14 @@ public final class EnderDragonPlus {
 
     public EnderDragonPlus(IEventBus modBus, ModContainer container) {
         DragonPhases.init();
+        EdpItems.ITEMS.register(modBus);
+        modBus.addListener(EdpItems::addToTabs);
         container.registerConfig(ModConfig.Type.COMMON, EdpConfig.COMMON_SPEC);
         container.registerConfig(ModConfig.Type.CLIENT, EdpConfig.CLIENT_SPEC);
         modBus.addListener(this::registerPayloads);
         modBus.addListener(this::modifyAttributes);
         NeoForge.EVENT_BUS.addListener(this::onEntityJoin);
+        NeoForge.EVENT_BUS.addListener(this::onStartTracking);
     }
 
     public static ResourceLocation id(String path) {
@@ -47,8 +56,22 @@ public final class EnderDragonPlus {
         }
     }
 
+    private void onStartTracking(PlayerEvent.StartTracking event) {
+        if (!(event.getTarget() instanceof EnderDragon dragon) || !(event.getEntity() instanceof ServerPlayer player)) {
+            return;
+        }
+        DragonBrain brain = ((DragonBrainHolder) dragon).edp$getBrain();
+        if (brain.active()) {
+            PacketDistributor.sendToPlayer(player, brain.stagePayload());
+        }
+    }
+
     private void onEntityJoin(EntityJoinLevelEvent event) {
         if (event.getLevel().isClientSide() || !(event.getEntity() instanceof EnderDragon dragon)) {
+            return;
+        }
+        if (!((DragonBrainHolder) dragon).edp$getBrain().active()) {
+            LOGGER.debug("Ender dragon {} joined as vanilla dragon", dragon.getId());
             return;
         }
         AttributeInstance attack = dragon.getAttribute(Attributes.ATTACK_DAMAGE);

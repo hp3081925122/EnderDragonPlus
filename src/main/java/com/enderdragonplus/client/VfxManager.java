@@ -28,6 +28,7 @@ public final class VfxManager {
         PENDING.clear();
         BarrageVfx.clearAll();
         BreathBeamVfx.clearAll();
+        DragonStageClient.clear();
     }
 
     public static void tick() {

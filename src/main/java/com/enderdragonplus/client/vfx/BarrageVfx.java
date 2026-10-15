@@ -6,6 +6,7 @@ import com.enderdragonplus.client.VfxManager;
 import java.util.HashMap;
 import java.util.Map;
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.Mth;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -13,6 +14,9 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 
 public final class BarrageVfx extends VfxInstance {
+    public static final int STYLE_CRESCENT = 1;
+    private static final float CRESCENT_RADIUS = 2.2F;
+    private static final float CRESCENT_ARC = 60.0F * Mth.DEG_TO_RAD;
     private static final Map<Integer, BarrageVfx> ACTIVE = new HashMap<>();
     private final int id;
     private final Vec3[] directions;
@@ -22,9 +26,10 @@ public final class BarrageVfx extends VfxInstance {
     private final double speed;
     private final int life;
     private final int color;
+    private final int style;
     private int simAge;
 
-    public BarrageVfx(int id, Vec3 origin, Vec3[] directions, double speed, int life, int color) {
+    public BarrageVfx(int id, Vec3 origin, Vec3[] directions, double speed, int life, int color, int style) {
         super(life + 2);
         this.id = id;
         this.directions = directions;
@@ -39,6 +44,7 @@ public final class BarrageVfx extends VfxInstance {
         this.speed = speed;
         this.life = life;
         this.color = color;
+        this.style = style;
         ACTIVE.put(id, this);
     }
 
@@ -94,8 +100,62 @@ public final class BarrageVfx extends VfxInstance {
         }
     }
 
+    private void crescent(Vec3 head, Vec3 dir, float scale, float alpha, int rgb) {
+        Vec3 side = dir.cross(new Vec3(0.0, 1.0, 0.0));
+        if (side.lengthSqr() < 1.0E-4) {
+            side = new Vec3(1.0, 0.0, 0.0);
+        }
+        side = side.normalize();
+        int n = 9;
+        Vec3[] points = new Vec3[n];
+        float[] widths = new float[n];
+        float[] alphas = new float[n];
+        float radius = CRESCENT_RADIUS * scale;
+        for (int j = 0; j < n; j++) {
+            float k = j / (float) (n - 1) * 2.0F - 1.0F;
+            float a = k * CRESCENT_ARC;
+            points[j] = head.add(side.scale(Mth.sin(a) * radius)).subtract(dir.scale((1.0F - Mth.cos(a)) * radius * 0.8F));
+            float taper = 1.0F - k * k;
+            widths[j] = 0.15F + 0.85F * taper * scale;
+            alphas[j] = alpha * (0.3F + 0.7F * taper);
+        }
+        Draw.ribbon(points, widths, alphas, rgb, 0.0F, 2.0F);
+    }
+
+    private void renderCrescents(float partialTick) {
+        int hot = Draw.mix(this.color, 0xFFFFFF, 0.55F);
+        if (Draw.begin(Draw.Material.ENERGY)) {
+            for (int i = 0; i < this.positions.length; i++) {
+                if (!this.alive[i]) {
+                    continue;
+                }
+                Vec3 head = this.previous[i].lerp(this.positions[i], partialTick);
+                Vec3 dir = this.directions[i];
+                this.crescent(head, dir, 1.0F, 1.0F, this.color);
+                this.crescent(head.subtract(dir.scale(this.speed * 1.6)), dir, 0.9F, 0.5F, this.color);
+                this.crescent(head.subtract(dir.scale(this.speed * 3.2)), dir, 0.8F, 0.25F, this.color);
+            }
+            Draw.end(2.5F, 1.0F, 1.6F, Draw.MODE_STRIP);
+        }
+        if (Draw.begin(Draw.Material.ENERGY)) {
+            for (int i = 0; i < this.positions.length; i++) {
+                if (!this.alive[i]) {
+                    continue;
+                }
+                Vec3 head = this.previous[i].lerp(this.positions[i], partialTick);
+                this.crescent(head.add(this.directions[i].scale(0.15)), this.directions[i], 0.92F, 0.9F, hot);
+                Draw.billboard(head, 2.4F, this.color, 0.7F);
+            }
+            Draw.end(1.0F, 2.0F, 2.0F, Draw.MODE_RADIAL);
+        }
+    }
+
     @Override
     public void render(float partialTick) {
+        if (this.style == STYLE_CRESCENT) {
+            this.renderCrescents(partialTick);
+            return;
+        }
         int hot = Draw.mix(this.color, 0xFFFFFF, 0.55F);
         if (Draw.begin(Draw.Material.ENERGY)) {
             for (int i = 0; i < this.positions.length; i++) {

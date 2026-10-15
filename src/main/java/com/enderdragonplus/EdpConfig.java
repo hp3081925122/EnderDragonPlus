@@ -6,6 +6,7 @@ public final class EdpConfig {
     public static final ModConfigSpec COMMON_SPEC;
     public static final ModConfigSpec CLIENT_SPEC;
 
+    public static final ModConfigSpec.BooleanValue REQUIRE_SPECIAL_SUMMON;
     public static final ModConfigSpec.DoubleValue MAX_HEALTH;
     public static final ModConfigSpec.DoubleValue ATTACK_DAMAGE;
     public static final ModConfigSpec.DoubleValue HEAD_CONTACT_MULTIPLIER;
@@ -45,6 +46,17 @@ public final class EdpConfig {
     public static final ModConfigSpec.IntValue NOVA_SAFE_ZONES;
     public static final ModConfigSpec.DoubleValue NOVA_SAFE_RADIUS;
 
+    public static final Skill VOID_RUPTURE;
+    public static final Skill WING_BLADES;
+    public static final ModConfigSpec.IntValue WING_BLADES_PER_VOLLEY;
+    public static final Skill ENDER_STORM;
+    public static final ModConfigSpec.IntValue STORM_STRIKES;
+    public static final Skill RING_WAVES;
+    public static final Skill VOID_LANCES;
+    public static final ModConfigSpec.IntValue LANCE_COUNT;
+    public static final Skill CATACLYSM_DIVE;
+    public static final ModConfigSpec.DoubleValue DIVE_RADIUS;
+
     public static final ModConfigSpec.BooleanValue ENABLE_DISTORTION;
     public static final ModConfigSpec.BooleanValue ENABLE_SCREEN_EFFECTS;
     public static final ModConfigSpec.DoubleValue CAMERA_SHAKE;
@@ -52,6 +64,7 @@ public final class EdpConfig {
     static {
         ModConfigSpec.Builder b = new ModConfigSpec.Builder();
         b.comment("末影龙基础属性").push("dragon");
+        REQUIRE_SPECIAL_SUMMON = b.comment("是否需要用终焉水晶特殊召唤才会出现加强版末影龙；false 时所有末影龙都是加强版").define("requireSpecialSummon", false);
         MAX_HEALTH = b.comment("末影龙最大生命值").defineInRange("maxHealth", 400.0, 1.0, 1000000.0);
         ATTACK_DAMAGE = b.comment("末影龙基础攻击力，所有技能伤害 = 基础攻击力 × 技能倍率").defineInRange("attackDamage", 10.0, 0.0, 10000.0);
         HEAD_CONTACT_MULTIPLIER = b.comment("头部撞击伤害倍率").defineInRange("headContactMultiplier", 1.0, 0.0, 100.0);
@@ -92,6 +105,22 @@ public final class EdpConfig {
         NOVA_CHARGE_TICKS = b.comment("终焉新星蓄力时间（tick）").defineInRange("finalNova_chargeTicks", 100, 20, 2400);
         NOVA_SAFE_ZONES = b.comment("安全区数量").defineInRange("finalNova_safeZones", 3, 1, 16);
         NOVA_SAFE_RADIUS = b.comment("安全区半径").defineInRange("finalNova_safeRadius", 4.0, 1.0, 32.0);
+
+        VOID_RUPTURE = new Skill(b, "voidRupture", "虚空地脉", 280, 0.9, 9);
+
+        WING_BLADES = new Skill(b, "wingBlades", "翼刃风暴", 300, 0.8, 9);
+        WING_BLADES_PER_VOLLEY = b.comment("翼刃风暴每轮月刃数量").defineInRange("wingBlades_perVolley", 5, 1, 32);
+
+        ENDER_STORM = new Skill(b, "enderStorm", "末影雷暴", 420, 0.9, 8);
+        STORM_STRIKES = b.comment("末影雷暴落雷次数").defineInRange("enderStorm_strikes", 12, 1, 64);
+
+        RING_WAVES = new Skill(b, "ringWaves", "裂空环波", 380, 1.0, 8);
+
+        VOID_LANCES = new Skill(b, "voidLances", "虚空长枪", 360, 1.4, 9);
+        LANCE_COUNT = b.comment("虚空长枪数量").defineInRange("voidLances_count", 5, 1, 32);
+
+        CATACLYSM_DIVE = new Skill(b, "cataclysmDive", "陨灭俯冲", 480, 2.2, 7);
+        DIVE_RADIUS = b.comment("陨灭俯冲落地冲击半径").defineInRange("cataclysmDive_radius", 9.0, 2.0, 32.0);
         b.pop();
         COMMON_SPEC = b.build();
 

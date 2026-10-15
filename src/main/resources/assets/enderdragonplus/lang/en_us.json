@@ -1,3 +1,6 @@
 {
-  "enderdragonplus.configuration.title": "Ender Dragon Plus Config"
+  "enderdragonplus.configuration.title": "Ender Dragon Plus Config",
+  "item.enderdragonplus.ending_crystal": "Ending Crystal",
+  "item.enderdragonplus.ending_crystal.desc": "Use it in the respawn ritual around the exit portal to summon the enhanced Ender Dragon",
+  "item.enderdragonplus.ending_crystal.always": "All Ender Dragons are enhanced under the current config"
 }

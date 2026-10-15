@@ -20,8 +20,13 @@ public final class BarrageHazard extends Hazard {
     private final double speed;
     private final int life;
     private final double multiplier;
+    private final double hitRadius;
 
     public BarrageHazard(int id, Vec3 origin, Vec3[] directions, double speed, int life, double multiplier) {
+        this(id, origin, directions, speed, life, multiplier, 0.6);
+    }
+
+    public BarrageHazard(int id, Vec3 origin, Vec3[] directions, double speed, int life, double multiplier, double hitRadius) {
         this.id = id;
         this.directions = directions;
         this.positions = new Vec3[directions.length];
@@ -33,6 +38,7 @@ public final class BarrageHazard extends Hazard {
         this.speed = speed;
         this.life = life;
         this.multiplier = multiplier;
+        this.hitRadius = hitRadius;
     }
 
     @Override
@@ -52,7 +58,7 @@ public final class BarrageHazard extends Hazard {
                     continue;
                 }
             }
-            List<LivingEntity> victims = brain.victims(new AABB(from, to).inflate(0.6));
+            List<LivingEntity> victims = brain.victims(new AABB(from, to).inflate(this.hitRadius));
             if (!victims.isEmpty()) {
                 brain.damage(victims.get(0), this.multiplier);
                 this.alive[i] = false;

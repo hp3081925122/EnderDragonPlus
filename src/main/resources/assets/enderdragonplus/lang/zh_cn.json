@@ -1,3 +1,6 @@
 {
-  "enderdragonplus.configuration.title": "末影龙增强 配置"
+  "enderdragonplus.configuration.title": "末影龙增强 配置",
+  "item.enderdragonplus.ending_crystal": "终焉水晶",
+  "item.enderdragonplus.ending_crystal.desc": "放在出口传送门四周参与复活仪式，召唤出加强版末影龙",
+  "item.enderdragonplus.ending_crystal.always": "当前配置下所有末影龙都是加强版"
 }

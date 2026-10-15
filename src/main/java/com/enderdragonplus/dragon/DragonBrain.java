@@ -39,6 +39,7 @@ public final class DragonBrain {
     private int globalCooldown = 100;
     private boolean stageTwoReached;
     private boolean stageThreeReached;
+    private boolean enhanced;
     @Nullable
     private LivingEntity target;
 
@@ -77,6 +78,7 @@ public final class DragonBrain {
         if (!this.stageTwoReached && ratio <= EdpConfig.STAGE_TWO_HEALTH.get()) {
             this.stageTwoReached = true;
             EnderDragonPlus.LOGGER.info("Dragon {} entered stage two at health ratio {}", this.dragon.getId(), ratio);
+            PacketDistributor.sendToPlayersTrackingEntity(this.dragon, this.stagePayload());
             this.dragon.getPhaseManager().setPhase(DragonPhases.SHIELD_ASCENSION);
             return;
         }
@@ -84,6 +86,7 @@ public final class DragonBrain {
             this.stageThreeReached = true;
             this.stageTwoReached = true;
             EnderDragonPlus.LOGGER.info("Dragon {} entered stage three at health ratio {}", this.dragon.getId(), ratio);
+            PacketDistributor.sendToPlayersTrackingEntity(this.dragon, this.stagePayload());
             if (EdpConfig.FINAL_NOVA.enabled.get()) {
                 this.startSkill(SkillType.FINAL_NOVA, this.pickTarget());
                 return;
@@ -107,6 +110,12 @@ public final class DragonBrain {
         return 1;
     }
 
+    public VfxPayload stagePayload() {
+        CompoundTag data = new CompoundTag();
+        data.putInt("stage", this.stage());
+        return new VfxPayload(VfxPayload.STAGE, this.dragon.getId(), data);
+    }
+
     public int stageColor() {
         int stage = this.stage();
         if (stage == 3) {
@@ -125,7 +134,18 @@ public final class DragonBrain {
         return 1.0;
     }
 
+    public boolean active() {
+        return !EdpConfig.REQUIRE_SPECIAL_SUMMON.get() || this.enhanced;
+    }
+
+    public void markEnhanced() {
+        this.enhanced = true;
+    }
+
     public boolean tryStartSkill(LivingEntity candidate) {
+        if (!this.active()) {
+            return false;
+        }
         if (this.globalCooldown > 0) {
             return false;
         }
@@ -292,10 +312,12 @@ public final class DragonBrain {
     public void save(CompoundTag tag) {
         tag.putBoolean("EdpStageTwo", this.stageTwoReached);
         tag.putBoolean("EdpStageThree", this.stageThreeReached);
+        tag.putBoolean("EdpEnhanced", this.enhanced);
     }
 
     public void load(CompoundTag tag) {
         this.stageTwoReached = tag.getBoolean("EdpStageTwo");
         this.stageThreeReached = tag.getBoolean("EdpStageThree");
+        this.enhanced = tag.getBoolean("EdpEnhanced");
     }
 }
