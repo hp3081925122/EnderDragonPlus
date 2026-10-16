@@ -18,7 +18,7 @@ import net.minecraft.util.Util;
 public final class EdpDragonRenderTypes {
     public static final RenderPipeline EYES = RenderPipeline.builder(RenderPipelines.MATRICES_FOG_SNIPPET)
         .withLocation(EnderDragonPlus.id("pipeline/dragon_eyes"))
-        .withVertexShader("core/entity").withFragmentShader("core/entity")
+        .withVertexShader("core/entity").withFragmentShader(EnderDragonPlus.id("core/edp_dragon_glow"))
         .withShaderDefine("EMISSIVE").withShaderDefine("NO_OVERLAY").withShaderDefine("NO_CARDINAL_LIGHTING")
         .withSampler("Sampler0").withColorTargetState(new ColorTargetState(BlendFunction.ADDITIVE))
         .withVertexFormat(DefaultVertexFormat.ENTITY, VertexFormat.Mode.QUADS)
