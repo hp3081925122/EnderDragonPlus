@@ -1,0 +1,4 @@
+baseline frames=48 blackMaskFrames=0
+flash frames=69 blackMaskFrames=61
+sustain frames=120 blackMaskFrames=116
+recovered frames=311 blackMaskFrames=189

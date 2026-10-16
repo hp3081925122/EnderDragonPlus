@@ -53,7 +53,7 @@
 
 ## 产物
 - `build/libs/enderdragonplus-1.20.1-forge-0.0.1.jar`
-- SHA-256：`58c597f6b8b423c7ff877d2a9840be8bd4f9fc978135f457cd193f573eed0141`
+- SHA-256：`05d89e6d0f58f4bc5b83cc1eb9865bd88ea49b1caef8074856508a2b4131a495`
 - 仅完成本地迁移和验证，没有上传 CurseForge 或推送远程。
 
 ## 实际战斗无特效修复与回归（2026-10-16）
@@ -61,6 +61,19 @@
 
 现在在 AFTER_WEATHER 保存正确的相机视图矩阵，仍在 AFTER_LEVEL 的原有顺序绘制，保留完整场景拷贝与畸变；切换世界时清空快照有效状态。增加受 debugLogging 配置控制的英文首帧渲染诊断。实际日志显示 capturedViewM33=1.0、eventPoseM33=0.0、shaderReady=true。
 
-本次在用户世界的独立副本中启动真实 Minecraft 客户端与内置服务端，使用临时验证工具触发技能，依靠正常实体 tick、网络传输、客户端事件及世界渲染完成回归。12 个技能加转阶段护盾共 13 项运行完成，客户端实收战斗消息 0–16 全部类型，运行日志无 ERROR。逐项结果与关键日志见 [combat-results.txt](validation/1201forge/combat-results.txt)、[combat-log-excerpt.txt](validation/1201forge/combat-log-excerpt.txt)，截图汇总见 [combat-contact.png](validation/1201forge/combat-contact.png)。画面实际确认吐息、弹幕、环波、长枪与护盾等已显示；黑洞等样本可能遮挡视野，截图不替代每个时刻的人工完整观察。
+本次在用户世界的独立副本中启动真实 Minecraft 客户端与内置服务端，使用临时验证工具触发技能，依靠正常实体 tick、网络传输、客户端事件及世界渲染完成回归。12 个技能加转阶段护盾共 13 项运行完成，客户端实收战斗消息 0–16 全部类型，运行日志无 ERROR。逐项结果与关键日志见 [combat-results.txt](validation/1201forge/combat-results.txt)、[combat-log-excerpt.txt](validation/1201forge/combat-log-excerpt.txt)，截图汇总见 [combat-contact.png](validation/1201forge/combat-contact.png)。该轮确认了世界特效重新绘制，但错误地遗漏了截图中的黑白遮罩，不能据此称屏幕效果验收通过。黑白遮罩已在下节单独定位与修复。
 
 该回归是实际单人游戏的客户端/内置服务端链路，不是外部专用服务端联机或多人压力测试。未改动用户原世界。测试类、自动触发、自动相机与截图代码仅在 D:/AI临时文件/edp1201-combat 临时目录中，干净重建的正式 JAR 已核对不包含这些类。旧版 JAR 在同一临时目录备份。
+
+## 二阶段爆炸后黑白遮罩修复（2026-10-16）
+用户指出的黑心白边画面是异常的原版暗角贴图覆盖，不是正常爆炸效果。之前实战截图出现过同样问题，阶段执行与网络收包成功没有证明 GUI 合成正确。
+
+根因：Forge 1.20.1 的 ScreenFx 注册在原版 VIGNETTE 前。屏幕 shader 未声明 blend，ShaderInstance.apply 将 BlendMode 缓存切为 opaque；原版暗角先设置 ZERO/ONE_MINUS_SRC_COLOR 特殊混合，但 position_tex shader 的标准 alpha blend 随后因缓存差异重设混合，导致暗角原始贴图覆盖场景。修复前真实像素采样复现：暗角前中心亮度 204，暗角后 0；持续效果中也是 190→0。
+
+修复：为 edp_screen.json 声明与原版 position_tex 一致的标准 alpha blend，避免 opaque→alpha 缓存切换破坏暗角特殊混合。屏幕 shader 输出 alpha 固定1，因此仍完整输出原有场景后处理；没有删除或削弱白闪、色差、暗角计算与衰减。ScreenFx 绘制前 flush，保存 shader/texture/color，使用 finally 恢复 GUI 状态并清除场景拷贝有效标记；增加受 debugLogging 控制的英文诊断。
+
+回归在真实客户端和独立世界副本中进行，包括基线、短白闪、持续色差/暗角、消退以及生命值降到49%触发的真实二阶段护盾爆炸。修复后共采样2206帧，暗角覆盖导致中心异常变黑的判定为0；白闪时中心204→204，持续效果与消退时190→190。阶段二实际复活/关联十颗水晶并引爆五颗，收到了爆炸消息。场景和 HUD 保持可见，原有后处理仍存在。
+
+证据：[修复前结果](validation/1201forge/screen-before-results.txt)、[修复后结果](validation/1201forge/screen-after-results.txt)、[关键日志](validation/1201forge/screen-log-excerpt.txt)、[同场景前后截图](validation/1201forge/screen-before-after.png)、[二阶段爆炸后截图](validation/1201forge/screen-stage-two.png)。像素判定针对本次黑白覆盖故障，不代表所有画面或其它模组兼容性已穷尽测试。
+
+测试程序保留在 D:/AI临时文件/edp1201-screenbug；正式 JAR 经 clean build 并检查不含任何验证类和展示类。已运行的旧客户端需要重启才能完整应用修复。

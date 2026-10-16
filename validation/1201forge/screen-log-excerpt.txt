@@ -1,0 +1,38 @@
+[09:36:55] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST before baseline centerBefore=190 centerAfter=190
+[09:36:57] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST before baseline frames=48 blackMaskFrames=0
+[09:36:57] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST before flash centerBefore=204 centerAfter=0
+[09:36:59] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST before flash frames=69 blackMaskFrames=61
+[09:36:59] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST before sustain centerBefore=190 centerAfter=0
+[09:37:03] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST before sustain frames=120 blackMaskFrames=116
+[09:37:03] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST before recovered centerBefore=190 centerAfter=0
+[09:37:03] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST before recovered centerBefore=190 centerAfter=0
+[09:37:03] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST before recovered centerBefore=190 centerAfter=0
+[09:37:06] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST before recovered frames=311 blackMaskFrames=189
+[09:37:06] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST before completed
+[09:38:15] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after baseline centerBefore=13 centerAfter=13
+[09:38:15] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after baseline centerBefore=13 centerAfter=13
+[09:38:15] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after baseline centerBefore=13 centerAfter=13
+[09:38:15] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after baseline centerBefore=13 centerAfter=13
+[09:38:15] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after baseline centerBefore=13 centerAfter=13
+[09:38:17] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after baseline frames=65 blackMaskFrames=0
+[09:38:17] [Render thread/INFO] [co.en.EnderDragonPlus/]: Screen FX active: flash=0.35, chromatic=0.35, vignette=0.0, sceneTexture=59
+[09:38:17] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after flash centerBefore=204 centerAfter=204
+[09:38:17] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after flash centerBefore=204 centerAfter=204
+[09:38:19] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after flash frames=107 blackMaskFrames=0
+[09:38:19] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after sustain centerBefore=190 centerAfter=190
+[09:38:19] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after sustain centerBefore=190 centerAfter=190
+[09:38:19] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after sustain centerBefore=190 centerAfter=190
+[09:38:23] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after sustain frames=270 blackMaskFrames=0
+[09:38:23] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after recovered centerBefore=190 centerAfter=190
+[09:38:23] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after recovered centerBefore=190 centerAfter=190
+[09:38:23] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after recovered centerBefore=190 centerAfter=190
+[09:38:23] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after recovered centerBefore=190 centerAfter=190
+[09:38:23] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after recovered centerBefore=190 centerAfter=190
+[09:38:26] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after recovered frames=359 blackMaskFrames=0
+[09:38:26] [Server thread/INFO] [co.en.EnderDragonPlus/]: Dragon 426 entered stage two at health ratio 0.49
+[09:38:26] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after stage_two centerBefore=31 centerAfter=31
+[09:38:26] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after stage_two centerBefore=4 centerAfter=4
+[09:38:33] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 5 for entity 426
+[09:38:33] [Server thread/INFO] [co.en.EnderDragonPlus/]: Shield ascension exploded 5 of 10 end crystals
+[09:38:41] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after stage_two frames=1405 blackMaskFrames=0
+[09:38:41] [Render thread/INFO] [co.en.EnderDragonPlus/]: SCREEN_TEST after completed
