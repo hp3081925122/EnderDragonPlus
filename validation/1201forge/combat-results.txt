@@ -1,0 +1,13 @@
+PASS VOID_BREATH real world ticks=111
+PASS METEOR real world ticks=101
+PASS RIFT_DASH real world ticks=101
+PASS BLACK_HOLE real world ticks=163
+PASS SCALE_BARRAGE real world ticks=101
+PASS FINAL_NOVA real world ticks=140
+PASS VOID_RUPTURE real world ticks=101
+PASS WING_BLADES real world ticks=101
+PASS ENDER_STORM real world ticks=101
+PASS RING_WAVES real world ticks=101
+PASS VOID_LANCES real world ticks=101
+PASS CATACLYSM_DIVE real world ticks=101
+PASS SHIELD_ASCENSION real world ticks=140

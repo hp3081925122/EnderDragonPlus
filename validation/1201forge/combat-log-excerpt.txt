@@ -1,0 +1,59 @@
+[09:24:12] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST joined real client world and prepared dragon 82
+[09:24:13] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 11 for entity 82
+[09:24:13] [Render thread/INFO] [co.en.EnderDragonPlus/]: VFX world render active: instances=1, capturedViewM33=1.0, eventPoseM33=0.0, shaderReady=true
+[09:24:18] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST started index=0 phase=EdpVoidBreath (#11)
+[09:24:18] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 0 for entity 82
+[09:24:20] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 1 for entity 82
+[09:24:20] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 10 for entity 82
+[09:24:20] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 15 for entity 160
+[09:24:22] [IO-Worker-16/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST screenshot VOID_BREATH
+[09:24:24] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST PASS VOID_BREATH real world ticks=111
+[09:24:24] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST started index=1 phase=EdpMeteor (#12)
+[09:24:25] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 2 for entity 82
+[09:24:27] [IO-Worker-16/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST screenshot METEOR
+[09:24:29] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST PASS METEOR real world ticks=101
+[09:24:29] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST started index=2 phase=EdpRiftDash (#13)
+[09:24:29] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 3 for entity 82
+[09:24:32] [IO-Worker-16/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST screenshot RIFT_DASH
+[09:24:34] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST PASS RIFT_DASH real world ticks=101
+[09:24:34] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST started index=3 phase=EdpBlackHole (#15)
+[09:24:34] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 6 for entity 82
+[09:24:37] [IO-Worker-16/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST screenshot BLACK_HOLE
+[09:24:42] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST PASS BLACK_HOLE real world ticks=163
+[09:24:42] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST started index=4 phase=EdpScaleBarrage (#16)
+[09:24:43] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 7 for entity 82
+[09:24:46] [IO-Worker-16/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST screenshot SCALE_BARRAGE
+[09:24:48] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 8 for entity 82
+[09:24:49] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST PASS SCALE_BARRAGE real world ticks=101
+[09:24:49] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST started index=5 phase=EdpFinalNova (#17)
+[09:24:50] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 9 for entity 82
+[09:24:53] [IO-Worker-17/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST screenshot FINAL_NOVA
+[09:24:56] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST PASS FINAL_NOVA real world ticks=140
+[09:24:56] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST started index=6 phase=EdpVoidRupture (#18)
+[09:24:57] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 12 for entity 82
+[09:25:00] [IO-Worker-17/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST screenshot VOID_RUPTURE
+[09:25:01] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST PASS VOID_RUPTURE real world ticks=101
+[09:25:01] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST started index=7 phase=EdpWingBlades (#19)
+[09:25:05] [IO-Worker-17/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST screenshot WING_BLADES
+[09:25:06] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST PASS WING_BLADES real world ticks=101
+[09:25:06] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST started index=8 phase=EdpEnderStorm (#20)
+[09:25:07] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 13 for entity 82
+[09:25:10] [IO-Worker-17/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST screenshot ENDER_STORM
+[09:25:11] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST PASS ENDER_STORM real world ticks=101
+[09:25:11] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST started index=9 phase=EdpRingWaves (#21)
+[09:25:13] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 14 for entity 82
+[09:25:13] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 5 for entity 82
+[09:25:15] [IO-Worker-17/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST screenshot RING_WAVES
+[09:25:16] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST PASS RING_WAVES real world ticks=101
+[09:25:16] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST started index=10 phase=EdpVoidLances (#22)
+[09:25:20] [IO-Worker-17/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST screenshot VOID_LANCES
+[09:25:21] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST PASS VOID_LANCES real world ticks=101
+[09:25:22] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST started index=11 phase=EdpCataclysmDive (#23)
+[09:25:23] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 16 for entity 82
+[09:25:25] [IO-Worker-17/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST screenshot CATACLYSM_DIVE
+[09:25:27] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST PASS CATACLYSM_DIVE real world ticks=101
+[09:25:27] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST started index=12 phase=EdpShieldAscension (#14)
+[09:25:28] [Render thread/INFO] [co.en.EnderDragonPlus/]: Received vfx packet type 4 for entity 82
+[09:25:30] [IO-Worker-16/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST screenshot SHIELD_ASCENSION
+[09:25:34] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST PASS SHIELD_ASCENSION real world ticks=140
+[09:25:34] [Server thread/INFO] [co.en.EnderDragonPlus/]: COMBAT_TEST completed 13 skills in real client world

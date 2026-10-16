@@ -53,5 +53,14 @@
 
 ## 产物
 - `build/libs/enderdragonplus-1.20.1-forge-0.0.1.jar`
-- SHA-256：`177608ee3763d2241bfb49dffd155fb6be951d7ebe54d03aa40adc0475a3d23f`
+- SHA-256：`58c597f6b8b423c7ff877d2a9840be8bd4f9fc978135f457cd193f573eed0141`
 - 仅完成本地迁移和验证，没有上传 CurseForge 或推送远程。
+
+## 实际战斗无特效修复与回归（2026-10-16）
+此前离线预览没有覆盖 Forge 的真实世界事件参数，实际战斗暴露了矩阵适配错误。Forge 1.20.1 的 GameRenderer 在 AFTER_LEVEL 中传入局部投影栈，原实现误将该矩阵乘入 ModelView，导致自定义技能特效再次投影并被裁剪或错位。不是技能或贴图缺失，也不是已完成真实联机全量验收。
+
+现在在 AFTER_WEATHER 保存正确的相机视图矩阵，仍在 AFTER_LEVEL 的原有顺序绘制，保留完整场景拷贝与畸变；切换世界时清空快照有效状态。增加受 debugLogging 配置控制的英文首帧渲染诊断。实际日志显示 capturedViewM33=1.0、eventPoseM33=0.0、shaderReady=true。
+
+本次在用户世界的独立副本中启动真实 Minecraft 客户端与内置服务端，使用临时验证工具触发技能，依靠正常实体 tick、网络传输、客户端事件及世界渲染完成回归。12 个技能加转阶段护盾共 13 项运行完成，客户端实收战斗消息 0–16 全部类型，运行日志无 ERROR。逐项结果与关键日志见 [combat-results.txt](validation/1201forge/combat-results.txt)、[combat-log-excerpt.txt](validation/1201forge/combat-log-excerpt.txt)，截图汇总见 [combat-contact.png](validation/1201forge/combat-contact.png)。画面实际确认吐息、弹幕、环波、长枪与护盾等已显示；黑洞等样本可能遮挡视野，截图不替代每个时刻的人工完整观察。
+
+该回归是实际单人游戏的客户端/内置服务端链路，不是外部专用服务端联机或多人压力测试。未改动用户原世界。测试类、自动触发、自动相机与截图代码仅在 D:/AI临时文件/edp1201-combat 临时目录中，干净重建的正式 JAR 已核对不包含这些类。旧版 JAR 在同一临时目录备份。

@@ -1,6 +1,8 @@
 package com.enderdragonplus.client;
 
 import com.enderdragonplus.EdpConfig;
+import com.enderdragonplus.EnderDragonPlus;
+import org.joml.Matrix4f;
 import com.enderdragonplus.client.vfx.BarrageVfx;
 import com.enderdragonplus.client.vfx.BreathBeamVfx;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -15,6 +17,9 @@ public final class VfxManager {
     private static final List<VfxInstance> INSTANCES = new ArrayList<>();
     private static final List<VfxInstance> PENDING = new ArrayList<>();
     private static ClientLevel lastLevel;
+    private static final Matrix4f worldView = new Matrix4f();
+    private static boolean worldViewReady;
+    private static boolean renderLogged;
 
     private VfxManager() {
     }
@@ -24,6 +29,8 @@ public final class VfxManager {
     }
 
     public static void clear() {
+        worldViewReady = false;
+        renderLogged = false;
         INSTANCES.clear();
         PENDING.clear();
         BarrageVfx.clearAll();
@@ -52,14 +59,23 @@ public final class VfxManager {
     }
 
     public static void render(RenderLevelStageEvent event) {
-        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_LEVEL || INSTANCES.isEmpty()) {
+        if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_WEATHER) {
+            worldView.set(event.getPoseStack().last().pose());
+            worldViewReady = true;
+            return;
+        }
+        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_LEVEL || INSTANCES.isEmpty() || !worldViewReady) {
             return;
         }
         float partialTick = event.getPartialTick();
+        if (EdpConfig.DEBUG_LOGGING.get() && !renderLogged) {
+            renderLogged = true;
+            EnderDragonPlus.LOGGER.info("VFX world render active: instances={}, capturedViewM33={}, eventPoseM33={}, shaderReady={}", INSTANCES.size(), worldView.m33(), event.getPoseStack().last().pose().m33(), EdpShaders.energy != null);
+        }
         Draw.setup(event.getCamera());
         PoseStack stack = RenderSystem.getModelViewStack();
         stack.pushPose();
-        stack.mulPoseMatrix(event.getPoseStack().last().pose());
+        stack.mulPoseMatrix(worldView);
         RenderSystem.applyModelViewMatrix();
         RenderSystem.enableBlend();
         RenderSystem.enableDepthTest();
