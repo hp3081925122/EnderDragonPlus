@@ -8,10 +8,13 @@ import com.enderdragonplus.dragon.SkillType;
 import com.enderdragonplus.dragon.phase.SkillPhase;
 import com.enderdragonplus.network.VfxPayload;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
@@ -21,8 +24,12 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.entity.EntityTypeTest;
@@ -48,6 +55,15 @@ public final class ShowcaseDirector {
     private static final double SPAWN_MAX = 44.0;
     private static final int GAP = 30;
     private static final int STEP_TIMEOUT = 900;
+    private static final int SCENE_MOB_CAP = 160;
+    private static final int SCENE_BURST = 60;
+    private static final double SCENE_SPAWN_MIN = 14.0;
+    private static final double SCENE_SPAWN_MAX = 48.0;
+    private static final double SCENE_ALTITUDE = 30.0;
+    private static final double ANCHOR_RANGE = 36.0;
+    private static final double ANCHOR_HEIGHT = 12.0;
+    private static final double CLEAR_RADIUS = 128.0;
+    private static final Set<SkillType> FREE_ROAM = EnumSet.of(SkillType.RIFT_DASH, SkillType.CATACLYSM_DIVE);
     private static final EntityType<?>[] MOBS = {
             EntityType.ZOMBIE, EntityType.HUSK, EntityType.SKELETON, EntityType.STRAY, EntityType.SPIDER,
             EntityType.CREEPER, EntityType.PILLAGER, EntityType.VINDICATOR, EntityType.WITCH, EntityType.ZOMBIE_VILLAGER
@@ -70,6 +86,9 @@ public final class ShowcaseDirector {
     private boolean started;
     private int ticks;
     private int mobCount;
+    private boolean scene;
+    private Vec3 anchor;
+    private boolean freeRoam;
 
     private ShowcaseDirector(ServerPlayer player, EnderDragon dragon, boolean captions) {
         this.player = player;
@@ -116,21 +135,65 @@ public final class ShowcaseDirector {
     }
 
     public static void start(ServerPlayer player, EnderDragon dragon, boolean captions) {
+        replaceActive();
+        ShowcaseDirector director = new ShowcaseDirector(player, dragon, captions);
+        player.setGameMode(GameType.SPECTATOR);
+        activate(director);
+    }
+
+    public static boolean startScene(ServerPlayer player, boolean captions) {
+        replaceActive();
+        ServerLevel level = player.serverLevel();
+        clearArena(level, player);
+        Vec3 anchor = new Vec3(player.getX(), player.getY() + SCENE_ALTITUDE, player.getZ());
+        EnderDragon dragon = EntityType.ENDER_DRAGON.create(level);
+        if (dragon == null) {
+            return false;
+        }
+        dragon.moveTo(anchor.x, anchor.y, anchor.z, player.getYRot() + 180.0F, 0.0F);
+        ((DragonBrainHolder) dragon).edp$getBrain().markEnhanced();
+        level.addFreshEntity(dragon);
+        ShowcaseDirector director = new ShowcaseDirector(player, dragon, captions);
+        director.scene = true;
+        director.anchor = anchor;
+        activate(director);
+        director.spawnBurst(level);
+        return true;
+    }
+
+    private static void replaceActive() {
         if (active != null) {
             active.stop("restarted");
         }
-        ShowcaseDirector director = new ShowcaseDirector(player, dragon, captions);
+    }
+
+    private static void activate(ShowcaseDirector director) {
+        ServerPlayer player = director.player;
+        EnderDragon dragon = director.dragon;
         active = director;
         player.serverLevel().getGameRules().getRule(GameRules.RULE_DOMOBLOOT).set(false, player.server);
-        player.setGameMode(GameType.SPECTATOR);
         director.brain.setShowcase(true);
         dragon.setHealth(dragon.getMaxHealth());
         director.brain.resetStages();
         dragon.getPhaseManager().setPhase(EnderDragonPhase.HOLDING_PATTERN);
         CompoundTag data = new CompoundTag();
         data.putInt("action", ACTION_START);
-        data.putBoolean("captions", captions);
+        data.putBoolean("captions", director.captions);
         director.send(data);
+    }
+
+    private static void clearArena(ServerLevel level, ServerPlayer player) {
+        AABB box = player.getBoundingBox().inflate(CLEAR_RADIUS);
+        for (Entity entity : level.getEntities(EntityTypeTest.forClass(Entity.class), box, ShowcaseDirector::isClearable)) {
+            entity.discard();
+        }
+    }
+
+    private static boolean isClearable(Entity entity) {
+        if (entity instanceof Player) {
+            return false;
+        }
+        return entity instanceof LivingEntity || entity instanceof ItemEntity || entity instanceof Projectile || entity instanceof EndCrystal;
     }
 
     public static void stopActive(String reason) {
@@ -170,9 +233,13 @@ public final class ShowcaseDirector {
         for (Mob mob : mobs) {
             mob.discard();
         }
+        if (this.scene && this.dragon.isAlive()) {
+            this.dragon.discard();
+        }
         level.getGameRules().getRule(GameRules.RULE_DOMOBLOOT).set(this.previousLoot, level.getServer());
         if (!this.player.isRemoved()) {
             this.player.setGameMode(this.previousMode);
+            this.player.sendSystemMessage(Component.literal("展示结束（" + reason + "），召唤的末影龙与小怪已清理"));
         }
         CompoundTag data = new CompoundTag();
         data.putInt("action", ACTION_STOP);
@@ -185,6 +252,9 @@ public final class ShowcaseDirector {
             return;
         }
         this.ticks++;
+        if (this.scene) {
+            this.keepAnchor();
+        }
         this.spawnMobs();
         if (this.index >= this.steps.size()) {
             this.stop("finished");
@@ -219,11 +289,30 @@ public final class ShowcaseDirector {
         }
     }
 
+    private void keepAnchor() {
+        if (this.freeRoam) {
+            return;
+        }
+        double dx = this.dragon.getX() - this.anchor.x;
+        double dz = this.dragon.getZ() - this.anchor.z;
+        double horizontal = Math.hypot(dx, dz);
+        double dy = this.dragon.getY() - this.anchor.y;
+        if (horizontal <= ANCHOR_RANGE && Math.abs(dy) <= ANCHOR_HEIGHT) {
+            return;
+        }
+        double scale = Math.min(1.0, ANCHOR_RANGE / Math.max(horizontal, 1.0E-6));
+        double x = this.anchor.x + dx * scale;
+        double z = this.anchor.z + dz * scale;
+        double y = Mth.clamp(this.dragon.getY(), this.anchor.y - ANCHOR_HEIGHT, this.anchor.y + ANCHOR_HEIGHT);
+        this.dragon.moveTo(x, y, z, this.dragon.getYRot(), this.dragon.getXRot());
+    }
+
     private void next() {
         this.index++;
         this.timer = 0;
         this.gap = 0;
         this.started = false;
+        this.freeRoam = false;
     }
 
     private void beginSkill(SkillType type) {
@@ -238,6 +327,7 @@ public final class ShowcaseDirector {
         }
         this.started = true;
         this.timer = 0;
+        this.freeRoam = FREE_ROAM.contains(type);
         int shot = SHOT_NORMAL;
         if (type == SkillType.RIFT_DASH || type == SkillType.WING_BLADES || type == SkillType.VOID_BREATH || type == SkillType.VOID_LANCES) {
             shot = SHOT_CLOSE;
@@ -246,7 +336,6 @@ public final class ShowcaseDirector {
         }
         this.brain.startSkill(type, target);
         this.caption(title(type), subtitle(type), shot);
-
     }
 
     private void beginStage(int stage) {
@@ -284,36 +373,61 @@ public final class ShowcaseDirector {
         return best;
     }
 
+    private void spawnBurst(ServerLevel level) {
+        for (int i = 0; i < SCENE_BURST; i++) {
+            this.spawnOne(level, SCENE_SPAWN_MIN, SCENE_SPAWN_MAX);
+        }
+    }
+
     private void spawnMobs() {
         ServerLevel level = this.player.serverLevel();
+        int cap = MOB_CAP;
+        double min = SPAWN_MIN;
+        double max = SPAWN_MAX;
+        if (this.scene) {
+            cap = SCENE_MOB_CAP;
+            min = SCENE_SPAWN_MIN;
+            max = SCENE_SPAWN_MAX;
+        }
         if (this.ticks % 20 == 1) {
             this.mobCount = level.getEntitiesOfClass(Mob.class, new AABB(this.dragon.blockPosition()).inflate(160.0, 128.0, 160.0), e -> e.getTags().contains(DragonBrain.SHOWCASE_TAG)).size();
         }
-        if (this.ticks % SPAWN_INTERVAL != 0 || this.mobCount >= MOB_CAP) {
+        if (this.ticks % SPAWN_INTERVAL != 0 || this.mobCount >= cap) {
             return;
         }
-        RandomSource random = this.dragon.getRandom();
-        double reference = this.brain.arenaCenter().y;
-        for (int i = 0; i < SPAWN_BATCH && this.mobCount < MOB_CAP; i++) {
-            for (int attempt = 0; attempt < 6; attempt++) {
-                float angle = random.nextFloat() * Mth.TWO_PI;
-                double radius = SPAWN_MIN + random.nextDouble() * (SPAWN_MAX - SPAWN_MIN);
-                int x = Mth.floor(this.dragon.getX() + Mth.cos(angle) * radius);
-                int z = Mth.floor(this.dragon.getZ() + Mth.sin(angle) * radius);
-                int y = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z);
-                if (y <= level.getMinBuildHeight() + 1 || y > reference + 8.0 || y < reference - 20.0) {
-                    continue;
-                }
-                EntityType<?> type = MOBS[random.nextInt(MOBS.length)];
-                Entity entity = type.spawn(level, new BlockPos(x, y, z), MobSpawnType.COMMAND);
-                if (entity instanceof Mob mob) {
-                    mob.addTag(DragonBrain.SHOWCASE_TAG);
-                    mob.setPersistenceRequired();
-                    this.mobCount++;
-                }
-                break;
-            }
+        for (int i = 0; i < SPAWN_BATCH && this.mobCount < cap; i++) {
+            this.spawnOne(level, min, max);
         }
+    }
+
+    private void spawnOne(ServerLevel level, double min, double max) {
+        RandomSource random = this.dragon.getRandom();
+        for (int attempt = 0; attempt < 6; attempt++) {
+            float angle = random.nextFloat() * Mth.TWO_PI;
+            double radius = min + random.nextDouble() * (max - min);
+            int x = Mth.floor(this.dragon.getX() + Mth.cos(angle) * radius);
+            int z = Mth.floor(this.dragon.getZ() + Mth.sin(angle) * radius);
+            int y = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z);
+            if (y <= level.getMinBuildHeight() + 1 || !this.validGround(y)) {
+                continue;
+            }
+            EntityType<?> type = MOBS[random.nextInt(MOBS.length)];
+            Entity entity = type.spawn(level, new BlockPos(x, y, z), MobSpawnType.COMMAND);
+            if (entity instanceof Mob mob) {
+                mob.addTag(DragonBrain.SHOWCASE_TAG);
+                mob.setPersistenceRequired();
+                this.mobCount++;
+            }
+            return;
+        }
+    }
+
+    private boolean validGround(int y) {
+        if (this.scene) {
+            return true;
+        }
+        double reference = this.brain.arenaCenter().y;
+        return y <= reference + 8.0 && y >= reference - 20.0;
     }
 
     private static String title(SkillType type) {

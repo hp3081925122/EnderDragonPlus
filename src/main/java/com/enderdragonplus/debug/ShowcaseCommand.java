@@ -28,6 +28,10 @@ public final class ShowcaseCommand {
                         .executes(context -> start(context, true))
                         .then(Commands.argument("captions", BoolArgumentType.bool())
                                 .executes(context -> start(context, BoolArgumentType.getBool(context, "captions")))))
+                .then(Commands.literal("scene")
+                        .executes(context -> scene(context, false))
+                        .then(Commands.argument("captions", BoolArgumentType.bool())
+                                .executes(context -> scene(context, BoolArgumentType.getBool(context, "captions")))))
                 .then(Commands.literal("stop")
                         .executes(context -> {
                             if (!ShowcaseDirector.running()) {
@@ -49,6 +53,16 @@ public final class ShowcaseCommand {
         }
         ShowcaseDirector.start(player, dragon, captions);
         context.getSource().sendSuccess(() -> Component.literal("展示开始，字幕：" + captions + "。请不要操作鼠标键盘，/edpshowcase stop 可中止"), false);
+        return 1;
+    }
+
+    private static int scene(CommandContext<CommandSourceStack> context, boolean captions) throws CommandSyntaxException {
+        ServerPlayer player = context.getSource().getPlayerOrException();
+        if (!ShowcaseDirector.startScene(player, captions)) {
+            context.getSource().sendFailure(Component.literal("末影龙召唤失败"));
+            return 0;
+        }
+        context.getSource().sendSuccess(() -> Component.literal("场地已清空，末影龙已在上空就位，展示开始（字幕：" + captions + "）。镜头不会被锁定，请开始录制；结束后会提示清理完成"), false);
         return 1;
     }
 
