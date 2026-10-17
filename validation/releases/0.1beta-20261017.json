@@ -1,0 +1,20 @@
+{
+  "minecraft": "1.20.1",
+  "loader": "forge",
+  "jar": "E:\\模组\\发cf的模组\\AAA生物\\末影龙增强\\1.20.1-forge-EnderDragonPlus\\build\\libs\\enderdragonplus-1.20.1-forge-0.1beta.jar",
+  "displayName": "1.20.1-forge-EnderDragonPlus-0.1beta",
+  "sha256": "C8F6BB8D2CE2986546565AD65D1942202DC9C8EFA90E5FFA4AF82BF73CF50659",
+  "releaseType": "beta",
+  "project_id": 1746626,
+  "file_id": 9223335,
+  "status": "Approved",
+  "commit": "cf68fe9",
+  "file_url": "https://www.curseforge.com/minecraft/mc-mods/ender-dragon-plus/files/9223335",
+  "environment": [
+    "Client",
+    "Server"
+  ],
+  "java": 17,
+  "upload_route": "author browser",
+  "auto_publish_after_approval": true
+}
