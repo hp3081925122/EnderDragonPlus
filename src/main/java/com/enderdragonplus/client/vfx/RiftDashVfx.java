@@ -22,6 +22,9 @@ public final class RiftDashVfx extends VfxInstance {
     private final Vec3 dir;
     private final Vec3 side;
     private final List<double[]> samples = new ArrayList<>();
+    private final Vec3[][] trailPoints = new Vec3[TRAIL_LIFE + 2][];
+    private final float[][] trailWidths = new float[TRAIL_LIFE + 2][];
+    private final float[][] trailAlphas = new float[TRAIL_LIFE + 2][];
 
     public RiftDashVfx(int dragonId, Vec3 from, Vec3 to, int telegraph, int dash, int color) {
         super(telegraph + dash + TRAIL_LIFE + 10);
@@ -141,9 +144,14 @@ public final class RiftDashVfx extends VfxInstance {
         }
         if (this.samples.size() >= 2 && Draw.begin(Draw.Material.ENERGY)) {
             int n = this.samples.size();
-            Vec3[] points = new Vec3[n];
-            float[] widths = new float[n];
-            float[] alphas = new float[n];
+            if (this.trailPoints[n] == null) {
+                this.trailPoints[n] = new Vec3[n];
+                this.trailWidths[n] = new float[n];
+                this.trailAlphas[n] = new float[n];
+            }
+            Vec3[] points = this.trailPoints[n];
+            float[] widths = this.trailWidths[n];
+            float[] alphas = this.trailAlphas[n];
             for (int i = 0; i < n; i++) {
                 double[] s = this.samples.get(i);
                 float f = 1.0F - Mth.clamp((t - (float) s[4]) / TRAIL_LIFE, 0.0F, 1.0F);

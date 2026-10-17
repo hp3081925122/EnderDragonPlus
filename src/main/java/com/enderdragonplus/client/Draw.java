@@ -22,6 +22,17 @@ import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 
 public final class Draw {
+    private static long terrainFrame = Long.MIN_VALUE;
+    private static double terrainX, terrainZ;
+    private static float terrainHalf, terrainLift;
+    private static int terrainCells;
+    private static final RandomSource LIGHTNING_RANDOM = RandomSource.create(0L);
+    private static long frameNumber;
+
+    public static long frameNumber() {
+        return frameNumber;
+    }
+
     private static final Int2ObjectOpenHashMap<float[][]> CIRCLES = new Int2ObjectOpenHashMap<>();
     private static final Long2ObjectOpenHashMap<float[]> SPHERES = new Long2ObjectOpenHashMap<>();
     private static double[] sideX = new double[16];
@@ -120,6 +131,7 @@ public final class Draw {
     }
 
     public static void setup(Camera camera) {
+        frameNumber++;
         camPos = camera.getPosition();
         cx = camPos.x;
         cy = camPos.y;
@@ -249,10 +261,31 @@ public final class Draw {
         double step = half * 2.0 / cells;
         double x0 = center.x - half;
         double z0 = center.z - half;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                heights[i * n + j] = level.getHeight(Heightmap.Types.MOTION_BLOCKING, Mth.floor(x0 + i * step), Mth.floor(z0 + j * step)) + lift;
+        if (terrainFrame != frameNumber || terrainX != center.x || terrainZ != center.z
+                || terrainHalf != half || terrainCells != cells || terrainLift != lift) {
+            int previousX = Integer.MIN_VALUE;
+            for (int i = 0; i < n; i++) {
+                int x = Mth.floor(x0 + i * step);
+                int previousZ = Integer.MIN_VALUE;
+                for (int j = 0; j < n; j++) {
+                    int z = Mth.floor(z0 + j * step);
+                    if (i > 0 && x == previousX) {
+                        heights[i * n + j] = heights[(i - 1) * n + j];
+                    } else if (j > 0 && z == previousZ) {
+                        heights[i * n + j] = heights[i * n + j - 1];
+                    } else {
+                        heights[i * n + j] = level.getHeight(Heightmap.Types.MOTION_BLOCKING, x, z) + lift;
+                    }
+                    previousZ = z;
+                }
+                previousX = x;
             }
+            terrainFrame = frameNumber;
+            terrainX = center.x;
+            terrainZ = center.z;
+            terrainHalf = half;
+            terrainCells = cells;
+            terrainLift = lift;
         }
         double floor = center.y - 16.0;
         normal(0.0, 1.0, 0.0);
@@ -413,7 +446,8 @@ public final class Draw {
     }
 
     public static Vec3[] lightning(Vec3 a, Vec3 b, int segments, double jitter, long seed) {
-        RandomSource random = RandomSource.create(seed);
+        RandomSource random = LIGHTNING_RANDOM;
+        random.setSeed(seed);
         Vec3 axis = b.subtract(a);
         Vec3[] base = basis(axis);
         Vec3[] points = new Vec3[segments + 1];

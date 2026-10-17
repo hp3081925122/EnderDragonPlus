@@ -16,6 +16,11 @@ public final class StormStrikeVfx extends VfxInstance {
     private final float radius;
     private final int color;
     private final long seed;
+    private long boltFrame = Long.MIN_VALUE;
+    private Vec3[] mainBolt;
+    private Vec3[] branchBolt;
+    private final float[] boltWidths = new float[15];
+    private final float[] boltAlphas = new float[15];
 
     public StormStrikeVfx(Vec3 pos, int delay, float radius, int color) {
         super(delay + BOLT + 4);
@@ -39,10 +44,9 @@ public final class StormStrikeVfx extends VfxInstance {
         }
     }
 
-    private void bolt(Vec3 top, Vec3 bottom, int segments, double jitter, long seed, float width, float alpha, int rgb) {
-        Vec3[] points = Draw.lightning(top, bottom, segments, jitter, seed);
-        float[] widths = new float[points.length];
-        float[] alphas = new float[points.length];
+    private void bolt(Vec3[] points, float width, float alpha, int rgb) {
+        float[] widths = this.boltWidths;
+        float[] alphas = this.boltAlphas;
         for (int i = 0; i < points.length; i++) {
             widths[i] = width * (0.6F + 0.4F * i / (points.length - 1));
             alphas[i] = alpha;
@@ -75,11 +79,16 @@ public final class StormStrikeVfx extends VfxInstance {
         Vec3 top = this.pos.add(0.0, HEIGHT, 0.0);
         int hot = Draw.mix(this.color, 0xFFFFFF, 0.7F);
         if (Draw.begin(Draw.Material.ENERGY)) {
-            this.bolt(top, this.pos, 14, 2.2, frame, 1.6F * a + 0.3F, a, this.color);
-            this.bolt(top, this.pos, 14, 2.2, frame, 0.5F * a + 0.15F, a, hot);
-            Vec3 branchFrom = top.lerp(this.pos, 0.45);
-            float side = Mth.sin(frame * 1.7F) * 6.0F;
-            this.bolt(branchFrom, branchFrom.add(side, -10.0, Mth.cos(frame * 1.3F) * 6.0F), 6, 1.2, frame + 7L, 0.6F * a, a * 0.7F, this.color);
+            if (this.mainBolt == null || this.boltFrame != frame) {
+                this.mainBolt = Draw.lightning(top, this.pos, 14, 2.2, frame);
+                Vec3 branchFrom = top.lerp(this.pos, 0.45);
+                float side = Mth.sin(frame * 1.7F) * 6.0F;
+                this.branchBolt = Draw.lightning(branchFrom, branchFrom.add(side, -10.0, Mth.cos(frame * 1.3F) * 6.0F), 6, 1.2, frame + 7L);
+                this.boltFrame = frame;
+            }
+            this.bolt(this.mainBolt, 1.6F * a + 0.3F, a, this.color);
+            this.bolt(this.mainBolt, 0.5F * a + 0.15F, a, hot);
+            this.bolt(this.branchBolt, 0.6F * a, a * 0.7F, this.color);
             Draw.end(6.0F, 1.0F, 2.5F, Draw.MODE_STRIP);
         }
         if (Draw.begin(Draw.Material.ENERGY)) {

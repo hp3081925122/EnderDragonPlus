@@ -1,0 +1,314 @@
+[
+  {
+    "case": "four0-BLACK_HOLE",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "91f034ffeaa28de6645552f394fc2fcb13903a1f110b8e81fb3aacfa79f12663",
+    "opt_sha256": "91f034ffeaa28de6645552f394fc2fcb13903a1f110b8e81fb3aacfa79f12663"
+  },
+  {
+    "case": "four0-CATACLYSM_DIVE",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "f32feb6efa09e12b6f71873847ca305f05f86fffb45e5b2cc7401e01c36953c0",
+    "opt_sha256": "f32feb6efa09e12b6f71873847ca305f05f86fffb45e5b2cc7401e01c36953c0"
+  },
+  {
+    "case": "four0-ENDER_STORM",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "47be0a943b5a1c5d7cad2b3ecbf3992cccd9f7ea12f9225efdd7d2f0a3e781fb",
+    "opt_sha256": "47be0a943b5a1c5d7cad2b3ecbf3992cccd9f7ea12f9225efdd7d2f0a3e781fb"
+  },
+  {
+    "case": "four0-FINAL_NOVA",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "6c0f97d1ca87a52c3cb9d3fe22da94653c6b3d2f0b2d8af665d364890067f031",
+    "opt_sha256": "6c0f97d1ca87a52c3cb9d3fe22da94653c6b3d2f0b2d8af665d364890067f031"
+  },
+  {
+    "case": "four0-METEOR",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "cf33ac44c8e373fc05fb2e915d9bce8f9214785105492f61846c02b8231f2d63",
+    "opt_sha256": "cf33ac44c8e373fc05fb2e915d9bce8f9214785105492f61846c02b8231f2d63"
+  },
+  {
+    "case": "four0-RIFT_DASH",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "29512f9cfb729f03b258c1a539bdf2c672a140633397b77f6a31d3eaee25cdb6",
+    "opt_sha256": "29512f9cfb729f03b258c1a539bdf2c672a140633397b77f6a31d3eaee25cdb6"
+  },
+  {
+    "case": "four0-RING_WAVES",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "469652a48d0b9acef62ae4e100808bdda346d8a736589062a34b440d716dacc9",
+    "opt_sha256": "469652a48d0b9acef62ae4e100808bdda346d8a736589062a34b440d716dacc9"
+  },
+  {
+    "case": "four0-SCALE_BARRAGE",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "04b0434ee90921992a8958d15460f21b4a39865dfd472a60c1a697e20433164d",
+    "opt_sha256": "04b0434ee90921992a8958d15460f21b4a39865dfd472a60c1a697e20433164d"
+  },
+  {
+    "case": "four0-SHIELD",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "9a7a46ff80924c7ee13fddce2bdc11cfceced6d3317d916c4e2ada6ede73e803",
+    "opt_sha256": "9a7a46ff80924c7ee13fddce2bdc11cfceced6d3317d916c4e2ada6ede73e803"
+  },
+  {
+    "case": "four0-VOID_BREATH",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "3094b5911626e9bd07c5a10627f0cbe5faa75b8b0e68d325b9c841f0787d1fb2",
+    "opt_sha256": "3094b5911626e9bd07c5a10627f0cbe5faa75b8b0e68d325b9c841f0787d1fb2"
+  },
+  {
+    "case": "four0-VOID_LANCES",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "e948ed59baf6a1b7b0f5182a6a4da8fc1d57f667114960d2ad70f2acc0721c8f",
+    "opt_sha256": "e948ed59baf6a1b7b0f5182a6a4da8fc1d57f667114960d2ad70f2acc0721c8f"
+  },
+  {
+    "case": "four0-VOID_RUPTURE",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "f3f8d39b902e8546d89ba5867fc17835505cb30d1a32a5d5731550111f7e0bef",
+    "opt_sha256": "f3f8d39b902e8546d89ba5867fc17835505cb30d1a32a5d5731550111f7e0bef"
+  },
+  {
+    "case": "four0-WING_BLADES",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "1bddb5b0b4281339390ed0561dd6dc2be7f70c2b32c9150246343f9b42b94ede",
+    "opt_sha256": "1bddb5b0b4281339390ed0561dd6dc2be7f70c2b32c9150246343f9b42b94ede"
+  },
+  {
+    "case": "four512-BLACK_HOLE",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "91f034ffeaa28de6645552f394fc2fcb13903a1f110b8e81fb3aacfa79f12663",
+    "opt_sha256": "91f034ffeaa28de6645552f394fc2fcb13903a1f110b8e81fb3aacfa79f12663"
+  },
+  {
+    "case": "four512-CATACLYSM_DIVE",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "f32feb6efa09e12b6f71873847ca305f05f86fffb45e5b2cc7401e01c36953c0",
+    "opt_sha256": "f32feb6efa09e12b6f71873847ca305f05f86fffb45e5b2cc7401e01c36953c0"
+  },
+  {
+    "case": "four512-ENDER_STORM",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "47be0a943b5a1c5d7cad2b3ecbf3992cccd9f7ea12f9225efdd7d2f0a3e781fb",
+    "opt_sha256": "47be0a943b5a1c5d7cad2b3ecbf3992cccd9f7ea12f9225efdd7d2f0a3e781fb"
+  },
+  {
+    "case": "four512-FINAL_NOVA",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "6c0f97d1ca87a52c3cb9d3fe22da94653c6b3d2f0b2d8af665d364890067f031",
+    "opt_sha256": "6c0f97d1ca87a52c3cb9d3fe22da94653c6b3d2f0b2d8af665d364890067f031"
+  },
+  {
+    "case": "four512-METEOR",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "cf33ac44c8e373fc05fb2e915d9bce8f9214785105492f61846c02b8231f2d63",
+    "opt_sha256": "cf33ac44c8e373fc05fb2e915d9bce8f9214785105492f61846c02b8231f2d63"
+  },
+  {
+    "case": "four512-RIFT_DASH",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "29512f9cfb729f03b258c1a539bdf2c672a140633397b77f6a31d3eaee25cdb6",
+    "opt_sha256": "29512f9cfb729f03b258c1a539bdf2c672a140633397b77f6a31d3eaee25cdb6"
+  },
+  {
+    "case": "four512-RING_WAVES",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "469652a48d0b9acef62ae4e100808bdda346d8a736589062a34b440d716dacc9",
+    "opt_sha256": "469652a48d0b9acef62ae4e100808bdda346d8a736589062a34b440d716dacc9"
+  },
+  {
+    "case": "four512-SCALE_BARRAGE",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "fe7ab63d38087ffdf057f444d5cc3243c5a29ead9da2f00baef887042a909f4a",
+    "opt_sha256": "fe7ab63d38087ffdf057f444d5cc3243c5a29ead9da2f00baef887042a909f4a"
+  },
+  {
+    "case": "four512-SHIELD",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "9a7a46ff80924c7ee13fddce2bdc11cfceced6d3317d916c4e2ada6ede73e803",
+    "opt_sha256": "9a7a46ff80924c7ee13fddce2bdc11cfceced6d3317d916c4e2ada6ede73e803"
+  },
+  {
+    "case": "four512-VOID_BREATH",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "3094b5911626e9bd07c5a10627f0cbe5faa75b8b0e68d325b9c841f0787d1fb2",
+    "opt_sha256": "3094b5911626e9bd07c5a10627f0cbe5faa75b8b0e68d325b9c841f0787d1fb2"
+  },
+  {
+    "case": "four512-VOID_LANCES",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "e948ed59baf6a1b7b0f5182a6a4da8fc1d57f667114960d2ad70f2acc0721c8f",
+    "opt_sha256": "e948ed59baf6a1b7b0f5182a6a4da8fc1d57f667114960d2ad70f2acc0721c8f"
+  },
+  {
+    "case": "four512-VOID_RUPTURE",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "f3f8d39b902e8546d89ba5867fc17835505cb30d1a32a5d5731550111f7e0bef",
+    "opt_sha256": "f3f8d39b902e8546d89ba5867fc17835505cb30d1a32a5d5731550111f7e0bef"
+  },
+  {
+    "case": "four512-WING_BLADES",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "cad40e7d69e4dd70809d2f57d9588e873c8912489ad9a79d39efe211d8827772",
+    "opt_sha256": "cad40e7d69e4dd70809d2f57d9588e873c8912489ad9a79d39efe211d8827772"
+  },
+  {
+    "case": "solo0-BLACK_HOLE",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "b8c442cb53f568e529a890ba2fbb754cd8249ca433fa289638b3d8798aaa7df5",
+    "opt_sha256": "b8c442cb53f568e529a890ba2fbb754cd8249ca433fa289638b3d8798aaa7df5"
+  },
+  {
+    "case": "solo0-CATACLYSM_DIVE",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "f32feb6efa09e12b6f71873847ca305f05f86fffb45e5b2cc7401e01c36953c0",
+    "opt_sha256": "f32feb6efa09e12b6f71873847ca305f05f86fffb45e5b2cc7401e01c36953c0"
+  },
+  {
+    "case": "solo0-ENDER_STORM",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "a725265b4a292d7a0bab7bbd4200bc73c15d9acafdc457dc232847ab045ef8f2",
+    "opt_sha256": "a725265b4a292d7a0bab7bbd4200bc73c15d9acafdc457dc232847ab045ef8f2"
+  },
+  {
+    "case": "solo0-FINAL_NOVA",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "6c0f97d1ca87a52c3cb9d3fe22da94653c6b3d2f0b2d8af665d364890067f031",
+    "opt_sha256": "6c0f97d1ca87a52c3cb9d3fe22da94653c6b3d2f0b2d8af665d364890067f031"
+  },
+  {
+    "case": "solo0-METEOR",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "3e9fdd9e72f18af184400f9be4cb39c6cfae2957b7570ef2f151e0919ed2dcba",
+    "opt_sha256": "3e9fdd9e72f18af184400f9be4cb39c6cfae2957b7570ef2f151e0919ed2dcba"
+  },
+  {
+    "case": "solo0-RIFT_DASH",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "29512f9cfb729f03b258c1a539bdf2c672a140633397b77f6a31d3eaee25cdb6",
+    "opt_sha256": "29512f9cfb729f03b258c1a539bdf2c672a140633397b77f6a31d3eaee25cdb6"
+  },
+  {
+    "case": "solo0-RING_WAVES",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "469652a48d0b9acef62ae4e100808bdda346d8a736589062a34b440d716dacc9",
+    "opt_sha256": "469652a48d0b9acef62ae4e100808bdda346d8a736589062a34b440d716dacc9"
+  },
+  {
+    "case": "solo0-SCALE_BARRAGE",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "6585737a148855130ae5e7168606175b3b47d61569635922d573a7fb99655f5b",
+    "opt_sha256": "6585737a148855130ae5e7168606175b3b47d61569635922d573a7fb99655f5b"
+  },
+  {
+    "case": "solo0-SHIELD",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "9a7a46ff80924c7ee13fddce2bdc11cfceced6d3317d916c4e2ada6ede73e803",
+    "opt_sha256": "9a7a46ff80924c7ee13fddce2bdc11cfceced6d3317d916c4e2ada6ede73e803"
+  },
+  {
+    "case": "solo0-VOID_BREATH",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "3094b5911626e9bd07c5a10627f0cbe5faa75b8b0e68d325b9c841f0787d1fb2",
+    "opt_sha256": "3094b5911626e9bd07c5a10627f0cbe5faa75b8b0e68d325b9c841f0787d1fb2"
+  },
+  {
+    "case": "solo0-VOID_LANCES",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "1c924903b9a45d74ed813a8226153af8b5f240d8159e3b6a8cac1d1505b15504",
+    "opt_sha256": "1c924903b9a45d74ed813a8226153af8b5f240d8159e3b6a8cac1d1505b15504"
+  },
+  {
+    "case": "solo0-VOID_RUPTURE",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "a2209a8ac474a9423d6985a5e0701786222412c4c789d95d88f4ffd3b132e334",
+    "opt_sha256": "a2209a8ac474a9423d6985a5e0701786222412c4c789d95d88f4ffd3b132e334"
+  },
+  {
+    "case": "solo0-WING_BLADES",
+    "width": 960,
+    "height": 540,
+    "different_pixels": 0,
+    "base_sha256": "1bddb5b0b4281339390ed0561dd6dc2be7f70c2b32c9150246343f9b42b94ede",
+    "opt_sha256": "1bddb5b0b4281339390ed0561dd6dc2be7f70c2b32c9150246343f9b42b94ede"
+  }
+]

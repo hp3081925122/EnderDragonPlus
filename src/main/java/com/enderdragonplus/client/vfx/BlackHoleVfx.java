@@ -10,6 +10,9 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 
 public final class BlackHoleVfx extends VfxInstance {
+    private final Vec3[] streakPoints = new Vec3[STREAK_POINTS];
+    private final float[] streakWidths = new float[STREAK_POINTS];
+    private final float[] streakAlphas = new float[STREAK_POINTS];
     private static final int STREAKS = 18;
     private static final int STREAK_POINTS = 8;
     private static final Vec3 DISK_AXIS = new Vec3(0.22, 1.0, 0.14).normalize();
@@ -114,9 +117,9 @@ public final class BlackHoleVfx extends VfxInstance {
                 float phase = (t * 0.025F + i * 0.618F) % 1.0F;
                 float baseAngle = i * 2.39996F;
                 float tilt = ((i * 37) % 11 - 5) * 0.06F;
-                Vec3[] points = new Vec3[STREAK_POINTS];
-                float[] widths = new float[STREAK_POINTS];
-                float[] alphas = new float[STREAK_POINTS];
+                Vec3[] points = this.streakPoints;
+                float[] widths = this.streakWidths;
+                float[] alphas = this.streakAlphas;
                 for (int j = 0; j < STREAK_POINTS; j++) {
                     float p = Math.max(0.0F, phase - j * 0.025F);
                     float r = (this.radius * 0.9F * (1.0F - p) + 2.4F) * s;

@@ -1,0 +1,82 @@
+PASS server trace solo0/VOID_BREATH phaseTicks=130 packets=91 bytes=4849 damageEvents=13 successful=0
+PASS server trace solo0/METEOR phaseTicks=50 packets=1 bytes=868 damageEvents=0 successful=0
+PASS server trace solo0/RIFT_DASH phaseTicks=114 packets=3 bytes=411 damageEvents=3 successful=0
+PASS server trace solo0/BLACK_HOLE phaseTicks=192 packets=1 bytes=117 damageEvents=0 successful=0
+PASS server trace solo0/SCALE_BARRAGE phaseTicks=86 packets=6 bytes=1406 damageEvents=2 successful=0
+PASS server trace solo0/FINAL_NOVA phaseTicks=139 packets=1 bytes=249 damageEvents=1 successful=0
+PASS server trace solo0/VOID_RUPTURE phaseTicks=74 packets=1 bytes=2543 damageEvents=0 successful=0
+PASS server trace solo0/WING_BLADES phaseTicks=94 packets=8 bytes=888 damageEvents=4 successful=0
+PASS server trace solo0/ENDER_STORM phaseTicks=114 packets=16 bytes=1440 damageEvents=0 successful=0
+PASS server trace solo0/RING_WAVES phaseTicks=114 packets=2 bytes=256 damageEvents=0 successful=0
+PASS server trace solo0/VOID_LANCES phaseTicks=117 packets=7 bytes=924 damageEvents=6 successful=0
+PASS server trace solo0/CATACLYSM_DIVE phaseTicks=80 packets=2 bytes=230 damageEvents=0 successful=0
+PASS server trace solo0/SHIELD phaseTicks=139 packets=14 bytes=1305 damageEvents=0 successful=0
+PASS server trace four0/VOID_BREATH phaseTicks=130 packets=91 bytes=4849 damageEvents=13 successful=0
+PASS server trace four0/METEOR phaseTicks=50 packets=1 bytes=868 damageEvents=2 successful=0
+PASS server trace four0/RIFT_DASH phaseTicks=114 packets=3 bytes=411 damageEvents=3 successful=0
+PASS server trace four0/BLACK_HOLE phaseTicks=192 packets=1 bytes=117 damageEvents=0 successful=0
+PASS server trace four0/SCALE_BARRAGE phaseTicks=86 packets=10 bytes=1522 damageEvents=6 successful=0
+PASS server trace four0/FINAL_NOVA phaseTicks=139 packets=1 bytes=249 damageEvents=4 successful=0
+PASS server trace four0/VOID_RUPTURE phaseTicks=74 packets=1 bytes=10031 damageEvents=1 successful=0
+PASS server trace four0/WING_BLADES phaseTicks=94 packets=8 bytes=888 damageEvents=4 successful=0
+PASS server trace four0/ENDER_STORM phaseTicks=114 packets=16 bytes=1440 damageEvents=1 successful=0
+PASS server trace four0/RING_WAVES phaseTicks=114 packets=2 bytes=256 damageEvents=0 successful=0
+PASS server trace four0/VOID_LANCES phaseTicks=117 packets=7 bytes=924 damageEvents=5 successful=0
+PASS server trace four0/CATACLYSM_DIVE phaseTicks=80 packets=2 bytes=230 damageEvents=0 successful=0
+PASS server trace four0/SHIELD phaseTicks=139 packets=14 bytes=1305 damageEvents=0 successful=0
+PASS server trace four512/VOID_BREATH phaseTicks=130 packets=91 bytes=4849 damageEvents=254 successful=220
+PASS server trace four512/METEOR phaseTicks=50 packets=1 bytes=868 damageEvents=132 successful=130
+PASS server trace four512/RIFT_DASH phaseTicks=114 packets=3 bytes=411 damageEvents=9 successful=6
+PASS server trace four512/BLACK_HOLE phaseTicks=192 packets=1 bytes=117 damageEvents=139 successful=139
+PASS server trace four512/SCALE_BARRAGE phaseTicks=86 packets=54 bytes=2798 damageEvents=50 successful=38
+PASS server trace four512/FINAL_NOVA phaseTicks=139 packets=1 bytes=249 damageEvents=510 successful=506
+PASS server trace four512/VOID_RUPTURE phaseTicks=74 packets=1 bytes=10031 damageEvents=180 successful=154
+PASS server trace four512/WING_BLADES phaseTicks=94 packets=20 bytes=1236 damageEvents=16 successful=6
+PASS server trace four512/ENDER_STORM phaseTicks=114 packets=16 bytes=1440 damageEvents=206 successful=205
+PASS server trace four512/RING_WAVES phaseTicks=114 packets=2 bytes=256 damageEvents=792 successful=792
+PASS server trace four512/VOID_LANCES phaseTicks=117 packets=7 bytes=924 damageEvents=6 successful=1
+PASS server trace four512/CATACLYSM_DIVE phaseTicks=80 packets=2 bytes=230 damageEvents=230 successful=230
+PASS server trace four512/SHIELD phaseTicks=139 packets=14 bytes=1305 damageEvents=273 successful=273
+PASS all 39 server cases captured and compared
+GPU AMD Radeon (TM) Graphics
+VIEWPORT 960x540
+PASS client timeline solo0/VOID_BREATH ticks=291 peakVertices=1996 peakTick=30 exact geometry and screen state every tick
+PASS client timeline solo0/METEOR ticks=211 peakVertices=11476 peakTick=70 exact geometry and screen state every tick
+PASS client timeline solo0/RIFT_DASH ticks=275 peakVertices=104 peakTick=27 exact geometry and screen state every tick
+PASS client timeline solo0/BLACK_HOLE ticks=353 peakVertices=9408 peakTick=181 exact geometry and screen state every tick
+PASS client timeline solo0/SCALE_BARRAGE ticks=247 peakVertices=8024 peakTick=86 exact geometry and screen state every tick
+PASS client timeline solo0/FINAL_NOVA ticks=300 peakVertices=12952 peakTick=14 exact geometry and screen state every tick
+PASS client timeline solo0/VOID_RUPTURE ticks=235 peakVertices=13776 peakTick=49 exact geometry and screen state every tick
+PASS client timeline solo0/WING_BLADES ticks=255 peakVertices=5432 peakTick=56 exact geometry and screen state every tick
+PASS client timeline solo0/ENDER_STORM ticks=275 peakVertices=2908 peakTick=91 exact geometry and screen state every tick
+PASS client timeline solo0/RING_WAVES ticks=275 peakVertices=6144 peakTick=93 exact geometry and screen state every tick
+PASS client timeline solo0/VOID_LANCES ticks=278 peakVertices=5992 peakTick=76 exact geometry and screen state every tick
+PASS client timeline solo0/CATACLYSM_DIVE ticks=241 peakVertices=5956 peakTick=62 exact geometry and screen state every tick
+PASS client timeline solo0/SHIELD ticks=300 peakVertices=9840 peakTick=3 exact geometry and screen state every tick
+PASS client timeline four0/VOID_BREATH ticks=291 peakVertices=1996 peakTick=30 exact geometry and screen state every tick
+PASS client timeline four0/METEOR ticks=211 peakVertices=9496 peakTick=65 exact geometry and screen state every tick
+PASS client timeline four0/RIFT_DASH ticks=275 peakVertices=104 peakTick=27 exact geometry and screen state every tick
+PASS client timeline four0/BLACK_HOLE ticks=353 peakVertices=9408 peakTick=181 exact geometry and screen state every tick
+PASS client timeline four0/SCALE_BARRAGE ticks=247 peakVertices=10876 peakTick=86 exact geometry and screen state every tick
+PASS client timeline four0/FINAL_NOVA ticks=300 peakVertices=12952 peakTick=14 exact geometry and screen state every tick
+PASS client timeline four0/VOID_RUPTURE ticks=235 peakVertices=55104 peakTick=49 exact geometry and screen state every tick
+PASS client timeline four0/WING_BLADES ticks=255 peakVertices=5432 peakTick=56 exact geometry and screen state every tick
+PASS client timeline four0/ENDER_STORM ticks=275 peakVertices=2908 peakTick=91 exact geometry and screen state every tick
+PASS client timeline four0/RING_WAVES ticks=275 peakVertices=6144 peakTick=93 exact geometry and screen state every tick
+PASS client timeline four0/VOID_LANCES ticks=278 peakVertices=5992 peakTick=76 exact geometry and screen state every tick
+PASS client timeline four0/CATACLYSM_DIVE ticks=241 peakVertices=5956 peakTick=62 exact geometry and screen state every tick
+PASS client timeline four0/SHIELD ticks=300 peakVertices=9840 peakTick=3 exact geometry and screen state every tick
+PASS client timeline four512/VOID_BREATH ticks=291 peakVertices=1996 peakTick=30 exact geometry and screen state every tick
+PASS client timeline four512/METEOR ticks=211 peakVertices=9496 peakTick=65 exact geometry and screen state every tick
+PASS client timeline four512/RIFT_DASH ticks=275 peakVertices=104 peakTick=27 exact geometry and screen state every tick
+PASS client timeline four512/BLACK_HOLE ticks=353 peakVertices=9408 peakTick=181 exact geometry and screen state every tick
+PASS client timeline four512/SCALE_BARRAGE ticks=247 peakVertices=45300 peakTick=76 exact geometry and screen state every tick
+PASS client timeline four512/FINAL_NOVA ticks=300 peakVertices=12952 peakTick=14 exact geometry and screen state every tick
+PASS client timeline four512/VOID_RUPTURE ticks=235 peakVertices=55104 peakTick=49 exact geometry and screen state every tick
+PASS client timeline four512/WING_BLADES ticks=255 peakVertices=14420 peakTick=22 exact geometry and screen state every tick
+PASS client timeline four512/ENDER_STORM ticks=275 peakVertices=2908 peakTick=91 exact geometry and screen state every tick
+PASS client timeline four512/RING_WAVES ticks=275 peakVertices=6144 peakTick=93 exact geometry and screen state every tick
+PASS client timeline four512/VOID_LANCES ticks=278 peakVertices=5992 peakTick=76 exact geometry and screen state every tick
+PASS client timeline four512/CATACLYSM_DIVE ticks=241 peakVertices=5956 peakTick=62 exact geometry and screen state every tick
+PASS client timeline four512/SHIELD ticks=300 peakVertices=9840 peakTick=3 exact geometry and screen state every tick
+PASS all 39 client timelines A/B completed
