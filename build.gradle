@@ -86,6 +86,7 @@ def metadataProperties = new Properties()
 file('gradle.properties').withReader('UTF-8') { metadataProperties.load(it) }
 
 tasks.named('processResources', ProcessResources).configure {
+    filteringCharset = 'UTF-8'
     def replaceProperties = [
             minecraft_version: project.minecraft_version,
             minecraft_version_range: project.minecraft_version_range,
