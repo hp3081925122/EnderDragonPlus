@@ -17,7 +17,6 @@ public final class EdpConfig {
     public static final ModConfigSpec.IntValue ACTION_INTERVAL;
     public static final ModConfigSpec.DoubleValue RAGE_COOLDOWN_MULTIPLIER;
     public static final ModConfigSpec.DoubleValue COMBAT_RANGE;
-    public static final ModConfigSpec.BooleanValue DEBUG_LOGGING;
 
     public static final Skill VOID_BREATH;
     public static final ModConfigSpec.DoubleValue BREATH_SCORCH_MULTIPLIER;
@@ -61,6 +60,7 @@ public final class EdpConfig {
     public static final ModConfigSpec.DoubleValue DIVE_RADIUS;
 
     public static final ModConfigSpec.BooleanValue ENABLE_DISTORTION;
+    public static final ModConfigSpec.BooleanValue OPTIMIZE_HEAVY_EFFECTS;
     public static final ModConfigSpec.BooleanValue ENABLE_SCREEN_EFFECTS;
     public static final ModConfigSpec.DoubleValue CAMERA_SHAKE;
 
@@ -78,7 +78,6 @@ public final class EdpConfig {
         ACTION_INTERVAL = b.comment("两次技能之间的最短间隔（tick）").defineInRange("actionInterval", 120, 0, 10000);
         RAGE_COOLDOWN_MULTIPLIER = b.comment("狂暴阶段的冷却倍率").defineInRange("rageCooldownMultiplier", 0.6, 0.05, 10.0);
         COMBAT_RANGE = b.comment("索敌范围").defineInRange("combatRange", 150.0, 16.0, 1024.0);
-        DEBUG_LOGGING = b.comment("输出技能调试日志").define("debugLogging", false);
         b.pop();
 
         b.comment("技能配置").push("skills");
@@ -132,6 +131,7 @@ public final class EdpConfig {
 
         ModConfigSpec.Builder c = new ModConfigSpec.Builder();
         c.comment("客户端特效").push("vfx");
+        OPTIMIZE_HEAVY_EFFECTS = c.comment("优化大型技能的几何细分、重叠光层及视野外冲击波和印记；龙鳞弹幕保持原样 / Optimize heavy effects; scale barrage remains unchanged").define("optimizeHeavyEffects", true);
         ENABLE_DISTORTION = c.comment("启用空间扭曲特效（需要拷贝画面，光影包下可能失效）").define("enableDistortion", true);
         ENABLE_SCREEN_EFFECTS = c.comment("启用全屏色差、白闪与暗角").define("enableScreenEffects", true);
         CAMERA_SHAKE = c.comment("镜头震动强度倍率").defineInRange("cameraShake", 1.0, 0.0, 5.0);

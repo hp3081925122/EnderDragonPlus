@@ -37,7 +37,6 @@ public final class NoiseTexture {
         }
         texture = new DynamicTexture(() -> "EDP noise", image);
         Minecraft.getInstance().getTextureManager().register(EnderDragonPlus.id("noise"), texture);
-        EnderDragonPlus.LOGGER.debug("Generated Ender Dragon Plus noise texture");
     }
 
     private static float[] fbm(int basePeriod, int octaves, long seed) {

@@ -1,12 +1,13 @@
 package com.enderdragonplus.dragon;
 
 import com.enderdragonplus.EdpConfig;
-import com.enderdragonplus.EnderDragonPlus;
 import com.enderdragonplus.dragon.hazard.Hazard;
 import com.enderdragonplus.dragon.phase.SkillPhase;
 import com.enderdragonplus.network.VfxPayload;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import net.minecraft.world.level.entity.EntityTypeTest;
 import javax.annotation.Nullable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -33,6 +34,9 @@ public final class DragonBrain {
     public static final int COLOR_STAGE_TWO = 0xE04CF0;
     public static final int COLOR_STAGE_THREE = 0xFF2E5A;
 
+    private static final EntityTypeTest<Entity, LivingEntity> VICTIM_TYPE = EntityTypeTest.forClass(LivingEntity.class);
+    private final List<LivingEntity> firstVictimResult = new ArrayList<>(1);
+    private final Predicate<LivingEntity> victimFilter;
     private final EnderDragon dragon;
     private final int[] cooldowns = new int[SkillType.values().length];
     private final List<Hazard> hazards = new ArrayList<>();
@@ -45,6 +49,7 @@ public final class DragonBrain {
 
     public DragonBrain(EnderDragon dragon) {
         this.dragon = dragon;
+        this.victimFilter = e -> e != this.dragon && e.isAlive() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(e);
     }
 
     public EnderDragon dragon() {
@@ -77,7 +82,6 @@ public final class DragonBrain {
         float ratio = this.dragon.getHealth() / this.dragon.getMaxHealth();
         if (!this.stageTwoReached && ratio <= EdpConfig.STAGE_TWO_HEALTH.get()) {
             this.stageTwoReached = true;
-            EnderDragonPlus.LOGGER.info("Dragon {} entered stage two at health ratio {}", this.dragon.getId(), ratio);
             PacketDistributor.sendToPlayersTrackingEntity(this.dragon, this.stagePayload());
             this.dragon.getPhaseManager().setPhase(DragonPhases.SHIELD_ASCENSION);
             return;
@@ -85,7 +89,6 @@ public final class DragonBrain {
         if (!this.stageThreeReached && ratio <= EdpConfig.STAGE_THREE_HEALTH.get()) {
             this.stageThreeReached = true;
             this.stageTwoReached = true;
-            EnderDragonPlus.LOGGER.info("Dragon {} entered stage three at health ratio {}", this.dragon.getId(), ratio);
             PacketDistributor.sendToPlayersTrackingEntity(this.dragon, this.stagePayload());
             if (EdpConfig.FINAL_NOVA.enabled.get()) {
                 this.startSkill(SkillType.FINAL_NOVA, this.pickTarget());
@@ -180,9 +183,7 @@ public final class DragonBrain {
         double multiplier = this.cooldownMultiplier();
         this.cooldowns[type.ordinal()] = (int) (type.config().cooldown.get() * multiplier);
         this.globalCooldown = (int) (EdpConfig.ACTION_INTERVAL.get() * multiplier);
-        if (EdpConfig.DEBUG_LOGGING.get()) {
-            EnderDragonPlus.LOGGER.info("Dragon {} casts {} at stage {} targeting {}", this.dragon.getId(), type, this.stage(), candidate);
-        }
+
         this.dragon.getPhaseManager().setPhase(type.phase());
     }
 
@@ -260,7 +261,7 @@ public final class DragonBrain {
     }
 
     public List<LivingEntity> victims(AABB box) {
-        return this.level().getEntitiesOfClass(LivingEntity.class, box, e -> e != this.dragon && e.isAlive() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(e));
+        return this.level().getEntitiesOfClass(LivingEntity.class, box, this.victimFilter);
     }
 
     public Vec3 arenaCenter() {
@@ -323,5 +324,14 @@ public final class DragonBrain {
         this.stageTwoReached = tag.getBooleanOr("EdpStageTwo", false);
         this.stageThreeReached = tag.getBooleanOr("EdpStageThree", false);
         this.enhanced = tag.getBooleanOr("EdpEnhanced", false);
+    }
+
+    @Nullable
+    public LivingEntity firstVictim(AABB box) {
+        if (!this.firstVictimResult.isEmpty()) {
+            this.firstVictimResult.clear();
+        }
+        this.level().getEntities(VICTIM_TYPE, box, this.victimFilter, this.firstVictimResult, 1);
+        return this.firstVictimResult.isEmpty() ? null : this.firstVictimResult.get(0);
     }
 }

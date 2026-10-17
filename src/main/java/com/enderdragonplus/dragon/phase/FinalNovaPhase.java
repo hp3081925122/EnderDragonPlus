@@ -1,7 +1,6 @@
 package com.enderdragonplus.dragon.phase;
 
 import com.enderdragonplus.EdpConfig;
-import com.enderdragonplus.EnderDragonPlus;
 import com.enderdragonplus.dragon.DragonBrain;
 import com.enderdragonplus.dragon.DragonPhases;
 import com.enderdragonplus.network.VfxPayload;
@@ -126,9 +125,7 @@ public class FinalNovaPhase extends SkillPhase {
             brain.knockFrom(victim, this.center, 1.4, 0.8);
             hits++;
         }
-        if (EdpConfig.DEBUG_LOGGING.get()) {
-            EnderDragonPlus.LOGGER.info("Final nova detonated, {} victims outside safe zones", hits);
-        }
+
         brain.playSound(this.dragon.position(), SoundEvents.GENERIC_EXPLODE.value(), 16.0F, 0.4F);
         brain.playSound(this.dragon.position(), SoundEvents.WARDEN_SONIC_BOOM, 16.0F, 0.5F);
     }

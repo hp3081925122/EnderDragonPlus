@@ -15,7 +15,6 @@ public final class ClientModEvents {
     public static void onRegisterShaders(RegisterRenderPipelinesEvent event) {
         EdpShaders.register(event);
         event.registerPipeline(EdpDragonRenderTypes.EYES);
-        EnderDragonPlus.LOGGER.debug("Registered additive dragon glow with fog fade instead of fog color mixing");
     }
 
     @SubscribeEvent

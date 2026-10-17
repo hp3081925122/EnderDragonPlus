@@ -1,6 +1,5 @@
 package com.enderdragonplus.mixin;
 
-import com.enderdragonplus.EnderDragonPlus;
 import com.enderdragonplus.dragon.DragonBrainHolder;
 import com.enderdragonplus.item.EndingCrystalItem;
 import java.util.List;
@@ -41,7 +40,6 @@ public abstract class EndDragonFightMixin {
                 break;
             }
         }
-        EnderDragonPlus.LOGGER.debug("Dragon respawn finishing, ending crystal present: {}", this.edp$pendingEnhanced);
     }
 
     @Inject(method = "setRespawnStage", at = @At("RETURN"))
@@ -53,7 +51,6 @@ public abstract class EndDragonFightMixin {
     private Entity edp$markDragon(Entity entity) {
         if (this.edp$pendingEnhanced && entity instanceof DragonBrainHolder holder) {
             holder.edp$getBrain().markEnhanced();
-            EnderDragonPlus.LOGGER.info("Enhanced ender dragon summoned with ending crystal");
         }
         return entity;
     }

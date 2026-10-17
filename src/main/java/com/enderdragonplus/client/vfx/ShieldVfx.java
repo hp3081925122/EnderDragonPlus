@@ -14,6 +14,8 @@ import net.minecraft.world.phys.Vec3;
 
 public final class ShieldVfx extends VfxInstance {
     private final int dragonId;
+    private final float[] arcWidths = new float[25];
+    private final float[] arcAlphas = new float[25];
     private final float radius;
     private final int color;
     private final List<Vec3> crystals = new ArrayList<>();
@@ -106,8 +108,8 @@ public final class ShieldVfx extends VfxInstance {
                 for (int strand = 0; strand < 2; strand++) {
                     seed = seed * 6364136223846793005L + 1442695040888963407L;
                     Vec3[] points = Draw.lightning(crystal, target, segments, 1.6 - strand * 0.6, seed);
-                    float[] widths = new float[points.length];
-                    float[] alphas = new float[points.length];
+                    float[] widths = this.arcWidths;
+                    float[] alphas = this.arcAlphas;
                     for (int i = 0; i < points.length; i++) {
                         widths[i] = (1.2F - strand * 0.6F) * s;
                         alphas[i] = s;

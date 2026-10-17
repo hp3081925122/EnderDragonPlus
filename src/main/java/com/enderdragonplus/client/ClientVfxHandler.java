@@ -1,7 +1,6 @@
 package com.enderdragonplus.client;
 
 import com.enderdragonplus.EdpConfig;
-import com.enderdragonplus.EnderDragonPlus;
 import com.enderdragonplus.client.vfx.BarrageVfx;
 import com.enderdragonplus.client.vfx.BlackHoleVfx;
 import com.enderdragonplus.client.vfx.BreathBeamVfx;
@@ -29,9 +28,7 @@ public final class ClientVfxHandler {
     public static void handle(VfxPayload payload) {
         CompoundTag d = payload.data();
         int id = payload.entityId();
-        if (EdpConfig.DEBUG_LOGGING.get()) {
-            EnderDragonPlus.LOGGER.info("Received vfx packet type {} for entity {}", payload.kind(), id);
-        }
+
         switch (payload.kind()) {
             case VfxPayload.BREATH_CHARGE -> VfxManager.add(new BreathChargeVfx(id, d.getIntOr("duration", 0), d.getIntOr("color", 0)));
             case VfxPayload.BREATH_BEAM -> VfxManager.add(new BreathBeamVfx(id, VfxPayload.getVec(d, "aim"), d.getIntOr("duration", 0), d.getDoubleOr("length", 0.0), d.getIntOr("color", 0)));

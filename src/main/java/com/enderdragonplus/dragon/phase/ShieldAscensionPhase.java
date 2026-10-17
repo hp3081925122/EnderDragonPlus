@@ -1,7 +1,6 @@
 package com.enderdragonplus.dragon.phase;
 
 import com.enderdragonplus.EdpConfig;
-import com.enderdragonplus.EnderDragonPlus;
 import com.enderdragonplus.dragon.DragonBrain;
 import com.enderdragonplus.dragon.DragonPhases;
 import com.enderdragonplus.network.VfxPayload;
@@ -127,7 +126,6 @@ public class ShieldAscensionPhase extends SkillPhase {
             crystal.setBeamTarget(beam);
             this.crystals.add(crystal);
         }
-        EnderDragonPlus.LOGGER.info("Shield ascension revived {} end crystals, {} linked in total", revived, this.crystals.size());
     }
 
     private void explodeCrystals() {
@@ -146,7 +144,6 @@ public class ShieldAscensionPhase extends SkillPhase {
             EndCrystal crystal = alive.get(i);
             crystal.hurtServer(this.brain().level(), crystal.damageSources().generic(), 1.0F);
         }
-        EnderDragonPlus.LOGGER.info("Shield ascension exploded {} of {} end crystals", count, alive.size());
     }
 
     @Override

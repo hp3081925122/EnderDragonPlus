@@ -3,6 +3,7 @@ package com.enderdragonplus.client;
 import com.enderdragonplus.dragon.EdpMath;
 import javax.annotation.Nullable;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
@@ -84,5 +85,13 @@ public abstract class VfxInstance {
             return Double.MAX_VALUE;
         }
         return Minecraft.getInstance().player.position().distanceTo(pos);
+    }
+
+    protected static int heavyDetail(int value) {
+        return com.enderdragonplus.EdpConfig.OPTIMIZE_HEAVY_EFFECTS.get() ? Math.max(8, value * 3 / 4) : value;
+    }
+
+    public boolean visible(Frustum frustum) {
+        return true;
     }
 }

@@ -1,7 +1,6 @@
 package com.enderdragonplus.dragon.phase;
 
 import com.enderdragonplus.EdpConfig;
-import com.enderdragonplus.EnderDragonPlus;
 import com.enderdragonplus.dragon.DragonBrain;
 import com.enderdragonplus.dragon.DragonPhases;
 import com.enderdragonplus.dragon.hazard.BlastHazard;
@@ -133,9 +132,7 @@ public class VoidRupturePhase extends SkillPhase {
         data.putInt("color", brain.stageColor());
         brain.sendVfx(VfxPayload.RUPTURE, data);
         brain.playSound(origin, SoundEvents.EVOKER_CAST_SPELL, 5.0F, 0.6F);
-        if (EdpConfig.DEBUG_LOGGING.get()) {
-            EnderDragonPlus.LOGGER.info("Void rupture cast with {} points, last delay {}", points.size(), maxDelay);
-        }
+
     }
 
     @Override

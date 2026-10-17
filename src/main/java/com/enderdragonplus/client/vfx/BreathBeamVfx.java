@@ -16,6 +16,9 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 
 public final class BreathBeamVfx extends VfxInstance {
+    private final Vec3[] helixPoints = new Vec3[HELIX_POINTS];
+    private final float[] helixWidths = new float[HELIX_POINTS];
+    private final float[] helixAlphas = new float[HELIX_POINTS];
     private static final Map<Integer, BreathBeamVfx> ACTIVE = new HashMap<>();
     private static final int HELIX_POINTS = 24;
     private static final Vec3 UP = new Vec3(0.0, 1.0, 0.0);
@@ -27,6 +30,21 @@ public final class BreathBeamVfx extends VfxInstance {
     private Vec3 prevAim;
     private Vec3 lastOrigin;
     private boolean aimUpdated;
+    private long clippedFrame = Long.MIN_VALUE;
+    private Vec3 clippedFrom;
+    private Vec3 clippedDirection;
+    private BlockHitResult clippedHit;
+
+    private BlockHitResult renderClip(Vec3 from, Vec3 direction) {
+        long frame = Draw.frameNumber();
+        if (this.clippedHit == null || this.clippedFrame != frame || !from.equals(this.clippedFrom) || !direction.equals(this.clippedDirection)) {
+            this.clippedHit = this.clip(from, direction);
+            this.clippedFrame = frame;
+            this.clippedFrom = from;
+            this.clippedDirection = direction;
+        }
+        return this.clippedHit;
+    }
 
     public BreathBeamVfx(int dragonId, Vec3 aim, int duration, double length, int color) {
         super(duration + 10);
@@ -84,7 +102,7 @@ public final class BreathBeamVfx extends VfxInstance {
 
     private BlockHitResult clip(Vec3 from, Vec3 dir) {
         Vec3 to = from.add(dir.scale(this.length));
-        return Minecraft.getInstance().level.clip(new ClipContext(from, to, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, CollisionContext.empty()));
+        return Minecraft.getInstance().level.clip(new ClipContext(from, to, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, net.minecraft.world.phys.shapes.CollisionContext.empty()));
     }
 
     private float width(float partialTick) {
@@ -121,7 +139,7 @@ public final class BreathBeamVfx extends VfxInstance {
             return;
         }
         float w = this.width(partialTick);
-        Vec3 end = this.clip(from, this.direction(from, partialTick)).getLocation();
+        Vec3 end = this.renderClip(from, this.direction(from, partialTick)).getLocation();
         if (Draw.begin(Draw.Material.DISTORT)) {
             Draw.cylinder(from, end, 2.0F * w, 16, this.color, w, 1.0F);
             Draw.end(0.025F, Draw.DISTORT_LENS, 1.0F, 0.0F);
@@ -140,7 +158,7 @@ public final class BreathBeamVfx extends VfxInstance {
             return;
         }
         Vec3 dir = this.direction(from, partialTick);
-        BlockHitResult hit = this.clip(from, dir);
+        BlockHitResult hit = this.renderClip(from, dir);
         Vec3 end = hit.getLocation();
         boolean hitBlock = hit.getType() != HitResult.Type.MISS;
         float len = (float) from.distanceTo(end);
@@ -157,9 +175,9 @@ public final class BreathBeamVfx extends VfxInstance {
         if (Draw.begin(Draw.Material.ENERGY)) {
             Vec3[] base = Draw.basis(dir);
             for (int strand = 0; strand < 2; strand++) {
-                Vec3[] points = new Vec3[HELIX_POINTS];
-                float[] widths = new float[HELIX_POINTS];
-                float[] alphas = new float[HELIX_POINTS];
+                Vec3[] points = this.helixPoints;
+                float[] widths = this.helixWidths;
+                float[] alphas = this.helixAlphas;
                 for (int i = 0; i < HELIX_POINTS; i++) {
                     float k = i / (float) (HELIX_POINTS - 1);
                     float angle = k * len * 0.45F - t * 0.6F + strand * Mth.PI;

@@ -1,6 +1,5 @@
 package com.enderdragonplus.dragon;
 
-import com.enderdragonplus.EnderDragonPlus;
 import com.enderdragonplus.dragon.phase.BlackHolePhase;
 import com.enderdragonplus.dragon.phase.VoidRupturePhase;
 import com.enderdragonplus.dragon.phase.WingBladesPhase;
@@ -36,6 +35,5 @@ public final class DragonPhases {
     }
 
     public static void init() {
-        EnderDragonPlus.LOGGER.info("Registered custom dragon phases, total phase count {}", EnderDragonPhase.getCount());
     }
 }
