@@ -1,0 +1,26 @@
+GPU AMD Radeon (TM) Graphics
+VIEWPORT 960x540
+GEOMETRY rupture48 vertices=13764 draws=79 hash=c4eb0549696b62a9
+GEOMETRY rupture192 vertices=55056 draws=304 hash=70e660534a86905
+GEOMETRY barrage72 vertices=1152 draws=8 hash=e1e4310dc1f2a732
+GEOMETRY wing20 vertices=2640 draws=8 hash=e73e993c37d00b83
+GEOMETRY blackhole vertices=6524 draws=8 hash=956e5eb9a4c247b
+GEOMETRY rings4 vertices=6144 draws=3 hash=a4ec953b6872f4cb
+SERVER_POP 0 visible=0
+SERVER_POP 128 visible=128
+SERVER_POP 512 visible=512
+PASS firstVictim 2048 boxes identical to original ordered query
+PASS barrage 32 scenarios damage target/order/tick/multiplier identical to baseline
+PASS live/VOID_BREATH ticks=131
+PASS live/METEOR ticks=101
+PASS live/RIFT_DASH ticks=115
+PASS live/BLACK_HOLE ticks=193
+PASS live/SCALE_BARRAGE ticks=101
+PASS live/FINAL_NOVA ticks=140
+PASS live/VOID_RUPTURE ticks=101
+PASS live/WING_BLADES ticks=101
+PASS live/ENDER_STORM ticks=115
+PASS live/RING_WAVES ticks=115
+PASS live/VOID_LANCES ticks=118
+PASS live/CATACLYSM_DIVE ticks=101
+PASS live/SHIELD ticks=140

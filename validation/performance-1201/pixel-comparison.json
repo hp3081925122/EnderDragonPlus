@@ -1,0 +1,38 @@
+[
+  {
+    "scene": "rupture48",
+    "width": 960,
+    "height": 540,
+    "changed_pixels": 0
+  },
+  {
+    "scene": "rupture192",
+    "width": 960,
+    "height": 540,
+    "changed_pixels": 0
+  },
+  {
+    "scene": "barrage72",
+    "width": 960,
+    "height": 540,
+    "changed_pixels": 0
+  },
+  {
+    "scene": "wing20",
+    "width": 960,
+    "height": 540,
+    "changed_pixels": 0
+  },
+  {
+    "scene": "blackhole",
+    "width": 960,
+    "height": 540,
+    "changed_pixels": 0
+  },
+  {
+    "scene": "rings4",
+    "width": 960,
+    "height": 540,
+    "changed_pixels": 0
+  }
+]

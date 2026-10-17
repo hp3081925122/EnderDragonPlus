@@ -7,6 +7,7 @@ import com.enderdragonplus.dragon.phase.SkillPhase;
 import com.enderdragonplus.network.VfxPayload;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -23,6 +24,7 @@ import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.enderdragon.phases.DragonPhaseInstance;
 import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.level.levelgen.feature.EndPodiumFeature;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -32,10 +34,13 @@ public final class DragonBrain {
     public static final int COLOR_STAGE_ONE = 0xB04CFF;
     public static final int COLOR_STAGE_TWO = 0xE04CF0;
     public static final int COLOR_STAGE_THREE = 0xFF2E5A;
+    private static final EntityTypeTest<Entity, LivingEntity> VICTIM_TYPE = EntityTypeTest.forClass(LivingEntity.class);
 
     private final EnderDragon dragon;
     private final int[] cooldowns = new int[SkillType.values().length];
     private final List<Hazard> hazards = new ArrayList<>();
+    private final List<LivingEntity> firstVictimResult = new ArrayList<>(1);
+    private final Predicate<LivingEntity> victimFilter;
     private int globalCooldown = 100;
     private boolean stageTwoReached;
     private boolean stageThreeReached;
@@ -45,6 +50,7 @@ public final class DragonBrain {
 
     public DragonBrain(EnderDragon dragon) {
         this.dragon = dragon;
+        this.victimFilter = e -> e != this.dragon && e.isAlive() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(e);
     }
 
     public EnderDragon dragon() {
@@ -260,7 +266,16 @@ public final class DragonBrain {
     }
 
     public List<LivingEntity> victims(AABB box) {
-        return this.level().getEntitiesOfClass(LivingEntity.class, box, e -> e != this.dragon && e.isAlive() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(e));
+        return this.level().getEntitiesOfClass(LivingEntity.class, box, this.victimFilter);
+    }
+
+    @Nullable
+    public LivingEntity firstVictim(AABB box) {
+        if (!this.firstVictimResult.isEmpty()) {
+            this.firstVictimResult.clear();
+        }
+        this.level().getEntities(VICTIM_TYPE, box, this.victimFilter, this.firstVictimResult, 1);
+        return this.firstVictimResult.isEmpty() ? null : this.firstVictimResult.get(0);
     }
 
     public Vec3 arenaCenter() {

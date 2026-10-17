@@ -1,0 +1,6 @@
+PASS clean build
+PASS release JAR has no probe/reference/validation classes
+PASS strict UTF-8 resources
+FILE enderdragonplus-1.20.1-forge-0.0.1.jar
+SIZE 237717
+SHA256 CE0C961AB2FC79DE95CBEBF99F8E5951645F693C409E878E321E17F623962E16
