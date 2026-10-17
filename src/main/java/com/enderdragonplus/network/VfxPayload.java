@@ -26,6 +26,7 @@ public record VfxPayload(int kind, int entityId, CompoundTag data) implements Cu
     public static final int RING_WAVES = 14;
     public static final int LANCE = 15;
     public static final int DIVE = 16;
+    public static final int SHOWCASE = 17;
 
     public static final CustomPacketPayload.Type<VfxPayload> TYPE = new CustomPacketPayload.Type<>(EnderDragonPlus.id("vfx"));
     public static final StreamCodec<ByteBuf, VfxPayload> STREAM_CODEC = StreamCodec.composite(

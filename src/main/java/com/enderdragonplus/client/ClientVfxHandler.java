@@ -2,6 +2,7 @@ package com.enderdragonplus.client;
 
 import com.enderdragonplus.EdpConfig;
 import com.enderdragonplus.EnderDragonPlus;
+import com.enderdragonplus.client.showcase.ShowcaseClient;
 import com.enderdragonplus.client.vfx.BarrageVfx;
 import com.enderdragonplus.client.vfx.BlackHoleVfx;
 import com.enderdragonplus.client.vfx.BreathBeamVfx;
@@ -77,6 +78,7 @@ public final class ClientVfxHandler {
             case VfxPayload.RING_WAVES -> VfxManager.add(new RingWavesVfx(VfxPayload.getVec(d, "center"), d.getInt("count"), d.getInt("interval"), d.getFloat("speed"), d.getFloat("maxRadius"), d.getInt("color")));
             case VfxPayload.LANCE -> VfxManager.add(new LanceVfx(VfxPayload.getVec(d, "origin"), VfxPayload.getVec(d, "end"), d.getInt("charge"), d.getInt("color")));
             case VfxPayload.DIVE -> VfxManager.add(new DiveVfx(id, VfxPayload.getVec(d, "mark"), d.getInt("warn"), d.getInt("dive"), d.getFloat("radius"), d.getInt("color")));
+            case VfxPayload.SHOWCASE -> ShowcaseClient.handle(id, d);
             default -> {
             }
         }

@@ -5,10 +5,13 @@ import com.enderdragonplus.dragon.DragonBrain;
 import com.enderdragonplus.dragon.DragonBrainHolder;
 import com.enderdragonplus.dragon.phase.SkillPhase;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.boss.EnderDragonPart;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
 import net.minecraft.world.level.Level;
@@ -19,6 +22,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EnderDragon.class)
 public abstract class EnderDragonMixin extends Mob implements DragonBrainHolder {
@@ -35,6 +39,22 @@ public abstract class EnderDragonMixin extends Mob implements DragonBrainHolder 
             this.edp$brain = new DragonBrain((EnderDragon) (Object) this);
         }
         return this.edp$brain;
+    }
+
+    @Inject(method = "hurt(Lnet/minecraft/world/entity/boss/EnderDragonPart;Lnet/minecraft/world/damagesource/DamageSource;F)Z", at = @At("HEAD"), cancellable = true)
+    private void edp$showcaseImmune(EnderDragonPart part, DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        if (!this.level().isClientSide && this.edp$getBrain().showcase() && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+            cir.setReturnValue(false);
+        }
+    }
+
+    @ModifyArg(method = "checkCrystals", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;setHealth(F)V"))
+    private float edp$capCrystalHeal(float health) {
+        if (this.level().isClientSide || !EdpConfig.STAGE_HEAL_CAP.get() || !this.edp$getBrain().active() || this.edp$getBrain().stage() < 2) {
+            return health;
+        }
+        float cap = (float) (this.getMaxHealth() * EdpConfig.STAGE_TWO_HEALTH.get());
+        return Math.min(health, Math.max(cap, this.getHealth()));
     }
 
     @Inject(method = "aiStep", at = @At("HEAD"))

@@ -20,6 +20,7 @@ import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.boss.enderdragon.phases.DragonPhaseInstance;
 import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -32,6 +33,8 @@ public final class DragonBrain {
     public static final int COLOR_STAGE_ONE = 0xB04CFF;
     public static final int COLOR_STAGE_TWO = 0xE04CF0;
     public static final int COLOR_STAGE_THREE = 0xFF2E5A;
+    public static final String SHOWCASE_TAG = "edp_showcase";
+    private static final double SHOWCASE_RANGE = 72.0;
 
     private final EnderDragon dragon;
     private final int[] cooldowns = new int[SkillType.values().length];
@@ -40,6 +43,7 @@ public final class DragonBrain {
     private boolean stageTwoReached;
     private boolean stageThreeReached;
     private boolean enhanced;
+    private boolean showcase;
     @Nullable
     private LivingEntity target;
 
@@ -92,6 +96,9 @@ public final class DragonBrain {
                 return;
             }
         }
+        if (this.showcase) {
+            return;
+        }
         if (current.getPhase() == EnderDragonPhase.HOLDING_PATTERN && this.globalCooldown <= 0) {
             LivingEntity candidate = this.pickTarget();
             if (candidate != null) {
@@ -142,8 +149,23 @@ public final class DragonBrain {
         this.enhanced = true;
     }
 
+    public boolean showcase() {
+        return this.showcase;
+    }
+
+    public void setShowcase(boolean showcase) {
+        this.showcase = showcase;
+    }
+
+    public void resetStages() {
+        this.stageTwoReached = false;
+        this.stageThreeReached = false;
+        this.hazards.clear();
+        PacketDistributor.sendToPlayersTrackingEntity(this.dragon, this.stagePayload());
+    }
+
     public boolean tryStartSkill(LivingEntity candidate) {
-        if (!this.active()) {
+        if (!this.active() || this.showcase) {
             return false;
         }
         if (this.globalCooldown > 0) {
@@ -198,11 +220,18 @@ public final class DragonBrain {
 
     @Nullable
     public LivingEntity pickTarget() {
-        List<ServerPlayer> players = this.combatPlayers();
-        if (players.isEmpty()) {
+        List<LivingEntity> targets = this.combatTargets();
+        if (targets.isEmpty()) {
             return null;
         }
-        return players.get(this.dragon.getRandom().nextInt(players.size()));
+        return targets.get(this.dragon.getRandom().nextInt(targets.size()));
+    }
+
+    public List<LivingEntity> combatTargets() {
+        if (this.showcase) {
+            return this.level().getEntitiesOfClass(LivingEntity.class, this.dragon.getBoundingBox().inflate(SHOWCASE_RANGE), e -> e.isAlive() && e.getTags().contains(SHOWCASE_TAG));
+        }
+        return new ArrayList<>(this.combatPlayers());
     }
 
     public List<ServerPlayer> combatPlayers() {
@@ -220,6 +249,9 @@ public final class DragonBrain {
     }
 
     public boolean damage(LivingEntity victim, double multiplier) {
+        if (this.showcase && !(victim instanceof Player)) {
+            return victim.hurt(this.dragon.damageSources().generic(), (float) (this.attack() * multiplier));
+        }
         return victim.hurt(this.dragon.damageSources().mobAttack(this.dragon), (float) (this.attack() * multiplier));
     }
 

@@ -22,7 +22,7 @@ import net.minecraft.world.phys.Vec3;
 public class VoidBreathPhase extends SkillPhase {
     public static final int CHARGE_TICKS = 30;
     public static final double BEAM_LENGTH = 64.0;
-    private static final double START_OFFSET = 12.0;
+    private static final double START_OFFSET = 6.0;
     private LivingEntity target;
     private Vec3 aim;
     private int beamTicks;

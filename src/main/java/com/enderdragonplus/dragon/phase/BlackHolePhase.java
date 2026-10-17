@@ -6,7 +6,6 @@ import com.enderdragonplus.dragon.DragonPhases;
 import com.enderdragonplus.network.VfxPayload;
 import java.util.List;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
@@ -28,14 +27,14 @@ public class BlackHolePhase extends SkillPhase {
     @Override
     protected boolean start() {
         DragonBrain brain = this.brain();
-        List<ServerPlayer> players = brain.combatPlayers();
+        List<LivingEntity> players = brain.combatTargets();
         if (players.isEmpty()) {
             return false;
         }
         double sx = 0.0;
         double sz = 0.0;
         double sy = 0.0;
-        for (ServerPlayer player : players) {
+        for (LivingEntity player : players) {
             sx += player.getX();
             sy += player.getY();
             sz += player.getZ();

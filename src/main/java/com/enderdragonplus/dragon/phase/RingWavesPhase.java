@@ -8,6 +8,7 @@ import com.enderdragonplus.dragon.hazard.RingWaveHazard;
 import com.enderdragonplus.network.VfxPayload;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
 import net.minecraft.world.phys.Vec3;
@@ -28,7 +29,7 @@ public class RingWavesPhase extends SkillPhase {
     @Override
     protected boolean start() {
         DragonBrain brain = this.brain();
-        if (brain.combatPlayers().isEmpty()) {
+        if (brain.combatTargets().isEmpty()) {
             return false;
         }
         this.center = brain.arenaCenter();

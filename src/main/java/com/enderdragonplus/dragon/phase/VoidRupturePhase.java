@@ -10,10 +10,10 @@ import java.util.List;
 import javax.annotation.Nullable;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
 import net.minecraft.world.phys.Vec3;
@@ -33,7 +33,7 @@ public class VoidRupturePhase extends SkillPhase {
     @Override
     protected boolean start() {
         DragonBrain brain = this.brain();
-        if (brain.combatPlayers().isEmpty()) {
+        if (brain.combatTargets().isEmpty()) {
             return false;
         }
         double minY = brain.groundY(this.dragon.getX(), this.dragon.getZ(), this.dragon.getY()) + 14.0;
@@ -46,7 +46,7 @@ public class VoidRupturePhase extends SkillPhase {
 
     @Override
     protected void serverTick() {
-        ServerPlayer nearest = this.nearest();
+        LivingEntity nearest = this.nearest();
         if (nearest != null) {
             this.faceDirection = nearest.position().subtract(this.dragon.position());
         }
@@ -59,10 +59,10 @@ public class VoidRupturePhase extends SkillPhase {
     }
 
     @Nullable
-    private ServerPlayer nearest() {
-        ServerPlayer best = null;
+    private LivingEntity nearest() {
+        LivingEntity best = null;
         double bestDist = Double.MAX_VALUE;
-        for (ServerPlayer player : this.brain().combatPlayers()) {
+        for (LivingEntity player : this.brain().combatTargets()) {
             double d = player.distanceToSqr(this.dragon);
             if (d < bestDist) {
                 bestDist = d;
@@ -74,7 +74,7 @@ public class VoidRupturePhase extends SkillPhase {
 
     private void cast() {
         DragonBrain brain = this.brain();
-        List<ServerPlayer> players = brain.combatPlayers();
+        List<LivingEntity> players = brain.combatTargets();
         if (players.isEmpty()) {
             return;
         }
@@ -84,7 +84,7 @@ public class VoidRupturePhase extends SkillPhase {
         int maxDelay = 0;
         int count = Math.min(4, players.size());
         for (int p = 0; p < count; p++) {
-            ServerPlayer player = players.get(p);
+            LivingEntity player = players.get(p);
             Vec3 flat = new Vec3(player.getX() - origin.x, 0.0, player.getZ() - origin.z);
             double dist = flat.length();
             if (dist < 1.0E-3) {
