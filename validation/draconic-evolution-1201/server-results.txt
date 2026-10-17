@@ -1,0 +1,66 @@
+MOD enderdragonplus 0.0.1
+MOD codechickenlib 4.4.0.509
+MOD brandonscore 3.2.1.302
+MOD draconicevolution 3.1.2.621
+CONFIG dragonEggSpawnOverride=true
+PASS initial_kill_override_true entity type minecraft:ender_dragon
+PASS initial_kill_override_true dragon fight retained
+STATE initial_kill_override_true enhanced=false previous=false
+EVENT initial_kill_override_true LivingDeath canceled=false fight=true
+EVENT initial_kill_override_true LivingDrops canceled=false fight=true previous=false
+STATE after_damage health=1.0 phase=Dying (#9)
+PASS initial_kill_override_true death sequence completed
+OBSERVED initial_kill_override_true eggs=[BlockPos{x=0, y=68, z=0}] LivingDrops=1 LivingDeath=1
+PASS initial_kill_override_true egg expected=true actual=true
+PASS initial_kill_override_true LivingDropsEvent delivered
+PASS ordinary_respawn_override_true four crystals start respawn
+PASS ordinary_respawn_override_true full respawn animation ticks=604
+PASS ordinary_respawn_override_true enhanced marker expected=false
+PASS ordinary_respawn_override_true entity type minecraft:ender_dragon
+PASS ordinary_respawn_override_true dragon fight retained
+STATE ordinary_respawn_override_true enhanced=false previous=true
+EVENT ordinary_respawn_override_true LivingDeath canceled=false fight=true
+EVENT ordinary_respawn_override_true LivingDrops canceled=false fight=true previous=true
+STATE after_damage health=1.0 phase=Dying (#9)
+PASS ordinary_respawn_override_true death sequence completed
+OBSERVED ordinary_respawn_override_true eggs=[BlockPos{x=0, y=68, z=-4}] LivingDrops=1 LivingDeath=1
+PASS ordinary_respawn_override_true egg expected=true actual=true
+PASS ordinary_respawn_override_true LivingDropsEvent delivered
+PASS enhanced_respawn_override_true four crystals start respawn
+PASS enhanced_respawn_override_true full respawn animation ticks=604
+PASS enhanced_respawn_override_true enhanced marker expected=true
+PASS enhanced_respawn_override_true entity type minecraft:ender_dragon
+PASS enhanced_respawn_override_true dragon fight retained
+STATE enhanced_respawn_override_true enhanced=true previous=true
+EVENT enhanced_respawn_override_true LivingDeath canceled=false fight=true
+EVENT enhanced_respawn_override_true LivingDrops canceled=false fight=true previous=true
+STATE after_damage health=1.0 phase=Dying (#9)
+PASS enhanced_respawn_override_true death sequence completed
+OBSERVED enhanced_respawn_override_true eggs=[BlockPos{x=0, y=68, z=-4}] LivingDrops=1 LivingDeath=1
+PASS enhanced_respawn_override_true egg expected=true actual=true
+PASS enhanced_respawn_override_true LivingDropsEvent delivered
+CONFIG dragonEggSpawnOverride=false
+PASS enhanced_respawn_override_false four crystals start respawn
+PASS enhanced_respawn_override_false full respawn animation ticks=604
+PASS enhanced_respawn_override_false enhanced marker expected=true
+PASS enhanced_respawn_override_false entity type minecraft:ender_dragon
+PASS enhanced_respawn_override_false dragon fight retained
+STATE enhanced_respawn_override_false enhanced=true previous=true
+EVENT enhanced_respawn_override_false LivingDeath canceled=false fight=true
+EVENT enhanced_respawn_override_false LivingDrops canceled=false fight=true previous=true
+STATE after_damage health=1.0 phase=Dying (#9)
+PASS enhanced_respawn_override_false death sequence completed
+OBSERVED enhanced_respawn_override_false eggs=[] LivingDrops=1 LivingDeath=1
+PASS enhanced_respawn_override_false egg expected=false actual=false
+PASS enhanced_respawn_override_false LivingDropsEvent delivered
+CONFIG dragonEggSpawnOverride=true
+PASS command_kill_override_true four crystals start respawn
+PASS command_kill_override_true full respawn animation ticks=604
+PASS command_kill_override_true enhanced marker expected=true
+PASS command_kill_override_true entity type minecraft:ender_dragon
+PASS command_kill_override_true dragon fight retained
+STATE command_kill_override_true enhanced=true previous=true
+PASS command_kill_override_true death sequence completed
+OBSERVED command_kill_override_true eggs=[] LivingDrops=0 LivingDeath=0
+PASS command_kill_override_true egg expected=false actual=false
+SUMMARY failures=0

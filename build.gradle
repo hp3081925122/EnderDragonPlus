@@ -76,6 +76,10 @@ mixin {
 dependencies {
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
     minecraft "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
+    // 龙之研究兼容性测试所需的开发运行依赖。
+    runtimeOnly fg.deobf('curse.maven:draconic-evolution-223565:6793843')
+    runtimeOnly fg.deobf('curse.maven:brandons-core-231382:5422013')
+    runtimeOnly fg.deobf('curse.maven:codechicken-lib-1-8-242818:5292543')
 }
 
 def metadataProperties = new Properties()
