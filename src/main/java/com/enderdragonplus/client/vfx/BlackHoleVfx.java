@@ -10,6 +10,9 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 
 public final class BlackHoleVfx extends VfxInstance {
+    private final Vec3[] streakPoints = new Vec3[STREAK_POINTS];
+    private final float[] streakWidths = new float[STREAK_POINTS];
+    private final float[] streakAlphas = new float[STREAK_POINTS];
     private static final int STREAKS = 18;
     private static final int STREAK_POINTS = 8;
     private static final Vec3 DISK_AXIS = new Vec3(0.22, 1.0, 0.14).normalize();
@@ -73,11 +76,11 @@ public final class BlackHoleVfx extends VfxInstance {
     public void renderDistortion(float partialTick) {
         float s = this.scale(this.time(partialTick));
         if (Draw.begin(Draw.Material.DISTORT)) {
-            Draw.sphere(this.pos, 7.5F * s, 16, 24, this.color, 1.0F);
+            Draw.sphere(this.pos, 7.5F * s, heavyDetail(16), heavyDetail(24), this.color, 1.0F);
             Draw.end(0.08F, Draw.DISTORT_LENS, 1.0F, 0.0F);
         }
         if (Draw.begin(Draw.Material.DISTORT)) {
-            Draw.ring(this.pos, DISK_AXIS, 2.5F * s, 11.0F * s, 48, this.color, 1.0F, 1.0F, 1.0F);
+            Draw.ring(this.pos, DISK_AXIS, 2.5F * s, 11.0F * s, heavyDetail(48), this.color, 1.0F, 1.0F, 1.0F);
             Draw.end(0.03F, Draw.DISTORT_BAND, 2.0F, 0.6F);
         }
     }
@@ -97,15 +100,15 @@ public final class BlackHoleVfx extends VfxInstance {
             Draw.end(0.4F, 2.0F, 1.2F, Draw.MODE_RADIAL);
         }
         if (Draw.begin(Draw.Material.SPHERE_ALPHA)) {
-            Draw.sphere(this.pos, 2.4F * s, 16, 24, this.color, alpha);
+            Draw.sphere(this.pos, 2.4F * s, heavyDetail(16), heavyDetail(24), this.color, alpha);
             Draw.end(Draw.SPHERE_DARK, 3.0F, 3.0F, 0.5F);
         }
         if (Draw.begin(Draw.Material.ENERGY)) {
-            Draw.ring(this.pos, DISK_AXIS, 2.6F * s, 9.5F * s, 64, this.color, alpha, alpha * 0.2F, 3.0F);
+            Draw.ring(this.pos, DISK_AXIS, 2.6F * s, 9.5F * s, heavyDetail(64), this.color, alpha, alpha * 0.2F, 3.0F);
             Draw.end(-0.9F, 5.0F, 1.0F, Draw.MODE_RING);
         }
         if (Draw.begin(Draw.Material.ENERGY)) {
-            Draw.ring(this.pos, DISK_AXIS_B, 2.3F * s, 5.0F * s, 48, hot, alpha, alpha * 0.4F, 2.0F);
+            Draw.ring(this.pos, DISK_AXIS_B, 2.3F * s, 5.0F * s, heavyDetail(48), hot, alpha, alpha * 0.4F, 2.0F);
             Draw.end(1.4F, 4.0F, 2.5F, Draw.MODE_RING);
         }
         if (Draw.begin(Draw.Material.ENERGY)) {
@@ -114,9 +117,9 @@ public final class BlackHoleVfx extends VfxInstance {
                 float phase = (t * 0.025F + i * 0.618F) % 1.0F;
                 float baseAngle = i * 2.39996F;
                 float tilt = ((i * 37) % 11 - 5) * 0.06F;
-                Vec3[] points = new Vec3[STREAK_POINTS];
-                float[] widths = new float[STREAK_POINTS];
-                float[] alphas = new float[STREAK_POINTS];
+                Vec3[] points = this.streakPoints;
+                float[] widths = this.streakWidths;
+                float[] alphas = this.streakAlphas;
                 for (int j = 0; j < STREAK_POINTS; j++) {
                     float p = Math.max(0.0F, phase - j * 0.025F);
                     float r = (this.radius * 0.9F * (1.0F - p) + 2.4F) * s;

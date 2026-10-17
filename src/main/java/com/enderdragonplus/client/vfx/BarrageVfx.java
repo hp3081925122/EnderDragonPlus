@@ -20,6 +20,13 @@ public final class BarrageVfx extends VfxInstance {
     private static final Map<Integer, BarrageVfx> ACTIVE = new HashMap<>();
     private final int id;
     private final Vec3[] directions;
+    private final Vec3[] velocities;
+    private final Vec3[] crescentPoints = new Vec3[9];
+    private final float[] crescentWidths = new float[9];
+    private final float[] crescentAlphas = new float[9];
+    private final Vec3[] trailPoints = new Vec3[3];
+    private static final float[] TRAIL_WIDTHS = {0.7F, 0.45F, 0.0F};
+    private static final float[] TRAIL_ALPHAS = {1.0F, 0.7F, 0.0F};
     private final Vec3[] positions;
     private final Vec3[] previous;
     private final boolean[] alive;
@@ -33,11 +40,13 @@ public final class BarrageVfx extends VfxInstance {
         super(life + 2);
         this.id = id;
         this.directions = directions;
+        this.velocities = new Vec3[directions.length];
         this.positions = new Vec3[directions.length];
         this.previous = new Vec3[directions.length];
         this.alive = new boolean[directions.length];
         for (int i = 0; i < directions.length; i++) {
             this.positions[i] = origin;
+            this.velocities[i] = directions[i].scale(speed);
             this.previous[i] = origin;
             this.alive[i] = true;
         }
@@ -83,9 +92,9 @@ public final class BarrageVfx extends VfxInstance {
                 continue;
             }
             Vec3 from = this.positions[i];
-            Vec3 to = from.add(this.directions[i].scale(this.speed));
+            Vec3 to = from.add(this.velocities[i]);
             if (this.simAge > 3) {
-                BlockHitResult hit = Minecraft.getInstance().level.clip(new ClipContext(from, to, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, CollisionContext.empty()));
+                BlockHitResult hit = Minecraft.getInstance().level.clip(new ClipContext(from, to, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, (net.minecraft.world.entity.Entity) null));
                 if (hit.getType() != HitResult.Type.MISS) {
                     this.alive[i] = false;
                     VfxManager.add(new ShockwaveVfx(hit.getLocation(), 2.2F, 10, this.color, false));
@@ -107,9 +116,9 @@ public final class BarrageVfx extends VfxInstance {
         }
         side = side.normalize();
         int n = 9;
-        Vec3[] points = new Vec3[n];
-        float[] widths = new float[n];
-        float[] alphas = new float[n];
+        Vec3[] points = this.crescentPoints;
+        float[] widths = this.crescentWidths;
+        float[] alphas = this.crescentAlphas;
         float radius = CRESCENT_RADIUS * scale;
         for (int j = 0; j < n; j++) {
             float k = j / (float) (n - 1) * 2.0F - 1.0F;
@@ -165,7 +174,10 @@ public final class BarrageVfx extends VfxInstance {
                 Vec3 head = this.previous[i].lerp(this.positions[i], partialTick);
                 Vec3 tail = head.subtract(this.directions[i].scale(this.speed * 5.0));
                 Vec3 mid = head.subtract(this.directions[i].scale(this.speed * 1.5));
-                Draw.ribbon(new Vec3[]{head, mid, tail}, new float[]{0.7F, 0.45F, 0.0F}, new float[]{1.0F, 0.7F, 0.0F}, this.color, 0.0F, 1.5F);
+                this.trailPoints[0] = head;
+                this.trailPoints[1] = mid;
+                this.trailPoints[2] = tail;
+                Draw.ribbon(this.trailPoints, TRAIL_WIDTHS, TRAIL_ALPHAS, this.color, 0.0F, 1.5F);
                 Draw.beam(head.add(this.directions[i].scale(0.5)), mid, 0.32F, hot, 1.0F, 1.0F);
             }
             Draw.end(2.0F, 1.0F, 1.8F, Draw.MODE_STRIP);

@@ -29,7 +29,6 @@ public final class EdpShaders {
             event.registerShader(new ShaderInstance(event.getResourceProvider(), EnderDragonPlus.id("edp_sphere"), DefaultVertexFormat.POSITION_TEX_COLOR_NORMAL), s -> sphere = s);
             event.registerShader(new ShaderInstance(event.getResourceProvider(), EnderDragonPlus.id("edp_distort"), DefaultVertexFormat.POSITION_TEX_COLOR_NORMAL), s -> distort = s);
             event.registerShader(new ShaderInstance(event.getResourceProvider(), EnderDragonPlus.id("edp_screen"), DefaultVertexFormat.POSITION_TEX), s -> screen = s);
-            EnderDragonPlus.LOGGER.info("Ender Dragon Plus shaders registered");
         } catch (IOException e) {
             EnderDragonPlus.LOGGER.error("Failed to load Ender Dragon Plus shaders", e);
         }

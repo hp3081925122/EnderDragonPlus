@@ -1,0 +1,70 @@
+PASS dedicated server End dimension available
+PASS stage flags 0
+PASS first victim matches query order 0
+PASS first victim scratch cleared 0
+PASS attack damage times multiplier
+PASS full knockback resistance
+PASS optimized barrage hazard first-hit damage and termination
+PASS skill completed VOID_BREATH tick=130 packets=91 damageCalls=0 kinds={0=1, 1=1, 10=89}
+PASS skill payload emitted VOID_BREATH
+PASS stage flags 1
+PASS first victim matches query order 1
+PASS first victim scratch cleared 1
+PASS skill completed METEOR tick=50 packets=1 damageCalls=0 kinds={2=1}
+PASS skill payload emitted METEOR
+PASS stage flags 2
+PASS first victim matches query order 2
+PASS first victim scratch cleared 2
+PASS skill completed RIFT_DASH tick=114 packets=3 damageCalls=34 kinds={3=3}
+PASS skill payload emitted RIFT_DASH
+PASS stage flags 3
+PASS first victim matches query order 3
+PASS first victim scratch cleared 3
+PASS skill completed BLACK_HOLE tick=192 packets=1 damageCalls=0 kinds={6=1}
+PASS skill payload emitted BLACK_HOLE
+PASS stage flags 4
+PASS first victim matches query order 4
+PASS first victim scratch cleared 4
+PASS skill completed SCALE_BARRAGE tick=86 packets=4 damageCalls=0 kinds={7=4}
+PASS skill payload emitted SCALE_BARRAGE
+PASS stage flags 5
+PASS first victim matches query order 5
+PASS first victim scratch cleared 5
+PASS skill completed FINAL_NOVA tick=142 packets=1 damageCalls=28 kinds={9=1}
+PASS skill payload emitted FINAL_NOVA
+PASS stage flags 6
+PASS first victim matches query order 6
+PASS first victim scratch cleared 6
+PASS skill completed VOID_RUPTURE tick=62 packets=1 damageCalls=6 kinds={12=1}
+PASS skill payload emitted VOID_RUPTURE
+PASS stage flags 7
+PASS first victim matches query order 7
+PASS first victim scratch cleared 7
+PASS skill completed WING_BLADES tick=94 packets=4 damageCalls=0 kinds={7=4}
+PASS skill payload emitted WING_BLADES
+PASS stage flags 8
+PASS first victim matches query order 8
+PASS first victim scratch cleared 8
+PASS skill completed ENDER_STORM tick=114 packets=16 damageCalls=0 kinds={13=16}
+PASS skill payload emitted ENDER_STORM
+PASS stage flags 9
+PASS first victim matches query order 9
+PASS first victim scratch cleared 9
+PASS skill completed RING_WAVES tick=98 packets=2 damageCalls=0 kinds={5=1, 14=1}
+PASS skill payload emitted RING_WAVES
+PASS stage flags 10
+PASS first victim matches query order 10
+PASS first victim scratch cleared 10
+PASS skill completed VOID_LANCES tick=117 packets=7 damageCalls=0 kinds={15=7}
+PASS skill payload emitted VOID_LANCES
+PASS stage flags 11
+PASS first victim matches query order 11
+PASS first victim scratch cleared 11
+PASS skill completed CATACLYSM_DIVE tick=80 packets=2 damageCalls=0 kinds={5=1, 16=1}
+PASS skill payload emitted CATACLYSM_DIVE
+PASS stage flags 12
+PASS first victim matches query order 12
+PASS first victim scratch cleared 12
+PASS skill completed SHIELD tick=132 packets=12 damageCalls=0 kinds={4=1, 5=1, 13=10}
+PASS skill payload emitted SHIELD
+PASS all server checks

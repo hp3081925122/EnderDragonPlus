@@ -131,7 +131,6 @@ public final class ShowcaseDirector {
         data.putInt("action", ACTION_START);
         data.putBoolean("captions", captions);
         director.send(data);
-        EnderDragonPlus.LOGGER.info("Showcase started by {} on dragon {}, captions={}", player.getGameProfile().getName(), dragon.getId(), captions);
     }
 
     public static void stopActive(String reason) {
@@ -178,7 +177,6 @@ public final class ShowcaseDirector {
         CompoundTag data = new CompoundTag();
         data.putInt("action", ACTION_STOP);
         this.send(data);
-        EnderDragonPlus.LOGGER.info("Showcase stopped ({}), removed {} mobs", reason, mobs.size());
     }
 
     private void tick() {
@@ -248,9 +246,7 @@ public final class ShowcaseDirector {
         }
         this.brain.startSkill(type, target);
         this.caption(title(type), subtitle(type), shot);
-        if (EdpConfig.DEBUG_LOGGING.get()) {
-            EnderDragonPlus.LOGGER.info("Showcase step {} casts {} at {}", this.index, type, target);
-        }
+
     }
 
     private void beginStage(int stage) {
@@ -266,7 +262,6 @@ public final class ShowcaseDirector {
         this.started = true;
         this.timer = 0;
         this.caption(title, subtitle, SHOT_WIDE);
-        EnderDragonPlus.LOGGER.info("Showcase forcing stage {} at health {}", stage, this.dragon.getHealth());
     }
 
     @Nullable

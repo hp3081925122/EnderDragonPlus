@@ -14,6 +14,7 @@ import org.joml.Matrix4fStack;
 public final class VfxManager {
     private static final List<VfxInstance> INSTANCES = new ArrayList<>();
     private static final List<VfxInstance> PENDING = new ArrayList<>();
+    private static final List<VfxInstance> VISIBLE = new ArrayList<>();
     private static ClientLevel lastLevel;
 
     private VfxManager() {
@@ -24,6 +25,7 @@ public final class VfxManager {
     }
 
     public static void clear() {
+        VISIBLE.clear();
         INSTANCES.clear();
         PENDING.clear();
         BarrageVfx.clearAll();
@@ -65,10 +67,16 @@ public final class VfxManager {
         RenderSystem.enableDepthTest();
         RenderSystem.depthMask(false);
         RenderSystem.disableCull();
+        VISIBLE.clear();
+        for (VfxInstance instance : INSTANCES) {
+            if (!EdpConfig.OPTIMIZE_HEAVY_EFFECTS.get() || instance.visible(event.getFrustum())) {
+                VISIBLE.add(instance);
+            }
+        }
         SceneCopy.invalidate();
         if (EdpConfig.ENABLE_DISTORTION.get()) {
             boolean any = false;
-            for (VfxInstance instance : INSTANCES) {
+            for (VfxInstance instance : VISIBLE) {
                 if (instance.distorts()) {
                     any = true;
                     break;
@@ -76,14 +84,14 @@ public final class VfxManager {
             }
             if (any) {
                 SceneCopy.capture();
-                for (VfxInstance instance : INSTANCES) {
+                for (VfxInstance instance : VISIBLE) {
                     if (instance.distorts()) {
                         instance.renderDistortion(partialTick);
                     }
                 }
             }
         }
-        for (VfxInstance instance : INSTANCES) {
+        for (VfxInstance instance : VISIBLE) {
             instance.render(partialTick);
         }
         RenderSystem.enableCull();

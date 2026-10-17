@@ -56,7 +56,6 @@ public final class ShowcaseClient {
             lookPos = null;
             shot = ShowcaseDirector.SHOT_WIDE;
             captionAge = -1;
-            EnderDragonPlus.LOGGER.info("Showcase client started for dragon {}", id);
         } else if (action == ShowcaseDirector.ACTION_STOP) {
             stop();
         } else if (action == ShowcaseDirector.ACTION_CAPTION) {
@@ -71,7 +70,6 @@ public final class ShowcaseClient {
 
     private static void stop() {
         if (active) {
-            EnderDragonPlus.LOGGER.info("Showcase client stopped");
         }
         active = false;
         captionAge = -1;

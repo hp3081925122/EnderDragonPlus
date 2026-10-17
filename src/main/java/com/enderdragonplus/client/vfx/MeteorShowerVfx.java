@@ -1,6 +1,7 @@
 package com.enderdragonplus.client.vfx;
 
 import com.enderdragonplus.client.CameraShake;
+import com.enderdragonplus.EdpConfig;
 import com.enderdragonplus.client.Draw;
 import com.enderdragonplus.client.ScreenFx;
 import com.enderdragonplus.client.VfxInstance;
@@ -13,6 +14,9 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.world.phys.Vec3;
 
 public final class MeteorShowerVfx extends VfxInstance {
+    private final Vec3[] trailPoints = new Vec3[TRAIL];
+    private final float[] trailWidths = new float[TRAIL];
+    private final float[] trailAlphas = new float[TRAIL];
     private static final int TRAIL = 10;
     private final Vec3[] starts;
     private final Vec3[] impacts;
@@ -82,7 +86,7 @@ public final class MeteorShowerVfx extends VfxInstance {
             if (f < 0.0F || f > 1.0F) {
                 continue;
             }
-            Draw.sphere(this.position(i, t), 2.4F, 8, 12, this.color, 1.0F);
+            Draw.sphere(this.position(i, t), 2.4F, heavyDetail(8), heavyDetail(12), this.color, 1.0F);
         }
         Draw.end(0.03F, Draw.DISTORT_LENS, 1.0F, 0.0F);
     }
@@ -107,9 +111,9 @@ public final class MeteorShowerVfx extends VfxInstance {
                 if (f < 0.0F || f > 1.0F) {
                     continue;
                 }
-                Vec3[] points = new Vec3[TRAIL];
-                float[] widths = new float[TRAIL];
-                float[] alphas = new float[TRAIL];
+                Vec3[] points = this.trailPoints;
+                float[] widths = this.trailWidths;
+                float[] alphas = this.trailAlphas;
                 for (int j = 0; j < TRAIL; j++) {
                     float back = j * 0.9F;
                     float k = 1.0F - j / (float) (TRAIL - 1);
@@ -128,7 +132,7 @@ public final class MeteorShowerVfx extends VfxInstance {
                     continue;
                 }
                 Vec3 p = this.position(i, t);
-                Draw.billboard(p, 6.0F, this.color, 1.0F);
+                Draw.billboard(p, EdpConfig.OPTIMIZE_HEAVY_EFFECTS.get() ? 5.0F : 6.0F, this.color, 1.0F);
                 Draw.billboard(p, 2.6F, hot, 1.0F);
             }
             Draw.end(1.2F, 3.0F, 1.5F, Draw.MODE_RADIAL);
@@ -139,7 +143,7 @@ public final class MeteorShowerVfx extends VfxInstance {
                 if (f < 0.0F || f > 1.0F) {
                     continue;
                 }
-                Draw.sphere(this.position(i, t), 1.1F, 10, 16, this.color, 1.0F);
+                Draw.sphere(this.position(i, t), 1.1F, heavyDetail(10), heavyDetail(16), this.color, 1.0F);
             }
             Draw.end(Draw.SPHERE_ORB, 2.0F, 3.0F, 1.2F);
         }
