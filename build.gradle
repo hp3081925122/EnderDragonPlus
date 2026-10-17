@@ -30,7 +30,11 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
+def metadataProperties = new Properties()
+file('gradle.properties').withReader('UTF-8') { metadataProperties.load(it) }
+
 tasks.named('processResources', ProcessResources).configure {
+    filteringCharset = 'UTF-8'
     def replaceProperties = [
             minecraft_version      : project.minecraft_version,
             minecraft_version_range: project.minecraft_version_range,
@@ -41,7 +45,7 @@ tasks.named('processResources', ProcessResources).configure {
             mod_license            : project.mod_license,
             mod_version            : project.mod_version,
             mod_authors            : project.mod_authors,
-            mod_description        : project.mod_description
+            mod_description        : metadataProperties.getProperty('mod_description')
     ]
     inputs.properties replaceProperties
     filesMatching('META-INF/neoforge.mods.toml') {
