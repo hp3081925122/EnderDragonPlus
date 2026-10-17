@@ -70,7 +70,6 @@ public final class EnderDragonPlus {
             return;
         }
         if (!((DragonBrainHolder) dragon).edp$getBrain().active()) {
-            LOGGER.debug("Ender dragon {} joined as vanilla dragon", dragon.getId());
             return;
         }
         AttributeInstance attack = dragon.getAttribute(Attributes.ATTACK_DAMAGE);
@@ -88,6 +87,5 @@ public final class EnderDragonPlus {
                 dragon.setHealth(dragon.getMaxHealth());
             }
         }
-        LOGGER.debug("Ender dragon {} joined with attack {} and max health {}", dragon.getId(), dragon.getAttributeValue(Attributes.ATTACK_DAMAGE), dragon.getMaxHealth());
     }
 }

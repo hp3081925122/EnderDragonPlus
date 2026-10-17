@@ -1,7 +1,6 @@
 package com.enderdragonplus.dragon.phase;
 
 import com.enderdragonplus.EdpConfig;
-import com.enderdragonplus.EnderDragonPlus;
 import com.enderdragonplus.dragon.DragonBrain;
 import com.enderdragonplus.dragon.DragonPhases;
 import com.enderdragonplus.dragon.EdpMath;
@@ -113,9 +112,7 @@ public class CataclysmDivePhase extends SkillPhase {
         data.putInt("color", brain.stageColor());
         brain.sendVfx(VfxPayload.DIVE, data);
         brain.playSound(this.mark, SoundEvents.BEACON_POWER_SELECT, 6.0F, 0.5F);
-        if (EdpConfig.DEBUG_LOGGING.get()) {
-            EnderDragonPlus.LOGGER.info("Cataclysm dive locked at {}", this.mark);
-        }
+
     }
 
     private void impact() {

@@ -1,7 +1,6 @@
 package com.enderdragonplus.dragon.phase;
 
 import com.enderdragonplus.EdpConfig;
-import com.enderdragonplus.EnderDragonPlus;
 import com.enderdragonplus.dragon.DragonBrain;
 import com.enderdragonplus.dragon.DragonPhases;
 import com.enderdragonplus.dragon.EdpMath;
@@ -52,9 +51,7 @@ public class RiftDashPhase extends SkillPhase {
         this.dashFrom = aim.add(back.scale(28.0));
         this.dashTo = aim.subtract(back.scale(26.0));
         Vec3 dir = this.dashTo.subtract(this.dashFrom).normalize();
-        if (EdpConfig.DEBUG_LOGGING.get()) {
-            EnderDragonPlus.LOGGER.info("Rift dash planned from {} to {} through target {} at y {}", this.dashFrom, this.dashTo, target.getName().getString(), target.getY());
-        }
+
         this.cycleStart = this.tick;
         this.hitIds.clear();
         this.moveTarget = this.dashFrom;

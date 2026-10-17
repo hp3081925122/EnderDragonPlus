@@ -1,7 +1,6 @@
 package com.enderdragonplus.dragon.phase;
 
 import com.enderdragonplus.EdpConfig;
-import com.enderdragonplus.EnderDragonPlus;
 import com.enderdragonplus.dragon.DragonBrain;
 import com.enderdragonplus.dragon.DragonPhases;
 import com.enderdragonplus.dragon.EdpMath;
@@ -130,9 +129,7 @@ public class VoidBreathPhase extends SkillPhase {
             if (hitBlock) {
                 end = hit.getLocation();
             }
-            if (EdpConfig.DEBUG_LOGGING.get() && local % 10 == 0) {
-                EnderDragonPlus.LOGGER.info("Void breath tick {}: aim {} target distance {}", local, this.aim, this.aim.distanceTo(this.target.position()));
-            }
+
             if (local % 4 == 0) {
                 double multiplier = EdpConfig.VOID_BREATH.damage.get();
                 for (LivingEntity victim : brain.victims(new AABB(mouth, end).inflate(2.0))) {

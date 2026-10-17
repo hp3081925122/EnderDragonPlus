@@ -1,7 +1,6 @@
 package com.enderdragonplus.dragon.phase;
 
 import com.enderdragonplus.dragon.DragonBrain;
-import com.enderdragonplus.debug.DragonDebug;
 import com.enderdragonplus.dragon.DragonBrainHolder;
 import javax.annotation.Nullable;
 import net.minecraft.util.Mth;
@@ -43,21 +42,16 @@ public abstract class SkillPhase extends AbstractDragonPhaseInstance {
 
     @Override
     public final void doServerTick() {
-        long edpDebugStarted = DragonDebug.begin(this.dragon);
-        try {
-            if (this.aborted) {
-                this.finish();
-                return;
-            }
-            this.tick++;
-            this.serverTick();
-            if (this.dragon.getPhaseManager().getCurrentPhase() != this) {
-                return;
-            }
-            this.move();
-        } finally {
-            DragonDebug.end(1, edpDebugStarted);
+        if (this.aborted) {
+            this.finish();
+            return;
         }
+        this.tick++;
+        this.serverTick();
+        if (this.dragon.getPhaseManager().getCurrentPhase() != this) {
+            return;
+        }
+        this.move();
     }
 
     protected abstract boolean start();

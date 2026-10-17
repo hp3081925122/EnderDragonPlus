@@ -1,7 +1,6 @@
 package com.enderdragonplus.client;
 
 import com.enderdragonplus.EdpConfig;
-import com.enderdragonplus.EnderDragonPlus;
 import org.joml.Matrix4f;
 import com.enderdragonplus.client.vfx.BarrageVfx;
 import com.enderdragonplus.client.vfx.BreathBeamVfx;
@@ -20,7 +19,6 @@ public final class VfxManager {
     private static ClientLevel lastLevel;
     private static final Matrix4f worldView = new Matrix4f();
     private static boolean worldViewReady;
-    private static boolean renderLogged;
 
     private VfxManager() {
     }
@@ -31,10 +29,9 @@ public final class VfxManager {
 
     public static void clear() {
         worldViewReady = false;
-        renderLogged = false;
+        VISIBLE.clear();
         INSTANCES.clear();
         PENDING.clear();
-        VISIBLE.clear();
         BarrageVfx.clearAll();
         BreathBeamVfx.clearAll();
         DragonStageClient.clear();
@@ -69,63 +66,49 @@ public final class VfxManager {
         if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_LEVEL || INSTANCES.isEmpty() || !worldViewReady) {
             return;
         }
-        long edpWorld = DebugProfiler.worldBegin();
-        try {
-            float partialTick = event.getPartialTick();
-            if (EdpConfig.DEBUG_LOGGING.get() && !renderLogged) {
-                renderLogged = true;
-                EnderDragonPlus.LOGGER.info("VFX world render active: instances={}, capturedViewM33={}, eventPoseM33={}, shaderReady={}", INSTANCES.size(), worldView.m33(), event.getPoseStack().last().pose().m33(), EdpShaders.energy != null);
+        float partialTick = event.getPartialTick();
+
+        Draw.setup(event.getCamera());
+        VISIBLE.clear();
+        for (VfxInstance instance : INSTANCES) {
+            if (!EdpConfig.OPTIMIZE_HEAVY_EFFECTS.get() || instance.visible(event.getFrustum())) {
+                VISIBLE.add(instance);
             }
-            Draw.setup(event.getCamera());
-            VISIBLE.clear();
-            for (VfxInstance instance : INSTANCES) {
-                if (!EdpConfig.OPTIMIZE_HEAVY_EFFECTS.get() || instance.visible(event.getFrustum())) {
-                    VISIBLE.add(instance);
+        }
+        PoseStack stack = RenderSystem.getModelViewStack();
+        stack.pushPose();
+        stack.mulPoseMatrix(worldView);
+        RenderSystem.applyModelViewMatrix();
+        RenderSystem.enableBlend();
+        RenderSystem.enableDepthTest();
+        RenderSystem.depthMask(false);
+        RenderSystem.disableCull();
+        SceneCopy.invalidate();
+        if (EdpConfig.ENABLE_DISTORTION.get()) {
+            boolean any = false;
+            for (VfxInstance instance : VISIBLE) {
+                if (instance.distorts()) {
+                    any = true;
+                    break;
                 }
             }
-            DebugProfiler.visibility(INSTANCES.size(), VISIBLE.size());
-            PoseStack stack = RenderSystem.getModelViewStack();
-            stack.pushPose();
-            stack.mulPoseMatrix(worldView);
-            RenderSystem.applyModelViewMatrix();
-            RenderSystem.enableBlend();
-            RenderSystem.enableDepthTest();
-            RenderSystem.depthMask(false);
-            RenderSystem.disableCull();
-            SceneCopy.invalidate();
-            if (EdpConfig.ENABLE_DISTORTION.get()) {
-                boolean any = false;
+            if (any) {
+                SceneCopy.capture();
                 for (VfxInstance instance : VISIBLE) {
                     if (instance.distorts()) {
-                        any = true;
-                        break;
-                    }
-                }
-                if (any) {
-                    SceneCopy.capture();
-                    for (VfxInstance instance : VISIBLE) {
-                        if (instance.distorts()) {
-                            long edpEffect = DebugProfiler.begin();
-                            instance.renderDistortion(partialTick);
-                            DebugProfiler.effect(instance, true, edpEffect);
-                        }
+                        instance.renderDistortion(partialTick);
                     }
                 }
             }
-            DebugProfiler.afterDistortion();
-            for (VfxInstance instance : VISIBLE) {
-                long edpEffect = DebugProfiler.begin();
-                instance.render(partialTick);
-                DebugProfiler.effect(instance, false, edpEffect);
-            }
-            RenderSystem.enableCull();
-            RenderSystem.depthMask(true);
-            RenderSystem.defaultBlendFunc();
-            RenderSystem.disableBlend();
-            stack.popPose();
-            RenderSystem.applyModelViewMatrix();
-        } finally {
-            DebugProfiler.worldEnd(edpWorld);
         }
+        for (VfxInstance instance : VISIBLE) {
+            instance.render(partialTick);
+        }
+        RenderSystem.enableCull();
+        RenderSystem.depthMask(true);
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.disableBlend();
+        stack.popPose();
+        RenderSystem.applyModelViewMatrix();
     }
 }

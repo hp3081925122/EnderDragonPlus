@@ -1,8 +1,6 @@
 package com.enderdragonplus.dragon;
 
 import com.enderdragonplus.EdpConfig;
-import com.enderdragonplus.debug.DragonDebug;
-import com.enderdragonplus.EnderDragonPlus;
 import com.enderdragonplus.dragon.hazard.Hazard;
 import com.enderdragonplus.dragon.phase.SkillPhase;
 import com.enderdragonplus.network.VfxPayload;
@@ -63,52 +61,45 @@ public final class DragonBrain {
     }
 
     public void tick() {
-        long edpDebugStarted = DragonDebug.begin(this.dragon);
-        try {
-            ServerLevel level = this.level();
-            this.hazards.removeIf(h -> !h.tick(level, this));
-            for (int i = 0; i < this.cooldowns.length; i++) {
-                if (this.cooldowns[i] > 0) {
-                    this.cooldowns[i]--;
-                }
+        ServerLevel level = this.level();
+        this.hazards.removeIf(h -> !h.tick(level, this));
+        for (int i = 0; i < this.cooldowns.length; i++) {
+            if (this.cooldowns[i] > 0) {
+                this.cooldowns[i]--;
             }
-            if (this.globalCooldown > 0) {
-                this.globalCooldown--;
-            }
-            DragonPhaseInstance current = this.dragon.getPhaseManager().getCurrentPhase();
-            if (current.getPhase() == EnderDragonPhase.DYING) {
-                this.hazards.clear();
+        }
+        if (this.globalCooldown > 0) {
+            this.globalCooldown--;
+        }
+        DragonPhaseInstance current = this.dragon.getPhaseManager().getCurrentPhase();
+        if (current.getPhase() == EnderDragonPhase.DYING) {
+            this.hazards.clear();
+            return;
+        }
+        if (current instanceof SkillPhase) {
+            return;
+        }
+        float ratio = this.dragon.getHealth() / this.dragon.getMaxHealth();
+        if (!this.stageTwoReached && ratio <= EdpConfig.STAGE_TWO_HEALTH.get()) {
+            this.stageTwoReached = true;
+            EdpNetwork.sendToPlayersTrackingEntity(this.dragon, this.stagePayload());
+            this.dragon.getPhaseManager().setPhase(DragonPhases.SHIELD_ASCENSION);
+            return;
+        }
+        if (!this.stageThreeReached && ratio <= EdpConfig.STAGE_THREE_HEALTH.get()) {
+            this.stageThreeReached = true;
+            this.stageTwoReached = true;
+            EdpNetwork.sendToPlayersTrackingEntity(this.dragon, this.stagePayload());
+            if (EdpConfig.FINAL_NOVA.enabled.get()) {
+                this.startSkill(SkillType.FINAL_NOVA, this.pickTarget());
                 return;
             }
-            if (current instanceof SkillPhase) {
-                return;
+        }
+        if (current.getPhase() == EnderDragonPhase.HOLDING_PATTERN && this.globalCooldown <= 0) {
+            LivingEntity candidate = this.pickTarget();
+            if (candidate != null) {
+                this.tryStartSkill(candidate);
             }
-            float ratio = this.dragon.getHealth() / this.dragon.getMaxHealth();
-            if (!this.stageTwoReached && ratio <= EdpConfig.STAGE_TWO_HEALTH.get()) {
-                this.stageTwoReached = true;
-                EnderDragonPlus.LOGGER.info("Dragon {} entered stage two at health ratio {}", this.dragon.getId(), ratio);
-                EdpNetwork.sendToPlayersTrackingEntity(this.dragon, this.stagePayload());
-                this.dragon.getPhaseManager().setPhase(DragonPhases.SHIELD_ASCENSION);
-                return;
-            }
-            if (!this.stageThreeReached && ratio <= EdpConfig.STAGE_THREE_HEALTH.get()) {
-                this.stageThreeReached = true;
-                this.stageTwoReached = true;
-                EnderDragonPlus.LOGGER.info("Dragon {} entered stage three at health ratio {}", this.dragon.getId(), ratio);
-                EdpNetwork.sendToPlayersTrackingEntity(this.dragon, this.stagePayload());
-                if (EdpConfig.FINAL_NOVA.enabled.get()) {
-                    this.startSkill(SkillType.FINAL_NOVA, this.pickTarget());
-                    return;
-                }
-            }
-            if (current.getPhase() == EnderDragonPhase.HOLDING_PATTERN && this.globalCooldown <= 0) {
-                LivingEntity candidate = this.pickTarget();
-                if (candidate != null) {
-                    this.tryStartSkill(candidate);
-                }
-            }
-        } finally {
-            DragonDebug.end(0, edpDebugStarted);
         }
     }
 
@@ -155,9 +146,6 @@ public final class DragonBrain {
     }
 
     public boolean tryStartSkill(LivingEntity candidate) {
-        if (DragonDebug.controls(this.dragon)) {
-            return false;
-        }
         if (!this.active()) {
             return false;
         }
@@ -195,15 +183,13 @@ public final class DragonBrain {
         double multiplier = this.cooldownMultiplier();
         this.cooldowns[type.ordinal()] = (int) (type.config().cooldown.get() * multiplier);
         this.globalCooldown = (int) (EdpConfig.ACTION_INTERVAL.get() * multiplier);
-        if (EdpConfig.DEBUG_LOGGING.get()) {
-            EnderDragonPlus.LOGGER.info("Dragon {} casts {} at stage {} targeting {}", this.dragon.getId(), type, this.stage(), candidate);
-        }
+
         this.dragon.getPhaseManager().setPhase(type.phase());
     }
 
     @Nullable
     public LivingEntity validTarget() {
-        if (this.target != null && this.target.isAlive() && !this.target.isRemoved() && (DragonDebug.isTarget(this.dragon, this.target) || EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(this.target))
+        if (this.target != null && this.target.isAlive() && !this.target.isRemoved() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(this.target)
                 && this.target.distanceToSqr(this.dragon) < this.rangeSqr()) {
             return this.target;
         }
@@ -226,12 +212,7 @@ public final class DragonBrain {
 
     public List<ServerPlayer> combatPlayers() {
         double range = this.rangeSqr();
-        List<ServerPlayer> players = this.level().getPlayers(p -> p.isAlive() && !p.isSpectator() && !p.isCreative() && p.distanceToSqr(this.dragon) < range);
-        ServerPlayer debugTarget = DragonDebug.target(this.dragon);
-        if (debugTarget != null && debugTarget.isAlive() && !debugTarget.isRemoved() && debugTarget.distanceToSqr(this.dragon) < range && !players.contains(debugTarget)) {
-            players.add(debugTarget);
-        }
-        return players;
+        return this.level().getPlayers(p -> p.isAlive() && !p.isSpectator() && !p.isCreative() && p.distanceToSqr(this.dragon) < range);
     }
 
     private double rangeSqr() {
@@ -244,12 +225,7 @@ public final class DragonBrain {
     }
 
     public boolean damage(LivingEntity victim, double multiplier) {
-        long edpDebugStarted = DragonDebug.begin(this.dragon);
-        try {
-            return victim.hurt(this.dragon.damageSources().mobAttack(this.dragon), (float) (this.attack() * multiplier));
-        } finally {
-            DragonDebug.end(3, edpDebugStarted);
-        }
+        return victim.hurt(this.dragon.damageSources().mobAttack(this.dragon), (float) (this.attack() * multiplier));
     }
 
     public static void push(Entity entity, double x, double y, double z) {
@@ -285,26 +261,16 @@ public final class DragonBrain {
     }
 
     public List<LivingEntity> victims(AABB box) {
-        long edpDebugStarted = DragonDebug.begin(this.dragon);
-        try {
-            return this.level().getEntitiesOfClass(LivingEntity.class, box, this.victimFilter);
-        } finally {
-            DragonDebug.end(2, edpDebugStarted);
-        }
+        return this.level().getEntitiesOfClass(LivingEntity.class, box, this.victimFilter);
     }
 
     @Nullable
     public LivingEntity firstVictim(AABB box) {
-        long edpDebugStarted = DragonDebug.begin(this.dragon);
-        try {
-            if (!this.firstVictimResult.isEmpty()) {
-                this.firstVictimResult.clear();
-            }
-            this.level().getEntities(VICTIM_TYPE, box, this.victimFilter, this.firstVictimResult, 1);
-            return this.firstVictimResult.isEmpty() ? null : this.firstVictimResult.get(0);
-        } finally {
-            DragonDebug.end(2, edpDebugStarted);
+        if (!this.firstVictimResult.isEmpty()) {
+            this.firstVictimResult.clear();
         }
+        this.level().getEntities(VICTIM_TYPE, box, this.victimFilter, this.firstVictimResult, 1);
+        return this.firstVictimResult.isEmpty() ? null : this.firstVictimResult.get(0);
     }
 
     public Vec3 arenaCenter() {
@@ -355,20 +321,6 @@ public final class DragonBrain {
 
     public void addHazard(Hazard hazard) {
         this.hazards.add(hazard);
-    }
-
-    public void saveDebugState(CompoundTag tag) {
-        this.save(tag);
-        tag.putInt("EdpDebugGlobalCooldown", this.globalCooldown);
-        tag.putIntArray("EdpDebugCooldowns", this.cooldowns);
-    }
-
-    public void loadDebugState(CompoundTag tag) {
-        this.load(tag);
-        this.globalCooldown = tag.getInt("EdpDebugGlobalCooldown");
-        int[] saved = tag.getIntArray("EdpDebugCooldowns");
-        System.arraycopy(saved, 0, this.cooldowns, 0, Math.min(saved.length, this.cooldowns.length));
-        this.target = null;
     }
 
     public void save(CompoundTag tag) {

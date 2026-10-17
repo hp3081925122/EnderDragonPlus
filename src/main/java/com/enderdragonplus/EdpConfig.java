@@ -17,7 +17,6 @@ public final class EdpConfig {
     public static final ForgeConfigSpec.IntValue ACTION_INTERVAL;
     public static final ForgeConfigSpec.DoubleValue RAGE_COOLDOWN_MULTIPLIER;
     public static final ForgeConfigSpec.DoubleValue COMBAT_RANGE;
-    public static final ForgeConfigSpec.BooleanValue DEBUG_LOGGING;
 
     public static final Skill VOID_BREATH;
     public static final ForgeConfigSpec.DoubleValue BREATH_SCORCH_MULTIPLIER;
@@ -79,7 +78,6 @@ public final class EdpConfig {
         ACTION_INTERVAL = b.comment("两次技能之间的最短间隔（tick）").defineInRange("actionInterval", 120, 0, 10000);
         RAGE_COOLDOWN_MULTIPLIER = b.comment("狂暴阶段的冷却倍率").defineInRange("rageCooldownMultiplier", 0.6, 0.05, 10.0);
         COMBAT_RANGE = b.comment("索敌范围").defineInRange("combatRange", 150.0, 16.0, 1024.0);
-        DEBUG_LOGGING = b.comment("输出技能调试日志").define("debugLogging", false);
         b.pop();
 
         b.comment("技能配置").push("skills");

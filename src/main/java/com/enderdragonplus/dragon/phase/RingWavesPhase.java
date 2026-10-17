@@ -1,7 +1,6 @@
 package com.enderdragonplus.dragon.phase;
 
 import com.enderdragonplus.EdpConfig;
-import com.enderdragonplus.EnderDragonPlus;
 import com.enderdragonplus.dragon.DragonBrain;
 import com.enderdragonplus.dragon.DragonPhases;
 import com.enderdragonplus.dragon.hazard.RingWaveHazard;
@@ -81,9 +80,7 @@ public class RingWavesPhase extends SkillPhase {
         brain.sendVfx(VfxPayload.SHOCKWAVE, wave);
         brain.playSound(this.center, SoundEvents.GENERIC_EXPLODE, 6.0F, 0.5F);
         brain.playSound(this.center, SoundEvents.WARDEN_SONIC_BOOM, 6.0F, 0.6F);
-        if (EdpConfig.DEBUG_LOGGING.get()) {
-            EnderDragonPlus.LOGGER.info("Ring waves slam at {} with {} rings", this.center, this.count);
-        }
+
     }
 
     @Override
