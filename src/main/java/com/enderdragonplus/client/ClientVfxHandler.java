@@ -34,6 +34,7 @@ public final class ClientVfxHandler {
             EnderDragonPlus.LOGGER.info("Received vfx packet type {} for entity {}", payload.kind(), id);
         }
         switch (payload.kind()) {
+            case VfxPayload.DEBUG_PROFILE -> DebugProfiler.control(d);
             case VfxPayload.BREATH_CHARGE -> VfxManager.add(new BreathChargeVfx(id, d.getInt("duration"), d.getInt("color")));
             case VfxPayload.BREATH_BEAM -> VfxManager.add(new BreathBeamVfx(id, VfxPayload.getVec(d, "aim"), d.getInt("duration"), d.getDouble("length"), d.getInt("color")));
             case VfxPayload.STAGE -> DragonStageClient.set(id, d.getInt("stage"));

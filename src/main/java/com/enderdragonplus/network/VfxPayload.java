@@ -23,6 +23,7 @@ public record VfxPayload(int kind, int entityId, CompoundTag data) {
     public static final int RING_WAVES = 14;
     public static final int LANCE = 15;
     public static final int DIVE = 16;
+    public static final int DEBUG_PROFILE = 17;
 
     public static void encode(VfxPayload payload, FriendlyByteBuf buffer) {
         buffer.writeVarInt(payload.kind());

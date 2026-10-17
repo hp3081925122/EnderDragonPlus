@@ -1,6 +1,7 @@
 package com.enderdragonplus.client.vfx;
 
 import com.enderdragonplus.client.CameraShake;
+import com.enderdragonplus.EdpConfig;
 import com.enderdragonplus.client.Draw;
 import com.enderdragonplus.client.ScreenFx;
 import com.enderdragonplus.client.VfxInstance;
@@ -79,14 +80,14 @@ public final class NovaVfx extends VfxInstance {
         if (t < this.charge) {
             float k = t / this.charge;
             if (Draw.begin(Draw.Material.DISTORT)) {
-                Draw.sphere(this.core(partialTick), 3.0F + 9.0F * k, 16, 24, this.color, k);
+                Draw.sphere(this.core(partialTick), 3.0F + 9.0F * k, heavyDetail(16), heavyDetail(24), this.color, k);
                 Draw.end(0.06F, Draw.DISTORT_LENS, 1.0F, 0.0F);
             }
             return;
         }
         float b = Math.min(1.0F, (t - this.charge) / BLAST_TICKS);
         if (Draw.begin(Draw.Material.DISTORT)) {
-            Draw.sphere(this.center, this.blast * EdpMath.easeOut(b), 20, 32, this.color, 1.0F - b);
+            Draw.sphere(this.center, this.blast * EdpMath.easeOut(b), heavyDetail(20), heavyDetail(32), this.color, 1.0F - b);
             Draw.end(0.05F, Draw.DISTORT_LENS, 1.0F, 0.0F);
         }
     }
@@ -126,7 +127,7 @@ public final class NovaVfx extends VfxInstance {
                 Draw.end(1.5F, 1.0F, 2.0F, Draw.MODE_STRIP);
             }
             if (Draw.begin(Draw.Material.ENERGY)) {
-                Draw.ring(core, Draw.cameraPos().subtract(core), 4.0F + 12.0F * (1.0F - k), 5.0F + 12.0F * (1.0F - k), 48, this.color, k, k, 4.0F);
+                Draw.ring(core, Draw.cameraPos().subtract(core), 4.0F + 12.0F * (1.0F - k), 5.0F + 12.0F * (1.0F - k), heavyDetail(48), this.color, k, k, 4.0F);
                 Draw.end(-1.5F, 3.0F, 1.5F, Draw.MODE_RING);
             }
             if (Draw.begin(Draw.Material.ENERGY)) {
@@ -135,7 +136,7 @@ public final class NovaVfx extends VfxInstance {
                 Draw.end(1.0F, 3.0F, 1.3F, Draw.MODE_RADIAL);
             }
             if (Draw.begin(Draw.Material.SPHERE)) {
-                Draw.sphere(core, 1.2F + 4.0F * EdpMath.easeIn(k), 14, 24, this.color, 1.0F);
+                Draw.sphere(core, 1.2F + 4.0F * EdpMath.easeIn(k), heavyDetail(14), heavyDetail(24), this.color, 1.0F);
                 Draw.end(Draw.SPHERE_ORB, 2.0F, 3.0F, 1.0F + 2.0F * k);
             }
             return;
@@ -144,16 +145,18 @@ public final class NovaVfx extends VfxInstance {
         float r = this.blast * EdpMath.easeOut(b);
         float a = 1.0F - b;
         if (Draw.begin(Draw.Material.SPHERE)) {
-            Draw.sphere(this.center, r, 24, 40, this.color, a);
-            Draw.sphere(this.center, r * 0.85F, 20, 32, hot, a * 0.6F);
+            Draw.sphere(this.center, r, heavyDetail(24), heavyDetail(40), this.color, a);
+            if (!EdpConfig.OPTIMIZE_HEAVY_EFFECTS.get()) {
+                Draw.sphere(this.center, r * 0.85F, heavyDetail(20), heavyDetail(32), hot, a * 0.6F);
+            }
             Draw.end(Draw.SPHERE_SHELL, 1.8F, 2.0F, 1.2F);
         }
         if (b < 0.4F && Draw.begin(Draw.Material.SPHERE)) {
-            Draw.sphere(this.center, 6.0F + 20.0F * b, 16, 24, 0xFFFFFF, 1.0F - b / 0.4F);
+            Draw.sphere(this.center, 6.0F + 20.0F * b, heavyDetail(16), heavyDetail(24), 0xFFFFFF, 1.0F - b / 0.4F);
             Draw.end(Draw.SPHERE_ORB, 2.0F, 2.0F, 2.0F);
         }
         if (Draw.begin(Draw.Material.ENERGY)) {
-            Draw.ring(this.center.add(0.0, 0.3, 0.0), new Vec3(0.0, 1.0, 0.0), Math.max(0.0F, r - 6.0F), r, 96, hot, a, a, 10.0F);
+            Draw.ring(this.center.add(0.0, 0.3, 0.0), new Vec3(0.0, 1.0, 0.0), Math.max(0.0F, r - 6.0F), r, heavyDetail(96), hot, a, a, 10.0F);
             Draw.end(2.0F, 3.0F, 1.2F, Draw.MODE_RING);
         }
     }

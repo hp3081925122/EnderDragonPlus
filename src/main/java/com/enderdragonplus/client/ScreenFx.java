@@ -69,46 +69,51 @@ public final class ScreenFx {
         if (shader == null) {
             return;
         }
-        graphics.flush();
-        ShaderInstance previousShader = RenderSystem.getShader();
-        int previousTexture = RenderSystem.getShaderTexture(0);
-        float[] previousColor = RenderSystem.getShaderColor().clone();
-        SceneCopy.capture();
-        if (EdpConfig.DEBUG_LOGGING.get() && !diagnosticsLogged) {
-            diagnosticsLogged = true;
-            EnderDragonPlus.LOGGER.info("Screen FX active: flash={}, chromatic={}, vignette={}, sceneTexture={}", flash, chromatic, vignette, SceneCopy.textureId());
-        }
-        shader.safeGetUniform("EdpParams").set(chromatic, flash, vignette, 0.0F);
-        float r = ((vignetteColor >> 16) & 255) / 255.0F;
-        float g = ((vignetteColor >> 8) & 255) / 255.0F;
-        float b = (vignetteColor & 255) / 255.0F;
-        shader.safeGetUniform("EdpTint").set(r, g, b, 0.85F);
+        long edpScreen = DebugProfiler.screenBegin();
         try {
-            RenderSystem.setShader(() -> shader);
-            RenderSystem.setShaderTexture(0, SceneCopy.textureId());
-            RenderSystem.disableDepthTest();
-            RenderSystem.enableBlend();
-            RenderSystem.defaultBlendFunc();
-            RenderSystem.disableCull();
-            Matrix4f matrix = graphics.pose().last().pose();
-            float w = graphics.guiWidth();
-            float h = graphics.guiHeight();
-            BufferBuilder buffer = Tesselator.getInstance().getBuilder();
-            buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-            buffer.vertex(matrix, 0.0F, 0.0F, 0.0F).uv(0.0F, 1.0F).endVertex();
-            buffer.vertex(matrix, 0.0F, h, 0.0F).uv(0.0F, 0.0F).endVertex();
-            buffer.vertex(matrix, w, h, 0.0F).uv(1.0F, 0.0F).endVertex();
-            buffer.vertex(matrix, w, 0.0F, 0.0F).uv(1.0F, 1.0F).endVertex();
-            BufferUploader.drawWithShader(buffer.end());
+            graphics.flush();
+            ShaderInstance previousShader = RenderSystem.getShader();
+            int previousTexture = RenderSystem.getShaderTexture(0);
+            float[] previousColor = RenderSystem.getShaderColor().clone();
+            SceneCopy.capture();
+            if (EdpConfig.DEBUG_LOGGING.get() && !diagnosticsLogged) {
+                diagnosticsLogged = true;
+                EnderDragonPlus.LOGGER.info("Screen FX active: flash={}, chromatic={}, vignette={}, sceneTexture={}", flash, chromatic, vignette, SceneCopy.textureId());
+            }
+            shader.safeGetUniform("EdpParams").set(chromatic, flash, vignette, 0.0F);
+            float r = ((vignetteColor >> 16) & 255) / 255.0F;
+            float g = ((vignetteColor >> 8) & 255) / 255.0F;
+            float b = (vignetteColor & 255) / 255.0F;
+            shader.safeGetUniform("EdpTint").set(r, g, b, 0.85F);
+            try {
+                RenderSystem.setShader(() -> shader);
+                RenderSystem.setShaderTexture(0, SceneCopy.textureId());
+                RenderSystem.disableDepthTest();
+                RenderSystem.enableBlend();
+                RenderSystem.defaultBlendFunc();
+                RenderSystem.disableCull();
+                Matrix4f matrix = graphics.pose().last().pose();
+                float w = graphics.guiWidth();
+                float h = graphics.guiHeight();
+                BufferBuilder buffer = Tesselator.getInstance().getBuilder();
+                buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+                buffer.vertex(matrix, 0.0F, 0.0F, 0.0F).uv(0.0F, 1.0F).endVertex();
+                buffer.vertex(matrix, 0.0F, h, 0.0F).uv(0.0F, 0.0F).endVertex();
+                buffer.vertex(matrix, w, h, 0.0F).uv(1.0F, 0.0F).endVertex();
+                buffer.vertex(matrix, w, 0.0F, 0.0F).uv(1.0F, 1.0F).endVertex();
+                BufferUploader.drawWithShader(buffer.end());
+            } finally {
+                RenderSystem.setShader(() -> previousShader);
+                RenderSystem.setShaderTexture(0, previousTexture);
+                RenderSystem.setShaderColor(previousColor[0], previousColor[1], previousColor[2], previousColor[3]);
+                RenderSystem.enableBlend();
+                RenderSystem.defaultBlendFunc();
+                RenderSystem.enableCull();
+                RenderSystem.enableDepthTest();
+                SceneCopy.invalidate();
+            }
         } finally {
-            RenderSystem.setShader(() -> previousShader);
-            RenderSystem.setShaderTexture(0, previousTexture);
-            RenderSystem.setShaderColor(previousColor[0], previousColor[1], previousColor[2], previousColor[3]);
-            RenderSystem.enableBlend();
-            RenderSystem.defaultBlendFunc();
-            RenderSystem.enableCull();
-            RenderSystem.enableDepthTest();
-            SceneCopy.invalidate();
+            DebugProfiler.screenEnd(edpScreen);
         }
     }
 }

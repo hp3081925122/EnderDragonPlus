@@ -1,6 +1,7 @@
 package com.enderdragonplus.client.vfx;
 
 import com.enderdragonplus.client.CameraShake;
+import com.enderdragonplus.EdpConfig;
 import com.enderdragonplus.client.Draw;
 import com.enderdragonplus.client.ScreenFx;
 import com.enderdragonplus.client.VfxInstance;
@@ -85,7 +86,7 @@ public final class MeteorShowerVfx extends VfxInstance {
             if (f < 0.0F || f > 1.0F) {
                 continue;
             }
-            Draw.sphere(this.position(i, t), 2.4F, 8, 12, this.color, 1.0F);
+            Draw.sphere(this.position(i, t), 2.4F, heavyDetail(8), heavyDetail(12), this.color, 1.0F);
         }
         Draw.end(0.03F, Draw.DISTORT_LENS, 1.0F, 0.0F);
     }
@@ -131,7 +132,7 @@ public final class MeteorShowerVfx extends VfxInstance {
                     continue;
                 }
                 Vec3 p = this.position(i, t);
-                Draw.billboard(p, 6.0F, this.color, 1.0F);
+                Draw.billboard(p, EdpConfig.OPTIMIZE_HEAVY_EFFECTS.get() ? 5.0F : 6.0F, this.color, 1.0F);
                 Draw.billboard(p, 2.6F, hot, 1.0F);
             }
             Draw.end(1.2F, 3.0F, 1.5F, Draw.MODE_RADIAL);
@@ -142,7 +143,7 @@ public final class MeteorShowerVfx extends VfxInstance {
                 if (f < 0.0F || f > 1.0F) {
                     continue;
                 }
-                Draw.sphere(this.position(i, t), 1.1F, 10, 16, this.color, 1.0F);
+                Draw.sphere(this.position(i, t), 1.1F, heavyDetail(10), heavyDetail(16), this.color, 1.0F);
             }
             Draw.end(Draw.SPHERE_ORB, 2.0F, 3.0F, 1.2F);
         }

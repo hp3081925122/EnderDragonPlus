@@ -54,7 +54,7 @@ public final class DiveVfx extends VfxInstance {
         }
         float pulse = 0.7F + 0.3F * Mth.sin(t * 1.2F);
         if (Draw.begin(Draw.Material.SPHERE)) {
-            Draw.cylinder(this.mark, this.mark.add(0.0, PILLAR, 0.0), 0.8F + 1.2F * k, 24, this.color, a * 0.6F * pulse, 6.0F);
+            Draw.cylinder(this.mark, this.mark.add(0.0, PILLAR, 0.0), 0.8F + 1.2F * k, heavyDetail(24), this.color, a * 0.6F * pulse, 6.0F);
             Draw.end(Draw.SPHERE_SHELL, 2.0F, 2.0F, 1.5F);
         }
         int hot = Draw.mix(this.color, 0xFFFFFF, 0.5F);

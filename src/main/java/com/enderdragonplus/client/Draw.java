@@ -179,6 +179,8 @@ public final class Draw {
         if (mesh == null) {
             return;
         }
+        long edpSubmit = DebugProfiler.begin();
+        int edpVertices = mesh.drawState().vertexCount();
         ShaderInstance shader = shaderOf(current);
         shader.safeGetUniform("EdpParams").set(a, b, c, d);
         RenderSystem.setShader(() -> shader);
@@ -195,6 +197,7 @@ public final class Draw {
         }
         EdpShaders.setAdditive(current.additive);
         BufferUploader.drawWithShader(mesh);
+        DebugProfiler.submit(edpSubmit, edpVertices);
     }
 
     public static void normal(double x, double y, double z) {
@@ -249,64 +252,70 @@ public final class Draw {
     }
 
     public static void terrain(Vec3 center, float half, int cells, float lift, int rgb, float alpha) {
-        ClientLevel level = Minecraft.getInstance().level;
-        if (level == null) {
-            return;
-        }
-        int n = cells + 1;
-        if (terrainHeights.length < n * n) {
-            terrainHeights = new double[n * n];
-        }
-        double[] heights = terrainHeights;
-        double step = half * 2.0 / cells;
-        double x0 = center.x - half;
-        double z0 = center.z - half;
-        if (terrainFrame != frameNumber || terrainX != center.x || terrainZ != center.z
-                || terrainHalf != half || terrainCells != cells || terrainLift != lift) {
-            int previousX = Integer.MIN_VALUE;
-            for (int i = 0; i < n; i++) {
-                int x = Mth.floor(x0 + i * step);
-                int previousZ = Integer.MIN_VALUE;
-                for (int j = 0; j < n; j++) {
-                    int z = Mth.floor(z0 + j * step);
-                    if (i > 0 && x == previousX) {
-                        heights[i * n + j] = heights[(i - 1) * n + j];
-                    } else if (j > 0 && z == previousZ) {
-                        heights[i * n + j] = heights[i * n + j - 1];
-                    } else {
-                        heights[i * n + j] = level.getHeight(Heightmap.Types.MOTION_BLOCKING, x, z) + lift;
+        long edpTerrain = DebugProfiler.begin();
+        try {
+            ClientLevel level = Minecraft.getInstance().level;
+            if (level == null) {
+                return;
+            }
+            int n = cells + 1;
+            if (terrainHeights.length < n * n) {
+                terrainHeights = new double[n * n];
+            }
+            double[] heights = terrainHeights;
+            double step = half * 2.0 / cells;
+            double x0 = center.x - half;
+            double z0 = center.z - half;
+            if (terrainFrame != frameNumber || terrainX != center.x || terrainZ != center.z
+                    || terrainHalf != half || terrainCells != cells || terrainLift != lift) {
+                int previousX = Integer.MIN_VALUE;
+                for (int i = 0; i < n; i++) {
+                    int x = Mth.floor(x0 + i * step);
+                    int previousZ = Integer.MIN_VALUE;
+                    for (int j = 0; j < n; j++) {
+                        int z = Mth.floor(z0 + j * step);
+                        if (i > 0 && x == previousX) {
+                            heights[i * n + j] = heights[(i - 1) * n + j];
+                        } else if (j > 0 && z == previousZ) {
+                            heights[i * n + j] = heights[i * n + j - 1];
+                        } else {
+                            DebugProfiler.heightSample();
+                            heights[i * n + j] = level.getHeight(Heightmap.Types.MOTION_BLOCKING, x, z) + lift;
+                        }
+                        previousZ = z;
                     }
-                    previousZ = z;
+                    previousX = x;
                 }
-                previousX = x;
+                terrainFrame = frameNumber;
+                terrainX = center.x;
+                terrainZ = center.z;
+                terrainHalf = half;
+                terrainCells = cells;
+                terrainLift = lift;
             }
-            terrainFrame = frameNumber;
-            terrainX = center.x;
-            terrainZ = center.z;
-            terrainHalf = half;
-            terrainCells = cells;
-            terrainLift = lift;
-        }
-        double floor = center.y - 16.0;
-        normal(0.0, 1.0, 0.0);
-        for (int i = 0; i < cells; i++) {
-            for (int j = 0; j < cells; j++) {
-                double h00 = heights[i * n + j];
-                double h01 = heights[i * n + j + 1];
-                double h11 = heights[(i + 1) * n + j + 1];
-                double h10 = heights[(i + 1) * n + j];
-                if (h00 < floor || h01 < floor || h11 < floor || h10 < floor) {
-                    continue;
+            double floor = center.y - 16.0;
+            normal(0.0, 1.0, 0.0);
+            for (int i = 0; i < cells; i++) {
+                for (int j = 0; j < cells; j++) {
+                    double h00 = heights[i * n + j];
+                    double h01 = heights[i * n + j + 1];
+                    double h11 = heights[(i + 1) * n + j + 1];
+                    double h10 = heights[(i + 1) * n + j];
+                    if (h00 < floor || h01 < floor || h11 < floor || h10 < floor) {
+                        continue;
+                    }
+                    float u0 = i / (float) cells;
+                    float u1 = (i + 1) / (float) cells;
+                    float v0 = j / (float) cells;
+                    float v1 = (j + 1) / (float) cells;
+                    vertex(x0 + i * step, h00, z0 + j * step, u0, v0, rgb, alpha);
+                    vertex(x0 + i * step, h01, z0 + (j + 1) * step, u0, v1, rgb, alpha);
+                    vertex(x0 + (i + 1) * step, h11, z0 + (j + 1) * step, u1, v1, rgb, alpha);
+                    vertex(x0 + (i + 1) * step, h10, z0 + j * step, u1, v0, rgb, alpha);
                 }
-                float u0 = i / (float) cells;
-                float u1 = (i + 1) / (float) cells;
-                float v0 = j / (float) cells;
-                float v1 = (j + 1) / (float) cells;
-                vertex(x0 + i * step, h00, z0 + j * step, u0, v0, rgb, alpha);
-                vertex(x0 + i * step, h01, z0 + (j + 1) * step, u0, v1, rgb, alpha);
-                vertex(x0 + (i + 1) * step, h11, z0 + (j + 1) * step, u1, v1, rgb, alpha);
-                vertex(x0 + (i + 1) * step, h10, z0 + j * step, u1, v0, rgb, alpha);
             }
+        } finally {
+            DebugProfiler.terrain(edpTerrain);
         }
     }
 

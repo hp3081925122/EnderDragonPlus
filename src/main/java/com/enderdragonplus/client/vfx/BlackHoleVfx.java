@@ -76,11 +76,11 @@ public final class BlackHoleVfx extends VfxInstance {
     public void renderDistortion(float partialTick) {
         float s = this.scale(this.time(partialTick));
         if (Draw.begin(Draw.Material.DISTORT)) {
-            Draw.sphere(this.pos, 7.5F * s, 16, 24, this.color, 1.0F);
+            Draw.sphere(this.pos, 7.5F * s, heavyDetail(16), heavyDetail(24), this.color, 1.0F);
             Draw.end(0.08F, Draw.DISTORT_LENS, 1.0F, 0.0F);
         }
         if (Draw.begin(Draw.Material.DISTORT)) {
-            Draw.ring(this.pos, DISK_AXIS, 2.5F * s, 11.0F * s, 48, this.color, 1.0F, 1.0F, 1.0F);
+            Draw.ring(this.pos, DISK_AXIS, 2.5F * s, 11.0F * s, heavyDetail(48), this.color, 1.0F, 1.0F, 1.0F);
             Draw.end(0.03F, Draw.DISTORT_BAND, 2.0F, 0.6F);
         }
     }
@@ -100,15 +100,15 @@ public final class BlackHoleVfx extends VfxInstance {
             Draw.end(0.4F, 2.0F, 1.2F, Draw.MODE_RADIAL);
         }
         if (Draw.begin(Draw.Material.SPHERE_ALPHA)) {
-            Draw.sphere(this.pos, 2.4F * s, 16, 24, this.color, alpha);
+            Draw.sphere(this.pos, 2.4F * s, heavyDetail(16), heavyDetail(24), this.color, alpha);
             Draw.end(Draw.SPHERE_DARK, 3.0F, 3.0F, 0.5F);
         }
         if (Draw.begin(Draw.Material.ENERGY)) {
-            Draw.ring(this.pos, DISK_AXIS, 2.6F * s, 9.5F * s, 64, this.color, alpha, alpha * 0.2F, 3.0F);
+            Draw.ring(this.pos, DISK_AXIS, 2.6F * s, 9.5F * s, heavyDetail(64), this.color, alpha, alpha * 0.2F, 3.0F);
             Draw.end(-0.9F, 5.0F, 1.0F, Draw.MODE_RING);
         }
         if (Draw.begin(Draw.Material.ENERGY)) {
-            Draw.ring(this.pos, DISK_AXIS_B, 2.3F * s, 5.0F * s, 48, hot, alpha, alpha * 0.4F, 2.0F);
+            Draw.ring(this.pos, DISK_AXIS_B, 2.3F * s, 5.0F * s, heavyDetail(48), hot, alpha, alpha * 0.4F, 2.0F);
             Draw.end(1.4F, 4.0F, 2.5F, Draw.MODE_RING);
         }
         if (Draw.begin(Draw.Material.ENERGY)) {

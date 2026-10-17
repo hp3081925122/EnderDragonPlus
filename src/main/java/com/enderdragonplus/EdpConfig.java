@@ -61,6 +61,7 @@ public final class EdpConfig {
     public static final ForgeConfigSpec.DoubleValue DIVE_RADIUS;
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_DISTORTION;
+    public static final ForgeConfigSpec.BooleanValue OPTIMIZE_HEAVY_EFFECTS;
     public static final ForgeConfigSpec.BooleanValue ENABLE_SCREEN_EFFECTS;
     public static final ForgeConfigSpec.DoubleValue CAMERA_SHAKE;
 
@@ -132,6 +133,7 @@ public final class EdpConfig {
 
         ForgeConfigSpec.Builder c = new ForgeConfigSpec.Builder();
         c.comment("客户端特效").push("vfx");
+        OPTIMIZE_HEAVY_EFFECTS = c.comment("优化大型技能的几何细分、重叠光层及视野外冲击波和印记；龙鳞弹幕保持原样 / Optimize heavy effects; scale barrage remains unchanged").define("optimizeHeavyEffects", true);
         ENABLE_DISTORTION = c.comment("启用空间扭曲特效（需要拷贝画面，光影包下可能失效）").define("enableDistortion", true);
         ENABLE_SCREEN_EFFECTS = c.comment("启用全屏色差、白闪与暗角").define("enableScreenEffects", true);
         CAMERA_SHAKE = c.comment("镜头震动强度倍率").defineInRange("cameraShake", 1.0, 0.0, 5.0);

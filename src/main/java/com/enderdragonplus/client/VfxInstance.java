@@ -7,6 +7,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.client.renderer.culling.Frustum;
 
 public abstract class VfxInstance {
     protected int age;
@@ -26,6 +27,14 @@ public abstract class VfxInstance {
     }
 
     public abstract void render(float partialTick);
+
+    protected static int heavyDetail(int value) {
+        return com.enderdragonplus.EdpConfig.OPTIMIZE_HEAVY_EFFECTS.get() ? Math.max(8, value * 3 / 4) : value;
+    }
+
+    public boolean visible(Frustum frustum) {
+        return true;
+    }
 
     public boolean distorts() {
         return false;
